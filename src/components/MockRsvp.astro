@@ -1,0 +1,36 @@
+---
+interface Props {
+  closedNote?: string;
+}
+
+const { closedNote = "Esto es una muestra: no se guardó nada." } = Astro.props;
+---
+
+<div class="mock-rsvp" data-mock-rsvp>
+  <form class="mock-form" data-form>
+    <label>
+      ¿Cómo te llamás?
+      <input name="nombre" type="text" required maxlength="80" autocomplete="name" />
+    </label>
+    <fieldset>
+      <legend>¿Nos vemos ese día?</legend>
+      <label><input type="radio" name="asiste" value="si" required /> Sí, voy</label>
+      <label><input type="radio" name="asiste" value="no" /> No voy a poder</label>
+    </fieldset>
+    <button type="submit">Confirmar (muestra)</button>
+  </form>
+  <p class="mock-thanks" data-thanks hidden>{closedNote}</p>
+</div>
+
+<script>
+  const root = document.querySelector("[data-mock-rsvp]");
+  if (root instanceof HTMLElement) {
+    const form = root.querySelector("[data-form]");
+    const thanks = root.querySelector("[data-thanks]");
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (form instanceof HTMLElement) form.hidden = true;
+      if (thanks instanceof HTMLElement) thanks.hidden = false;
+    });
+  }
+</script>

@@ -1,0 +1,52 @@
+---
+import SampleBanner from "../components/SampleBanner.astro";
+import MockRsvp from "../components/MockRsvp.astro";
+import RootLayout from "../layouts/RootLayout.astro";
+import { uno } from "../data/demos";
+import { waMessages } from "../data/site";
+import { whatsappUrl } from "../lib/whatsapp";
+import "../styles/sample.css";
+import "../styles/uno.css";
+
+const title = `${uno.honoree} — ${uno.headline} (muestra)`;
+const description = "Muestra de invitación infantil. Datos inventados. No se guarda ninguna confirmación.";
+---
+
+<RootLayout title={title} description={description} themeColor="#ff6b2b">
+  <link
+    slot="fonts"
+    href="https://fonts.googleapis.com/css2?family=Grandstander:wght@700;800&family=Red+Hat+Text:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <SampleBanner wantHref={whatsappUrl(waMessages.uno)} />
+  <div class="uno-page">
+    <main id="contenido">
+      <header class="uno-hero">
+        <div class="uno-ticket">
+          <p>Entrada al festejo</p>
+          <h1>{uno.honoree}</h1>
+          <p>{uno.headline}</p>
+          <div class="uno-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+      </header>
+      <section class="uno-section">
+        <h2>El gran día</h2>
+        <p>{uno.lead}</p>
+        <p><b>{uno.dateLabel}</b> · {uno.timeLabel}</p>
+        <p>{uno.venue}<br />{uno.address}</p>
+        <p>{uno.hosts}</p>
+      </section>
+      <section class="uno-section">
+        <h2>¿Venís?</h2>
+        <MockRsvp />
+        <p style="margin-top:1rem">
+          <a class="btn" href={whatsappUrl(waMessages.uno)}>Quiero una así</a>
+        </p>
+      </section>
+      <footer class="uno-foot">
+        <p>{uno.closing}</p>
+        <p><a href="/">HolaInvitado</a></p>
+      </footer>
+    </main>
+  </div>
+</RootLayout>

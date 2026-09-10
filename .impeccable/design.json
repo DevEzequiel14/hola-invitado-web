@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "palette": {
+    "paper": "#E4EAF0",
+    "sheet": "#F4F7FA",
+    "ink": "#14181F",
+    "press": "#0E1218",
+    "cyan": "#0073C2",
+    "magenta": "#C4126A",
+    "good": "#0F6B4C"
+  },
+  "fonts": {
+    "display": "Petrona",
+    "body": "Red Hat Text"
+  }
+}

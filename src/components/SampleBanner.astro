@@ -1,0 +1,13 @@
+---
+interface Props {
+  wantHref: string;
+  wantLabel?: string;
+}
+
+const { wantHref, wantLabel = "Quiero una así" } = Astro.props;
+---
+
+<div class="sample-banner" role="status">
+  Esto es una muestra. No se guarda ninguna confirmación.
+  <a href={wantHref}>{wantLabel}</a>
+</div>

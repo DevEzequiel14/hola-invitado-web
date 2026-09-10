@@ -1,0 +1,84 @@
+---
+import SampleBanner from "../components/SampleBanner.astro";
+import SavannahScene from "../components/SavannahScene.astro";
+import Countdown from "../components/Countdown.astro";
+import Divider from "../components/Divider.astro";
+import RootLayout from "../layouts/RootLayout.astro";
+import { giuliano } from "../data/giuliano";
+import { giulianoFamilyPermission, realGiulianoUrl, waMessages } from "../data/site";
+import { whatsappUrl } from "../lib/whatsapp";
+import "../styles/sample.css";
+import "../styles/giuliano.css";
+
+const title = `${giuliano.firstName} — ${giuliano.headline} (muestra)`;
+const description =
+  "Muestra de invitación. La fiesta de la familia no se confirma acá. El RSVP verdadero sigue en holainvitados.vercel.app/giuliano.";
+---
+
+<RootLayout title={title} description={description} themeColor="#143326">
+  <link
+    slot="fonts"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,600&family=Nunito:wght@400;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <SampleBanner wantHref={whatsappUrl(waMessages.giuliano)} />
+  <main class="page" id="contenido">
+    <header class="hero">
+      <div class="hero-scene"><SavannahScene /></div>
+      <div class="hero-copy">
+        <p>{giuliano.inviteLine}</p>
+        <p>{giuliano.headline}</p>
+        <h1>{giuliano.honoree}</h1>
+      </div>
+    </header>
+
+    <section class="section">
+      <p class="lead">
+        Esto es una vitrina de HolaInvitado. La fiesta de la familia no se confirma acá.
+        El RSVP verdadero está en <a href={realGiulianoUrl}>holainvitados.vercel.app/giuliano</a>.
+      </p>
+      {
+        giulianoFamilyPermission ? null : (
+          <p class="photo-gap">
+            Las fotos de Giuliano no están en esta muestra. Falta el permiso explícito de Selena y Martín para usarlas en el sitio de venta.
+          </p>
+        )
+      }
+    </section>
+
+    <section class="section" aria-labelledby="cuando">
+      <h2 class="section-title" id="cuando">{giuliano.whenTitle}</h2>
+      <p class="lead">{giuliano.whenLead}</p>
+      <div class="card facts">
+        <div class="fact"><b>{giuliano.dateLabel}</b></div>
+        <div class="fact"><b>{giuliano.timeLabel}</b></div>
+        <div class="fact">
+          <b>{giuliano.venue}</b>
+          <span>{giuliano.address}</span>
+        </div>
+        <p class="hosts">{giuliano.hostsLine}</p>
+      </div>
+    </section>
+
+    <Divider />
+
+    <section class="section" aria-labelledby="falta">
+      <h2 class="section-title" id="falta">{giuliano.countdownTitle}</h2>
+      <Countdown startIso={giuliano.startIso} endIso={giuliano.endIso} />
+    </section>
+
+    <section class="section" aria-labelledby="llegar">
+      <h2 class="section-title" id="llegar">{giuliano.mapsTitle}</h2>
+      <p class="lead">{giuliano.mapsLead}</p>
+      <div class="actions">
+        <a class="btn btn-leaf" href={giuliano.mapsUrl} target="_blank" rel="noreferrer">Cómo llegar</a>
+        <a class="btn btn-gold" href={whatsappUrl(waMessages.giuliano)}>Quiero una así</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>{giuliano.closing}</p>
+      <a class="brand" href="/">HolaInvitado</a>
+    </footer>
+  </main>
+</RootLayout>
