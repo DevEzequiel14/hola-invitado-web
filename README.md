@@ -4,6 +4,8 @@ Sitio de **holainvitados.com**: invitaciones web con lista de confirmados, para 
 
 El evento real de Giuliano **no está acá**. Sigue en [holainvitados.vercel.app/giuliano](https://holainvitados.vercel.app/giuliano).
 
+Producción de esta marca: [hola-invitado-web.vercel.app](https://hola-invitado-web.vercel.app). Cuando exista `holainvitados.com`, apunta a **este** proyecto, no al de Giuliano.
+
 ## Rutas públicas
 
 - `/` landing

@@ -27,3 +27,5 @@ data/rsvps.json
 .idea/
 .vercel
 .impeccable/config.local.json
+
+.vercel
