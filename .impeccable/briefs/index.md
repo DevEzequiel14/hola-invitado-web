@@ -3,16 +3,22 @@
 ## Mode
 Persuade
 
+## Audience
+Quien arma una fiesta en Jujuy o el NOA y confirma por WhatsApp.
+
+## Job
+Creer que un link con lista de confirmados reemplaza al grupo, y escribir por WhatsApp.
+
 ## Direction contract
 
-THESIS: The page is a confirmation sheet you can hold, not a cream-and-serif wedding template. The offer is a WhatsApp-made link plus a list of names.
+THESIS: The invitation is a night-club entrada: one ticket, torn stubs for who comes. It refuses the cream wedding template and the previous print-shop sheet.
 
-OWN-WORLD: Press night and cool paper. Ink #14181F, paper #E4EAF0, process cyan #0073C2, process magenta #C4126A. Display Petrona, body Red Hat Text. Components read as a printed job and a guest list, not as SaaS cards.
+OWN-WORLD: Salón after dark. Radial aurora on #0A0A0A using #2979FF, #FF80AB, #FF6D00, #FFD600, #00E676, #3D5AFE, breathing. Thermal-ticket chrome: perforations, stub rows, condensed display. Light ink on night.
 
-STORY: A host in Jujuy sees an invitation beside a list of names, believes they can stop chasing the WhatsApp group, and writes on WhatsApp.
+STORY: Visitor sees an entrada and a list of names tearing off it, believes the group can stop, taps WhatsApp.
 
-FIRST VIEWPORT: Heading at display scale, zone named inside the lead (Jujuy y NOA), WhatsApp as the primary action, then a dark invitation plate stacked with a paper list whose rows tick in.
+FIRST VIEWPORT: Full-bleed breathing gradient. A large ticket owns the first screen. Headline on the stub. WhatsApp on the ticket as the primary action. Guest names as perforated tears. Zone named inside the lead, not as an eyebrow.
 
-FORM: Imprenta del centro / planilla de confirmados. Seed: unattended-assigned (impeccable launcher blocked on sibling script).
+FORM: Ticket de entrada al salón (grounded #4 of 7). Seed 03433f24. User locked this over luces-literal and canon. Raises: quarry gaps between ticket bands; forge one-name-per-tear; parametric demos each steal one aurora hue; couture examples as a stub lineup; algorave list on a clock; collider bloom from the top of the night.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

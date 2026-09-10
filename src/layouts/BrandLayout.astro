@@ -1,6 +1,7 @@
 ---
 import { brand, instagram, waMessages } from "../data/site";
 import { whatsappUrl } from "../lib/whatsapp";
+import Aurora from "../components/Aurora.astro";
 import RootLayout from "./RootLayout.astro";
 import "../styles/brand.css";
 
@@ -21,23 +22,32 @@ const igHref = instagram
   : "";
 ---
 
-<RootLayout title={title} description={description} themeColor="#14181F">
+<RootLayout title={title} description={description} themeColor="#0A0A0A">
   <link
     slot="fonts"
-    href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,500;0,700;1,500&family=Red+Hat+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap"
     rel="stylesheet"
   />
-  <slot />
-  <footer class="site-foot">
-    <p class="site-foot-mark">{brand}</p>
-    <p>Invitaciones web para {`Jujuy y el NOA`}. Un link. Una lista. Sin grupo eterno.</p>
-    <div class="site-foot-links">
-      <a href={whatsappUrl(waMessages.general)}>WhatsApp</a>
-      {igHref ? (
-        <a href={igHref} rel="noreferrer" target="_blank">Instagram</a>
-      ) : (
-        <span class="gap" title="El handle se carga cuando lo pases">Instagram</span>
-      )}
-    </div>
-  </footer>
+  <Aurora />
+  <div class="brand-shell">
+    <slot />
+    <footer class="site-foot">
+      <p class="site-foot-mark">{brand}</p>
+      <p>Invitaciones web para Jujuy y el NOA. Un link. Una lista. Sin grupo eterno.</p>
+      <div class="site-foot-links">
+        <a href={whatsappUrl(waMessages.general)}>WhatsApp</a>
+        {
+          igHref ? (
+            <a href={igHref} rel="noreferrer" target="_blank">
+              Instagram
+            </a>
+          ) : (
+            <span class="gap" title="El handle se carga cuando lo pases">
+              Instagram
+            </span>
+          )
+        }
+      </div>
+    </footer>
+  </div>
 </RootLayout>

@@ -1,0 +1,25 @@
+---
+import Aurora from "../components/Aurora.astro";
+import SampleBanner from "../components/SampleBanner.astro";
+import RootLayout from "./RootLayout.astro";
+import "../styles/sample.css";
+
+interface Props {
+  title: string;
+  description: string;
+  wantHref: string;
+  themeColor: string;
+  fonts: string;
+}
+
+const { title, description, wantHref, themeColor, fonts } = Astro.props;
+---
+
+<RootLayout title={title} description={description} themeColor={themeColor}>
+  <link slot="fonts" href={fonts} rel="stylesheet" />
+  <Aurora />
+  <div class="invite-night">
+    <SampleBanner wantHref={wantHref} />
+    <slot />
+  </div>
+</RootLayout>

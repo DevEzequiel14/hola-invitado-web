@@ -1,0 +1,98 @@
+---
+interface Props {
+  startingGap?: number;
+  breathing?: boolean;
+  gradientColors?: string[];
+  gradientStops?: number[];
+  animationSpeed?: number;
+  breathingRange?: number;
+  topOffset?: number;
+}
+
+const {
+  startingGap = 92,
+  breathing = true,
+  gradientColors = ["#0A0A0A", "#2979FF", "#FF80AB", "#FF6D00", "#FFD600", "#00E676", "#3D5AFE"],
+  gradientStops = [8, 20, 34, 48, 62, 78, 100],
+  animationSpeed = 0.02,
+  breathingRange = 6,
+  topOffset = 8,
+} = Astro.props;
+
+const stops = gradientStops.map((stop, i) => `${gradientColors[i]} ${stop}%`).join(", ");
+const initial = `radial-gradient(${startingGap}% ${startingGap + topOffset}% at 50% 18%, ${stops})`;
+---
+
+<div
+  class="aurora"
+  data-aurora
+  data-gap={startingGap}
+  data-breathe={breathing ? "1" : "0"}
+  data-speed={animationSpeed}
+  data-range={breathingRange}
+  data-offset={topOffset}
+  data-stops={stops}
+  aria-hidden="true"
+>
+  <div class="aurora-fill" data-aurora-fill style={`background: ${initial}`}></div>
+</div>
+
+<style>
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    animation: aurora-in 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .aurora-fill {
+    position: absolute;
+    inset: -12%;
+  }
+
+  @keyframes aurora-in {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector("[data-aurora]");
+  const fill = document.querySelector("[data-aurora-fill]");
+  if (root instanceof HTMLElement && fill instanceof HTMLElement) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const startingGap = Number(root.dataset.gap ?? 92);
+    const breathing = root.dataset.breathe === "1" && !reduce;
+    const speed = Number(root.dataset.speed ?? 0.02);
+    const range = Number(root.dataset.range ?? 6);
+    const topOffset = Number(root.dataset.offset ?? 8);
+    const stops = root.dataset.stops ?? "";
+    let width = startingGap;
+    let direction = 1;
+    let frame = 0;
+
+    const paint = () => {
+      if (width >= startingGap + range) direction = -1;
+      if (width <= startingGap - range) direction = 1;
+      if (!breathing) direction = 0;
+      width += direction * speed;
+      fill.style.background = `radial-gradient(${width}% ${width + topOffset}% at 50% 18%, ${stops})`;
+      frame = requestAnimationFrame(paint);
+    };
+
+    frame = requestAnimationFrame(paint);
+    document.addEventListener("astro:before-swap", () => cancelAnimationFrame(frame), { once: true });
+  }
+</script>

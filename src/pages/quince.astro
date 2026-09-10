@@ -1,50 +1,46 @@
 ---
-import SampleBanner from "../components/SampleBanner.astro";
 import MockRsvp from "../components/MockRsvp.astro";
-import RootLayout from "../layouts/RootLayout.astro";
+import InviteLayout from "../layouts/InviteLayout.astro";
 import { quince } from "../data/demos";
 import { waMessages } from "../data/site";
 import { whatsappUrl } from "../lib/whatsapp";
-import "../styles/sample.css";
 import "../styles/quince.css";
 
 const title = `${quince.honoree} — ${quince.headline} (muestra)`;
 const description = "Muestra de invitación de quince. Datos inventados. No se guarda ninguna confirmación.";
 ---
 
-<RootLayout title={title} description={description} themeColor="#140e18">
-  <link
-    slot="fonts"
-    href="https://fonts.googleapis.com/css2?family=Gloock&family=Red+Hat+Text:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <SampleBanner wantHref={whatsappUrl(waMessages.quince)} />
-  <div class="quince-page">
+<InviteLayout
+  title={title}
+  description={description}
+  wantHref={whatsappUrl(waMessages.quince)}
+  themeColor="#FF80AB"
+  fonts="https://fonts.googleapis.com/css2?family=Gloock&family=Karla:wght@400;700&display=swap"
+>
+  <article class="invite-ticket quince-skin">
     <main id="contenido">
-      <header class="quince-hero">
-        <p>Una noche en Tilcara</p>
+      <header>
         <h1>{quince.honoree}</h1>
         <p>{quince.headline}</p>
       </header>
-      <div class="quince-rule" aria-hidden="true"></div>
-      <section class="quince-section">
+      <section>
         <h2>El gran día</h2>
         <p>{quince.lead}</p>
         <p><b>{quince.dateLabel}</b><br />{quince.timeLabel}</p>
         <p>{quince.venue}<br />{quince.address}</p>
         <p>{quince.hosts}</p>
       </section>
-      <section class="quince-section">
+      <section>
         <h2>Confirmá</h2>
         <MockRsvp />
         <p style="margin-top:1rem">
           <a class="btn" href={whatsappUrl(waMessages.quince)}>Quiero una así</a>
         </p>
       </section>
-      <footer class="quince-foot">
+      <footer>
         <p>{quince.closing}</p>
         <p><a href="/">HolaInvitado</a></p>
       </footer>
     </main>
-  </div>
-</RootLayout>
+  </article>
+</InviteLayout>
