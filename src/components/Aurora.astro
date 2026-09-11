@@ -1,41 +1,21 @@
 ---
 interface Props {
-  startingGap?: number;
-  breathing?: boolean;
-  gradientColors?: string[];
-  gradientStops?: number[];
-  animationSpeed?: number;
-  breathingRange?: number;
-  topOffset?: number;
+  dotSize?: number;
+  spacing?: number;
+  duration?: number;
 }
 
-const {
-  startingGap = 92,
-  breathing = true,
-  gradientColors = ["#0A0A0A", "#2979FF", "#FF80AB", "#FF6D00", "#FFD600", "#00E676", "#3D5AFE"],
-  gradientStops = [8, 20, 34, 48, 62, 78, 100],
-  animationSpeed = 0.02,
-  breathingRange = 6,
-  topOffset = 8,
-} = Astro.props;
-
-const stops = gradientStops.map((stop, i) => `${gradientColors[i]} ${stop}%`).join(", ");
-const initial = `radial-gradient(${startingGap}% ${startingGap + topOffset}% at 50% 18%, ${stops})`;
+const { dotSize = 7, spacing = 14, duration = 56 } = Astro.props;
+const hexSpacing = (spacing * 1.732).toFixed(2);
+const halfGap = (spacing / 2).toFixed(2);
+const halfHex = ((spacing * 1.732) / 2).toFixed(2);
 ---
 
 <div
   class="aurora"
-  data-aurora
-  data-gap={startingGap}
-  data-breathe={breathing ? "1" : "0"}
-  data-speed={animationSpeed}
-  data-range={breathingRange}
-  data-offset={topOffset}
-  data-stops={stops}
   aria-hidden="true"
->
-  <div class="aurora-fill" data-aurora-fill style={`background: ${initial}`}></div>
-</div>
+  style={`--dot: ${dotSize}px; --gap: ${spacing}px; --hex: ${hexSpacing}px; --half-gap: ${halfGap}px; --half-hex: ${halfHex}px; --dur: ${duration}s;`}
+></div>
 
 <style>
   .aurora {
@@ -44,20 +24,40 @@ const initial = `radial-gradient(${startingGap}% ${startingGap + topOffset}% at 
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
-    animation: aurora-in 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+    background-color: #0a0a0a;
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 1.5px, #0a0a0a 0 var(--dot), transparent var(--dot)),
+      radial-gradient(circle at 50% 50%, transparent 1.5px, #0a0a0a 0 var(--dot), transparent var(--dot)),
+      radial-gradient(circle at 50% 50%, rgba(41, 121, 255, 0.28), transparent 58%),
+      radial-gradient(circle at 50% 50%, rgba(61, 90, 254, 0.22), transparent 62%),
+      radial-gradient(circle at 50% 50%, rgba(255, 128, 171, 0.16), transparent 64%),
+      radial-gradient(ellipse at 50% 50%, rgba(10, 10, 10, 0.55), transparent 70%);
+    background-size:
+      var(--gap) var(--hex),
+      var(--gap) var(--hex),
+      200% 200%,
+      200% 200%,
+      200% 200%,
+      200% var(--hex);
+    background-position:
+      0 0,
+      var(--half-gap) var(--half-hex),
+      18% 12%,
+      72% 68%,
+      48% 40%,
+      50% 0;
+    animation: dots-drift var(--dur) linear infinite;
   }
 
-  .aurora-fill {
-    position: absolute;
-    inset: -12%;
-  }
-
-  @keyframes aurora-in {
-    from {
-      transform: scale(1.12);
-    }
+  @keyframes dots-drift {
     to {
-      transform: scale(1);
+      background-position:
+        0 0,
+        var(--half-gap) var(--half-hex),
+        62% 58%,
+        28% 22%,
+        70% 76%,
+        50% var(--hex);
     }
   }
 
@@ -67,32 +67,3 @@ const initial = `radial-gradient(${startingGap}% ${startingGap + topOffset}% at 
     }
   }
 </style>
-
-<script>
-  const root = document.querySelector("[data-aurora]");
-  const fill = document.querySelector("[data-aurora-fill]");
-  if (root instanceof HTMLElement && fill instanceof HTMLElement) {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const startingGap = Number(root.dataset.gap ?? 92);
-    const breathing = root.dataset.breathe === "1" && !reduce;
-    const speed = Number(root.dataset.speed ?? 0.02);
-    const range = Number(root.dataset.range ?? 6);
-    const topOffset = Number(root.dataset.offset ?? 8);
-    const stops = root.dataset.stops ?? "";
-    let width = startingGap;
-    let direction = 1;
-    let frame = 0;
-
-    const paint = () => {
-      if (width >= startingGap + range) direction = -1;
-      if (width <= startingGap - range) direction = 1;
-      if (!breathing) direction = 0;
-      width += direction * speed;
-      fill.style.background = `radial-gradient(${width}% ${width + topOffset}% at 50% 18%, ${stops})`;
-      frame = requestAnimationFrame(paint);
-    };
-
-    frame = requestAnimationFrame(paint);
-    document.addEventListener("astro:before-swap", () => cancelAnimationFrame(frame), { once: true });
-  }
-</script>

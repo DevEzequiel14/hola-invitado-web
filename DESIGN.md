@@ -1,6 +1,6 @@
 ---
 name: HolaInvitado
-description: Nightclub entrada ticket on a breathing radial aurora.
+description: Nightclub entrada ticket on a quiet dotted night field.
 colors:
   night: "#0A0A0A"
   ticket: "#101114"
@@ -124,14 +124,14 @@ components:
 
 **Creative North Star: "The Nightclub Entrada Ticket"**
 
-HolaInvitado’s brand world is a nightclub door: a thermal ticket held up against a breathing radial aurora. The floor is club night. The aurora is the only full-spectrum field — a fixed radial wash anchored high in the frame — and every piece of UI is ticket stock punched, perforated, or torn so that wash shows through. Density is mobile-first and quarry-like: centered slabs of carbon ticket, then air, then another slab. It is not a print shop, not a wedding suite, and not a jungle vitrine.
+HolaInvitado’s brand world is a nightclub door: a thermal ticket held up against a quiet hexagonal dot field. The floor is club night. Soft blue, indigo, and pink washes drift slowly behind the mesh — never a rainbow bloom — and every piece of UI is ticket stock punched, perforated, or torn so that field shows through. Density is mobile-first and quarry-like: centered slabs of carbon ticket, then air, then another slab. It is not a print shop, not a wedding suite, and not a jungle vitrine.
 
-Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the aurora. Motion is physical: the aurora breathes, torn names slide in, a clock hand ticks. Prefer-reduced-motion kills all three.
+Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and slow: the dots drift, torn names slide in, a clock hand ticks. Prefer-reduced-motion kills all three.
 
-`/giuliano` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). It is not this system. Demo invitations (`/uno`, `/quince`, `/casamiento`) keep the night floor, aurora, and ticket chassis, then steal one aurora hue and a party-specific display face. Brand surfaces never inherit those party faces.
+`/giuliano` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). It is not this system. Demo invitations (`/uno`, `/quince`, `/casamiento`) keep the night floor, dotted field, and ticket chassis, then steal one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
 
 **Key Characteristics:**
-- Radial aurora at 50% 18%, seven stops, breathing on requestAnimationFrame; the same gradient is also the `html` background, `background-attachment: fixed`
+- Hexagonal night dots over muted blue / indigo / pink washes; CSS drift ~56s, no hue-rotate; `html` is solid club night
 - Carbon ticket stock with 14px corners, 22px perforated gutters, and one-name-per-tear stubs
 - Saira Condensed uppercase stamps against Karla body
 - Each accent hue is stolen once (chip, stub, demo, clock) — never used as a page fill
@@ -140,7 +140,7 @@ Personality is loud at the stamp and quiet in the copy. Headlines are condensed,
 
 ## Colors
 
-The palette is a nightclub door light: one black floor, one carbon ticket, warm ivory type, and a seven-stop aurora that UI only samples.
+The palette is a nightclub door light: one black floor, one carbon ticket, warm ivory type, and accent hues sampled from the dotted field.
 
 ### Primary
 - **Club Blue**: Entrance stamp and chrome. Primary actions, text selection, and the scrollbar thumb. Hover deepens to blue-pressed. It is the first aurora stop after night, not a corporate blue.
@@ -255,17 +255,17 @@ Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small sc
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the aurora seven-stop and anchored at 50% 18%, breathing unless `prefers-reduced-motion`.
+- **Do** keep the night dotted field (hex mesh, muted blue/indigo/pink, slow drift, no hue-rotate) unless `prefers-reduced-motion`.
 - **Do** build brand UI as ticket stock: 14px clip, perforations, left-edge bites, one 22/40 drop.
 - **Do** set actions in Saira Condensed uppercase at 3px radius; keep the WhatsApp chip as the small green pill.
 - **Do** leave empty price and Instagram as dashed gold gaps.
-- **Do** give each demo one stolen aurora hue and its own display face, still sitting on night + ticket + aurora.
+- **Do** give each demo one stolen accent hue and its own display face, still sitting on night + ticket + dotted field.
 - **Do** honor `prefers-reduced-motion` by freezing aurora, tears, and the clock hand.
 
 ### Don't:
 - **Don't** revive the old print-shop world (paper, process cyan/magenta, Petrona, Red Hat Text).
 - **Don't** fold Giuliano jungle tokens (sand, cream, leaf, bark, Fraunces, Nunito) into brand pages.
-- **Don't** fill a section with a single neon wash or use indigo as chrome.
+- **Don't** fill a section with a rainbow bloom, hue-rotate cycle, or a single neon wash.
 - **Don't** pill marketing buttons or use 3px stamps on the WhatsApp chip.
 - **Don't** add a second shadow system, hard offset shadows, or a kicker/eyebrow layer above headlines.
 - **Don't** invent prices, Instagram handles, or testimonials to fill gaps.

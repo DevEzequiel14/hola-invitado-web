@@ -27,18 +27,6 @@ html {
   scrollbar-color: #2979ff #0a0a0a;
   color-scheme: dark;
   background-color: #0a0a0a;
-  background-image: radial-gradient(
-    92% 100% at 50% 18%,
-    #0a0a0a 8%,
-    #2979ff 20%,
-    #ff80ab 34%,
-    #ff6d00 48%,
-    #ffd600 62%,
-    #00e676 78%,
-    #3d5afe 100%
-  );
-  background-attachment: fixed;
-  background-repeat: no-repeat;
 }
 
 html,
