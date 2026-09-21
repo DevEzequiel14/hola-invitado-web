@@ -1,6 +1,6 @@
 # HolaInvitado (web de marca)
 
-Sitio de **holainvitados.com**: invitaciones web con lista de confirmados, para Jujuy y el NOA.
+Sitio de **holainvitados.com**: invitaciones web a medida, con confirmación de invitados.
 
 El evento real de Giuliano **no está acá**. Sigue en [holainvitados.vercel.app/giuliano](https://holainvitados.vercel.app/giuliano).
 
@@ -16,7 +16,6 @@ Producción de esta marca: [hola-invitado-web.vercel.app](https://hola-invitado-
 
 ## Huecos a propósito
 
-- Precio **desde $X** (`priceFrom` en `src/data/site.ts`)
 - Instagram (`instagram` en el mismo archivo)
 - Permiso familiar para fotos de Giuliano (`giulianoFamilyPermission`)
 

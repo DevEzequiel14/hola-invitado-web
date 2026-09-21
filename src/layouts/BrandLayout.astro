@@ -11,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = `${brand} — invitaciones web con lista de confirmados`,
-  description = "Invitaciones web para Jujuy y el NOA. Los invitados confirman en el link y vos ves la lista. Hablamos por WhatsApp.",
+  title = `${brand} — invitaciones web para tu fiesta`,
+  description = "Invitación web para tu fiesta. Los invitados la recorren y confirman si van. Pedí presupuesto por WhatsApp.",
 } = Astro.props;
 
 const igHref = instagram
@@ -25,7 +25,7 @@ const igHref = instagram
 <RootLayout title={title} description={description} themeColor="#0A0A0A">
   <link
     slot="fonts"
-    href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Grandstander:wght@700;800&family=Karla:ital,wght@0,400;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap"
     rel="stylesheet"
   />
   <Aurora />
@@ -33,7 +33,6 @@ const igHref = instagram
     <slot />
     <footer class="site-foot">
       <p class="site-foot-mark">{brand}</p>
-      <p>Invitaciones web para Jujuy y el NOA. Un link. Una lista. Sin grupo eterno.</p>
       <div class="site-foot-links">
         <a href={whatsappUrl(waMessages.general)}>WhatsApp</a>
         {
@@ -41,13 +40,10 @@ const igHref = instagram
             <a href={igHref} rel="noreferrer" target="_blank">
               Instagram
             </a>
-          ) : (
-            <span class="gap" title="El handle se carga cuando lo pases">
-              Instagram
-            </span>
-          )
+          ) : null
         }
       </div>
+      <p class="site-foot-copy">© 2026 {brand}. Todos los derechos reservados.</p>
     </footer>
   </div>
 </RootLayout>

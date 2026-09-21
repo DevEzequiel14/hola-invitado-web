@@ -12,7 +12,7 @@ import "../styles/giuliano.css";
 
 const title = `${giuliano.firstName} — ${giuliano.headline} (muestra)`;
 const description =
-  "Muestra de invitación. La fiesta de la familia no se confirma acá. El RSVP verdadero sigue en holainvitados.vercel.app/giuliano.";
+  "Muestra de invitación. La fiesta de la familia no se confirma acá. La confirmación verdadera sigue en holainvitados.vercel.app/giuliano.";
 ---
 
 <RootLayout title={title} description={description} themeColor="#143326">
@@ -35,7 +35,7 @@ const description =
     <section class="section">
       <p class="lead">
         Esto es una vitrina de HolaInvitado. La fiesta de la familia no se confirma acá.
-        El RSVP verdadero está en <a href={realGiulianoUrl}>holainvitados.vercel.app/giuliano</a>.
+        La confirmación verdadera está en <a href={realGiulianoUrl}>holainvitados.vercel.app/giuliano</a>.
       </p>
       {
         giulianoFamilyPermission ? null : (

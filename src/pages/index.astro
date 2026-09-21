@@ -1,132 +1,61 @@
 ---
-import { faqs, giulianoFamilyPermission, plans, priceFrom, realGiulianoUrl, waMessages, zone } from "../data/site";
+import { cardFeatures, faqs, plans, waMessages } from "../data/site";
 import { giuliano } from "../data/giuliano";
 import { casamiento, quince, uno } from "../data/demos";
 import { whatsappUrl } from "../lib/whatsapp";
 import BrandLayout from "../layouts/BrandLayout.astro";
 
-const guests = [
-  { name: "Tía Rosa", n: "4", state: "yes" },
-  { name: "Los Vargas", n: "3", state: "yes" },
-  { name: "Mica y Nico", n: "2", state: "yes" },
-  { name: "Abuela Elena", n: "1", state: "wait" },
-  { name: "Primo Luca", n: "2", state: "yes" },
-];
-
-const priceLabel = priceFrom ? `desde $${priceFrom}` : "desde $X";
+const versoParts = cardFeatures.columns.flatMap((column, i) =>
+  i === 0 ? [{ kind: "stub" as const, column }] : [{ kind: "perf" as const }, { kind: "stub" as const, column }],
+);
 ---
 
 <BrandLayout>
-  <header class="topbar">
-    <a class="mark" href="/">Hola<span>Invitado</span></a>
-    <a class="wa-chip" href={whatsappUrl(waMessages.general)}>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.33 4.94L2 22l5.38-1.41a10.1 10.1 0 0 0 4.66 1.12h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2Zm5.72 13.98c-.24.68-1.4 1.25-1.94 1.33-.5.07-1.13.1-1.83-.11-.42-.14-.97-.32-1.67-.62-2.94-1.27-4.86-4.23-5.01-4.43-.15-.2-1.25-1.66-1.25-3.17 0-1.5.79-2.24 1.07-2.55.28-.3.61-.38.81-.38h.58c.19 0 .44-.07.69.53.24.58.82 2 .89 2.15.07.15.12.32.02.52-.09.2-.14.32-.28.5-.14.17-.3.39-.42.52-.14.15-.28.3-.12.59.15.28.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.14 1.32.28.14.45.12.61-.07.17-.2.7-.81.88-1.09.19-.28.37-.23.62-.14.24.1 1.55.73 1.82.86.26.14.44.2.5.31.07.11.07.64-.17 1.32Z"
-        ></path>
-      </svg>
-      Pedir presupuesto
-    </a>
-  </header>
-
   <main id="contenido">
     <section class="hero">
       <article class="hero-ticket">
+        <header class="hero-stub">
+          <a class="mark" href="/">Hola<span>Invitado</span></a>
+          <a class="wa-chip" href={whatsappUrl(waMessages.general)}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.33 4.94L2 22l5.38-1.41a10.1 10.1 0 0 0 4.66 1.12h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2Zm5.72 13.98c-.24.68-1.4 1.25-1.94 1.33-.5.07-1.13.1-1.83-.11-.42-.14-.97-.32-1.67-.62-2.94-1.27-4.86-4.23-5.01-4.43-.15-.2-1.25-1.66-1.25-3.17 0-1.5.79-2.24 1.07-2.55.28-.3.61-.38.81-.38h.58c.19 0 .44-.07.69.53.24.58.82 2 .89 2.15.07.15.12.32.02.52-.09.2-.14.32-.28.5-.14.17-.3.39-.42.52-.14.15-.28.3-.12.59.15.28.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.14 1.32.28.14.45.12.61-.07.17-.2.7-.81.88-1.09.19-.28.37-.23.62-.14.24.1 1.55.73 1.82.86.26.14.44.2.5.31.07.11.07.64-.17 1.32Z"
+              ></path>
+            </svg>
+            Pedir presupuesto
+          </a>
+        </header>
+        <div class="ticket-perf ticket-perf-x" aria-hidden="true"></div>
         <div class="ticket-body">
-          <h1>La lista de quién viene, sin el grupo de WhatsApp.</h1>
-          <p>
-            Una invitación web para tu fiesta en {zone}. Los invitados confirman en el link. Vos ves los nombres, no un
-            hilo de “¿vas o no vas?”.
-          </p>
+          <h1>Invitación web para tu fiesta.</h1>
+          <p>Un link hecho para tu evento. Los invitados la recorren y confirman si van.</p>
           <div class="hero-actions">
-            <a class="btn btn-blue" href={whatsappUrl(waMessages.general)}>Escribime por WhatsApp</a>
-            <a class="btn btn-ghost" href="#ejemplos">Ver ejemplos</a>
+            <a class="btn btn-blue" href={whatsappUrl(waMessages.general)}>Contactame</a>
+            <a class="btn btn-ghost" href="#tarjetas">Ver las tarjetas</a>
           </div>
         </div>
-        <div class="ticket-perf" aria-hidden="true"></div>
-        <div class="stub-band" aria-label="Lista de muestra">
-          <div class="stub-head">
-            <span>Confirmados</span>
-            <small>Lista de muestra</small>
+        <div class="ticket-perf ticket-perf-y" aria-hidden="true"></div>
+        <a class="hero-card" href="/uno">
+          <div class="hero-card-face">
+            <p>{uno.headline}</p>
+            <strong>{uno.honoree}</strong>
           </div>
-          <div class="tears">
-            {
-              guests.map((g) => (
-                <p class:list={["tear", g.state === "yes" ? "is-yes" : "is-wait"]}>
-                  <b>{g.name}</b>
-                  <span>{g.state === "yes" ? g.n : "espera"}</span>
-                </p>
-              ))
-            }
+          <div class="hero-card-body">
+            <p>{uno.dateLabel}</p>
+            <p>{uno.venue}</p>
+            <span>Abrir la tarjeta</span>
           </div>
-        </div>
+        </a>
       </article>
     </section>
 
-    <section class="band band-gap" aria-labelledby="problema">
-      <h2 id="problema">El grupo no es una lista.</h2>
-      <p>
-        Empieza lindo. A la semana hay stickers, una tía que no contesta, tres “yo llevo a los chicos” y nadie sabe
-        cuántos asados hay que hacer.
-      </p>
-      <ul class="problem-list">
-        <li>¿Vas o no vas?</li>
-        <li>Poné un 1 si venís.</li>
-        <li>La tía dejó el visto.</li>
-      </ul>
-    </section>
-
-    <section class="band" aria-labelledby="como">
-      <h2 id="como">Hablamos. Armamos el link. Confirman. Vos ves la lista.</h2>
-      <div class="clock-wrap">
-        <ol class="clock">
-          <li>
-            <strong>WhatsApp</strong>
-            <p>Me contás el evento, la fecha y cómo lo imaginan. Sin formularios.</p>
-          </li>
-          <li>
-            <strong>El link</strong>
-            <p>Una invitación con la piel de esa fiesta. Un solo lugar para entrar.</p>
-          </li>
-          <li>
-            <strong>Confirman</strong>
-            <p>Cada invitado dice si va, con cuántos, y si quiere un recadito.</p>
-          </li>
-          <li>
-            <strong>La Sheet</strong>
-            <p>Los nombres llegan a una planilla. Ahí está quién viene, de verdad.</p>
-          </li>
-        </ol>
-        <div class="clock-face" aria-hidden="true"><span></span></div>
-      </div>
-    </section>
-
-    <section class="band" id="prueba" aria-labelledby="prueba-titulo">
-      <h2 id="prueba-titulo">Una fiesta real, ya hecha.</h2>
-      <p>
-        El primer añito de Giuliano, en Los Alisos. Trabajo para una familia. La confirmación de esa fiesta no está en
-        esta muestra: sigue en el link original.
-      </p>
-      <div class="proof">
-        <a class="proof-card giuliano" href="/giuliano">
-          <h3>{giuliano.headline}</h3>
-          <p>
-            {giuliano.honoree} · {giuliano.dateLabel} · {giuliano.venue}.
-            {giulianoFamilyPermission
-              ? " Abrí la vitrina."
-              : " Vitrina sin las fotos del nene, hasta tener el OK de la familia."}
-          </p>
-        </a>
-        <p>
-          El RSVP verdadero está en
-          <a href={realGiulianoUrl}>{realGiulianoUrl.replace("https://", "")}</a>.
-        </p>
-      </div>
-    </section>
-
-    <section class="band band-open" id="ejemplos" aria-labelledby="ejemplos-titulo">
-      <h2 id="ejemplos-titulo">Más ejemplos, todos de muestra.</h2>
-      <p>Datos inventados. No se guarda ninguna confirmación. Cada una tiene piel propia.</p>
+    <section class="band band-open band-gap" id="tarjetas" aria-labelledby="tarjetas-titulo">
+      <h2 id="tarjetas-titulo">Así podrían ser.</h2>
+      <p>Miralas y recorré la experiencia.</p>
       <div class="stub-line">
+        <a class="demo-stub giuliano" href="/giuliano">
+          <strong>{giuliano.headline}</strong>
+          <p>{giuliano.firstName}</p>
+        </a>
         <a class="demo-stub uno" href="/uno">
           <strong>{uno.headline}</strong>
           <p>{uno.honoree}</p>
@@ -142,60 +71,50 @@ const priceLabel = priceFrom ? `desde $${priceFrom}` : "desde $X";
       </div>
     </section>
 
+    <section class="band band-open" id="funciones" aria-labelledby="funciones-titulo">
+      <h2 id="funciones-titulo">Qué puede llevar.</h2>
+      <p>{cardFeatures.lead}</p>
+      <article class="verso">
+        {
+          versoParts.map((part) =>
+            part.kind === "perf" ? (
+              <div class="ticket-perf" aria-hidden="true"></div>
+            ) : (
+              <div class="verso-stub">
+                <ul class="verso-list">
+                  {part.column.map((item) => (
+                    <li class:list={{ "is-core": "core" in item && item.core }}>
+                      <strong>{item.name}</strong>
+                      {"detail" in item && item.detail ? <p>{item.detail}</p> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ),
+          )
+        }
+      </article>
+    </section>
+
     <section class="band band-open" id="planes" aria-labelledby="planes-titulo">
-      <h2 id="planes-titulo">Dos planes. El número lo cerramos hablando.</h2>
-      <p>
-        El ancla es {priceLabel}.
-        {priceFrom ? "" : " El monto se completa antes de publicar; no hay un precio inventado. "}
-        El presupuesto final sale por WhatsApp.
-      </p>
+      <h2 id="planes-titulo">Dos formas.</h2>
       <article class="plan-ticket">
         <div class="plan">
           <h3>{plans.esencial.name}</h3>
-          <p class="price">
-            {
-              priceFrom ? (
-                `desde $${priceFrom}`
-              ) : (
-                <>
-                  desde <span class="price-gap">$X</span>
-                </>
-              )
-            }
-          </p>
           <ul>
             {plans.esencial.includes.map((item) => <li>{item}</li>)}
           </ul>
-          <a class="btn btn-gold" href={whatsappUrl(waMessages.esencial)}>Quiero Esencial</a>
+          <a class="btn btn-gold" href={whatsappUrl(waMessages.esencial)}>Consultar Esencial</a>
         </div>
         <div class="ticket-perf" aria-hidden="true"></div>
         <div class="plan">
           <h3>{plans.premium.name}</h3>
-          <p class="price">
-            {
-              priceFrom ? (
-                `desde $${priceFrom}`
-              ) : (
-                <>
-                  desde <span class="price-gap">$X</span>
-                </>
-              )
-            }
-          </p>
           <ul>
             {plans.premium.includes.map((item) => <li>{item}</li>)}
           </ul>
-          <a class="btn btn-blue" href={whatsappUrl(waMessages.premium)}>Quiero Premium</a>
+          <a class="btn btn-blue" href={whatsappUrl(waMessages.premium)}>Consultar Premium</a>
         </div>
       </article>
-    </section>
-
-    <section class="band" aria-labelledby="privacidad">
-      <h2 id="privacidad">El link de un quince no lista otras fiestas.</h2>
-      <p>
-        Cada invitación es un lugar solo. Los pagos entran con un código en la dirección, no en esta página. Google no
-        indexa esas rutas. Esta web muestra la marca y las muestras, nada más.
-      </p>
     </section>
 
     <section class="band" aria-labelledby="preguntas">
@@ -214,9 +133,9 @@ const priceLabel = priceFrom ? `desde $${priceFrom}` : "desde $X";
 
     <section class="close" aria-labelledby="cierre">
       <article class="ticket">
-        <h2 id="cierre">Si hay fiesta, hay lista.</h2>
-        <p>Escribime. Armamos el link para Jujuy o el NOA y listo: que confirmen ahí, no en el grupo.</p>
-        <a class="btn btn-pink" href={whatsappUrl(waMessages.general)}>Abrir WhatsApp</a>
+        <h2 id="cierre">Contame de tu fiesta.</h2>
+        <p>Escribime. Armamos la invitación, te paso el link y listo.</p>
+        <a class="btn btn-pink" href={whatsappUrl(waMessages.general)}>Contactame</a>
       </article>
     </section>
   </main>

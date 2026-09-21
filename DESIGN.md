@@ -241,7 +241,7 @@ Brand `/` has no lead form. On demo tickets only: transparent fields, 12px corne
 Top bar: space-between, 1rem / 1.25rem (2.5rem sides from 880px). Wordmark is Saira Condensed 1.35rem uppercase; the second word is neon pink. No hamburger, no secondary nav. Footer is open on the aurora; links are gold 700. Sticky sample banner on demos: near-opaque night bar, gold link.
 
 ### Ticket hero
-Signature. Headline + supporting line + stamps on ticket body; 22px perforated gutter; stub column of one-name-per-tear rows (left bite, ticket drop, staggered `tear-in`). Waiting rows use stub kraft and the word “espera”.
+Signature. Headline + supporting line + stamps on ticket body; 22px perforated gutter; the stub column is a peek of a real invitation (Uno), not a guest list. That peek may steal Uno’s orange and Grandstander inside `.hero-card` only. Brand chrome around it stays Saira and Karla.
 
 ### Clock
 Signature for the four steps. CSS grid 1fr / 6.4rem / 1fr. Gold 2px circular face, neon-pink hand, 12s linear rotation. Copy at 12, 3, 6, 9 — not a numbered list.
@@ -250,7 +250,7 @@ Signature for the four steps. CSS grid 1fr / 6.4rem / 1fr. Gold 2px circular fac
 Overlapping torn passes, each stealing one hue (orange / pink / gold) with night type. Rotations about -8deg / 2deg / 7deg. Hover/focus-visible: flatten to 0deg and lift 6px.
 
 ### Plan ticket
-Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small screens). Price line is “desde $X” with a dashed gold gap when the number is empty.
+Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small screens). Price line is “Presupuesto por WhatsApp” to keep pricing consultative.
 
 ## Do's and Don'ts
 

@@ -11,26 +11,15 @@ export const whatsappNumber = "5493884849767";
  */
 export const instagram = "";
 
-/**
- * Precio de ancla. Vacío a propósito: no se inventa.
- * Cuando exista, es el número sin símbolo, p. ej. "180000".
- */
-export const priceFrom = "";
-
-export const zone = "Jujuy y NOA";
-
 /** Sin OK explícito de Selena/Martín no se publican fotos del nene. */
 export const giulianoFamilyPermission = false;
 
 export const realGiulianoUrl = "https://holainvitados.vercel.app/giuliano";
 
 export const waMessages = {
-  general:
-    "Hola, quiero una invitación web con lista de confirmados para un evento en Jujuy/NOA.",
-  esencial:
-    "Hola, quiero el plan Esencial de HolaInvitado para un evento en Jujuy/NOA.",
-  premium:
-    "Hola, quiero el plan Premium de HolaInvitado para un evento en Jujuy/NOA.",
+  general: "Hola, quiero una invitación web para un evento.",
+  esencial: "Hola, quiero consultar por una invitación Esencial de HolaInvitado.",
+  premium: "Hola, quiero consultar por una invitación Premium de HolaInvitado.",
   uno: "Hola, vi la muestra de cumple infantil (/uno) y quiero una invitación así.",
   quince: "Hola, vi la muestra de quince (/quince) y quiero una invitación así.",
   casamiento:
@@ -45,7 +34,7 @@ export const plans = {
     includes: [
       "Diseño a medida para celular",
       "Fotos, fecha y lugar",
-      "Confirmación que llega a una Sheet",
+      "Confirmación",
     ],
   },
   premium: {
@@ -60,21 +49,55 @@ export const plans = {
   },
 } as const;
 
+export type FeatureItem = {
+  name: string;
+  detail?: string;
+  core?: boolean;
+};
+
+export const cardFeatures = {
+  lead: "La confirmación va de base. Lo demás se suma si la fiesta lo pide.",
+  columns: [
+    [
+      { name: "Agendar fecha" },
+      { name: "Dress code", detail: "Cómo vestirse" },
+      { name: "Cómo llegar" },
+      { name: "Info útil", detail: "Hospedaje, traslado, horarios" },
+      { name: "Multi idioma", detail: "Para invitados de otro idioma" },
+    ],
+    [
+      { name: "Confirmación", detail: "Si van y con cuántos", core: true },
+      { name: "Música" },
+      { name: "Playlist", detail: "Los invitados proponen canciones" },
+    ],
+    [
+      { name: "Regalos" },
+      { name: "Lista ficticia", detail: "Sugerir regalos sin decirlo tan directo" },
+      { name: "Instagram" },
+      { name: "Álbum de fotos" },
+    ],
+  ] as const satisfies FeatureItem[][],
+};
+
 export const faqs = [
   {
     q: "¿Con cuánta anticipación hay que hablar?",
-    a: "Con dos semanas alcanza para una invitación Esencial. Si hay muchas fotos, clave en el link o animación, mejor con un mes. Si la fiesta es ya, escribime igual y vemos.",
+    a: "Con dos semanas alcanza para una Esencial. Si hay muchas fotos, clave o animación, mejor con un mes. Si la fiesta es ya, escribime igual.",
   },
   {
     q: "¿Hace falta saber de computadoras?",
-    a: "No. Hablamos por WhatsApp, yo armo el link y te lo mando. Los invitados entran desde el celular, como a cualquier historia.",
+    a: "No. Hablamos por WhatsApp, armo el link y te lo mando. Los invitados entran desde el celular.",
   },
   {
     q: "¿Se puede cambiar un texto después?",
-    a: "Sí. Un cambio de horario, de salón o de frase se hace en el mismo link. No hay que reimprimir nada.",
+    a: "Sí. Horario, salón o frase se corrigen en el mismo link.",
+  },
+  {
+    q: "¿Otras personas ven mi fiesta?",
+    a: "No. Cada invitación es un lugar solo. El link de un quince no muestra otras fiestas.",
   },
   {
     q: "¿Qué pasa con el link cuando termina la fiesta?",
-    a: "Sigue abierto un tiempo por si alguien quiere volver a mirar las fotos. La lista de confirmados no se publica en esta web ni en otras fiestas.",
+    a: "Sigue un tiempo por si alguien quiere volver a mirar. Las confirmaciones no se publican acá ni en otras fiestas.",
   },
 ] as const;
