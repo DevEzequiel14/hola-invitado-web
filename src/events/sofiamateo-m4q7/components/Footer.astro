@@ -1,0 +1,11 @@
+---
+import { wedding } from '../data/wedding';
+import Divider from './Divider.astro';
+---
+
+<footer class="footer">
+	<Divider />
+	<p class="hashtag">{wedding.hashtag}</p>
+	<p class="closing">{wedding.closing}</p>
+	<p class="brand"><a href="/" aria-label="Volver a HolaInvitado">{wedding.brand}</a></p>
+</footer>

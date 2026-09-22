@@ -1,0 +1,26 @@
+---
+import { wedding } from '../data/wedding';
+import Divider from './Divider.astro';
+import Icon from './Icon.astro';
+---
+
+<section class="section" id="dia" aria-labelledby="dia-title">
+	<Divider />
+	<h2 class="section-title" id="dia-title">El día</h2>
+	<p class="lede">Un hilo de horas, sin apuro.</p>
+	<ol class="timeline">
+		{
+			wedding.timeline.map((item) => (
+				<li class="timeline-item">
+					<div class="timeline-icon">
+						<Icon name={item.icon} />
+					</div>
+					<div>
+						<p class="timeline-time">{item.time}</p>
+						<p class="timeline-label">{item.label}</p>
+					</div>
+				</li>
+			))
+		}
+	</ol>
+</section>

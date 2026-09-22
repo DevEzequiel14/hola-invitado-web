@@ -5,6 +5,9 @@ export type Rsvp = {
   asiste: "si" | "no";
   cantidad: number;
   comentario: string;
+  menu?: string;
+  dieta?: string;
+  cancion?: string;
 };
 
 export function formatSheetRow(row: Rsvp) {
@@ -21,5 +24,8 @@ export function formatSheetRow(row: Rsvp) {
     asiste: row.asiste === "si" ? "Sí" : "No",
     cantidad: row.cantidad,
     comentario: row.comentario,
+    menu: row.menu ?? "",
+    dieta: row.dieta ?? "",
+    cancion: row.cancion ?? "",
   };
 }

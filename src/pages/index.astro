@@ -1,7 +1,8 @@
 ---
 import { cardFeatures, faqs, plans, waMessages } from "../data/site";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
-import { casamiento, quince, uno } from "../data/demos";
+import { event as casamiento } from "../events/sofiamateo-m4q7/event";
+import { quince, uno } from "../data/demos";
 import { whatsappUrl } from "../lib/whatsapp";
 import BrandLayout from "../layouts/BrandLayout.astro";
 
@@ -64,7 +65,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
           <strong>{quince.headline}</strong>
           <p>{quince.honoree}</p>
         </a>
-        <a class="demo-stub casamiento" target="_blank" href="/casamiento">
+        <a class="demo-stub casamiento" target="_blank" href={`/${casamiento.slug}`}>
           <strong>{casamiento.headline}</strong>
           <p>{casamiento.honoree}</p>
         </a>

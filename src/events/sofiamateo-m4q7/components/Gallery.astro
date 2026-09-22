@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import eucalipto from '../assets/couple/01-eucalipto.webp';
+import mesa from '../assets/couple/02-mesa.webp';
+import camino from '../assets/couple/03-camino.webp';
+import alianzas from '../assets/couple/04-alianzas.webp';
+import salon from '../assets/couple/05-salon.webp';
+import { wedding } from '../data/wedding';
+import Divider from './Divider.astro';
+
+const photos = [eucalipto, mesa, camino, alianzas, salon];
+---
+
+<section class="section" id="fotos" aria-labelledby="fotos-title">
+	<Divider />
+	<h2 class="section-title" id="fotos-title">Un rato juntos</h2>
+	<p class="lede">Fotos de muestra. Después van las de ustedes.</p>
+	<div class="gallery-track" data-gallery tabindex="0" aria-label="Carrusel de fotos">
+		{
+			wedding.gallery.map((item, index) => (
+				<figure class="slide">
+					<Image
+						src={photos[index]}
+						alt={item.alt}
+						widths={[360, 720]}
+						sizes="360px"
+						quality={70}
+					/>
+				</figure>
+			))
+		}
+	</div>
+	<div class="dots" data-dots>
+		{
+			wedding.gallery.map((item, index) => (
+				<button class:list={['dot', index === 0 && 'is-on']} type="button" aria-label={`Ver foto ${index + 1}: ${item.alt}`} data-dot={index}></button>
+			))
+		}
+	</div>
+</section>

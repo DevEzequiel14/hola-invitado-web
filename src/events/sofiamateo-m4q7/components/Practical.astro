@@ -1,0 +1,19 @@
+---
+import { wedding } from '../data/wedding';
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="info" aria-labelledby="info-title">
+	<Divider />
+	<h2 class="section-title" id="info-title">Para que vengan cómodos</h2>
+	<ul class="practical-list">
+		{
+			wedding.practical.map((item) => (
+				<li class="practical-card">
+					<h3>{item.title}</h3>
+					<p>{item.text}</p>
+				</li>
+			))
+		}
+	</ul>
+</section>

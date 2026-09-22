@@ -1,0 +1,72 @@
+---
+import EventLayout from "../../layouts/EventLayout.astro";
+import Overlay from "./components/Overlay.astro";
+import MuteButton from "./components/MuteButton.astro";
+import Hero from "./components/Hero.astro";
+import Historia from "./components/Historia.astro";
+import Timeline from "./components/Timeline.astro";
+import Place from "./components/Place.astro";
+import DressCode from "./components/DressCode.astro";
+import Gallery from "./components/Gallery.astro";
+import Gifts from "./components/Gifts.astro";
+import Practical from "./components/Practical.astro";
+import Rsvp from "./components/Rsvp.astro";
+import Footer from "./components/Footer.astro";
+import { wedding } from "./data/wedding";
+import { event, pageDescription, pageTitle, shareImageAlt } from "./event";
+import "./styles/global.css";
+---
+
+<EventLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={event.ogImage}
+  shareImageAlt={shareImageAlt}
+  siteName={event.siteName}
+  themeColor={event.themeColor}
+  fonts={event.fonts}
+  favicon={event.favicon}
+  indexable={event.indexable}
+>
+  <div class="stage">
+    <Overlay />
+    <MuteButton />
+    <main id="contenido">
+      <Hero />
+      <Historia />
+      <Timeline />
+      <Place
+        id="ceremonia"
+        title={wedding.ceremony.title}
+        kind={wedding.ceremony.kind}
+        time={wedding.ceremony.time}
+        place={wedding.ceremony.place}
+        address={wedding.venue.address}
+        detail={wedding.ceremony.detail}
+        maps={wedding.venue.maps}
+        waze={wedding.venue.waze}
+      />
+      <Place
+        id="recepcion"
+        title={wedding.reception.title}
+        time={wedding.reception.summary}
+        place={wedding.reception.place}
+        address={wedding.venue.address}
+        detail={wedding.reception.detail}
+        maps={wedding.venue.maps}
+        waze={wedding.venue.waze}
+      />
+      <DressCode />
+      <Gallery />
+      <Gifts />
+      <Practical />
+      <Rsvp />
+    </main>
+    <Footer />
+  </div>
+</EventLayout>
+
+<script>
+  import { bootInvitation } from "./scripts/invitation";
+  bootInvitation();
+</script>

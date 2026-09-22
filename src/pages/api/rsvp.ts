@@ -9,6 +9,55 @@ export const prerender = false;
 
 const FILE = path.join(process.cwd(), "data", "rsvps.json");
 
+type Incoming = {
+  honeypot: string;
+  slug: string;
+  nombre: string;
+  asisteRaw: unknown;
+  cantidad: number;
+  comentario: string;
+  menu: string;
+  dieta: string;
+  cancion: string;
+};
+
+async function readIncoming(request: Request): Promise<Incoming> {
+  const type = request.headers.get("content-type") ?? "";
+  if (type.includes("application/json")) {
+    const body = (await request.json()) as Record<string, unknown>;
+    return {
+      honeypot: String(body.company ?? body.website ?? "").trim(),
+      slug: String(body.slug ?? "").trim().toLowerCase(),
+      nombre: String(body.nombre ?? "").trim(),
+      asisteRaw: body.asiste,
+      cantidad: Number(body.cantidad),
+      comentario: String(body.comentario ?? "").trim().slice(0, 280),
+      menu: String(body.menu ?? "").trim().slice(0, 160),
+      dieta: String(body.dieta ?? "").trim().slice(0, 120),
+      cancion: String(body.cancion ?? "").trim().slice(0, 120),
+    };
+  }
+
+  const form = await request.formData();
+  return {
+    honeypot: String(form.get("website") ?? form.get("company") ?? "").trim(),
+    slug: String(form.get("slug") ?? "").trim().toLowerCase(),
+    nombre: String(form.get("nombre") ?? "").trim(),
+    asisteRaw: form.get("asiste"),
+    cantidad: Number(form.get("cantidad")),
+    comentario: String(form.get("comentario") ?? "").trim().slice(0, 280),
+    menu: String(form.get("menu") ?? "").trim().slice(0, 160),
+    dieta: String(form.get("dieta") ?? "").trim().slice(0, 120),
+    cancion: String(form.get("cancion") ?? "").trim().slice(0, 120),
+  };
+}
+
+function parseAsiste(raw: unknown): "si" | "no" | "" {
+  if (raw === true || raw === "si") return "si";
+  if (raw === false || raw === "no") return "no";
+  return "";
+}
+
 async function appendLocal(row: Rsvp) {
   await mkdir(path.dirname(FILE), { recursive: true });
   let rows: Rsvp[] = [];
@@ -26,23 +75,26 @@ async function appendLocal(row: Rsvp) {
  * Las demos no llaman este endpoint.
  */
 export const POST: APIRoute = async ({ request }) => {
-  const form = await request.formData();
-  const honeypot = String(form.get("website") ?? "").trim();
-  if (honeypot) {
+  let incoming: Incoming;
+  try {
+    incoming = await readIncoming(request);
+  } catch {
+    return json({ ok: false, error: "No pudimos leer el formulario." }, 400);
+  }
+
+  if (incoming.honeypot) {
     return json({ ok: true });
   }
 
-  const slug = String(form.get("slug") ?? "").trim().toLowerCase();
-  const event = getPaidEvent(slug);
+  const event = getPaidEvent(incoming.slug);
   if (!event) {
     return json({ ok: false, error: "Este evento no recibe confirmaciones acá." }, 404);
   }
 
-  const nombre = String(form.get("nombre") ?? "").trim();
-  const asisteRaw = String(form.get("asiste") ?? "");
-  const comentario = String(form.get("comentario") ?? "").trim().slice(0, 280);
-  const asiste = asisteRaw === "si" || asisteRaw === "no" ? asisteRaw : "";
-  let cantidad = Number(form.get("cantidad"));
+  const nombre = incoming.nombre;
+  const asiste = parseAsiste(incoming.asisteRaw);
+  const comentario = incoming.comentario;
+  let cantidad = incoming.cantidad;
 
   if (!nombre || nombre.length > 80 || !asiste) {
     return json({ ok: false, error: "Completá nombre y si vas a venir." }, 400);
@@ -64,6 +116,9 @@ export const POST: APIRoute = async ({ request }) => {
     asiste,
     cantidad,
     comentario,
+    menu: incoming.menu,
+    dieta: incoming.dieta,
+    cancion: incoming.cancion,
   };
 
   try {

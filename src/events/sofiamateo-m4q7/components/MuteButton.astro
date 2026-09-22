@@ -1,0 +1,43 @@
+---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { wedding } from '../data/wedding';
+
+const hasAudio = existsSync(
+  join(process.cwd(), "public", "events", wedding.slug, wedding.music.filename),
+);
+---
+
+<button
+	class="mute"
+	type="button"
+	data-mute
+	aria-pressed="false"
+	aria-label={hasAudio ? 'Escuchar Photograph de Ed Sheeran' : 'Agregá photograph.mp3 para escuchar la canción'}
+	disabled={!hasAudio}
+>
+	<svg data-icon-on viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+		<path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+		<path d="M16 9.5a4 4 0 0 1 0 5"></path>
+		<path d="M18.5 7a7 7 0 0 1 0 10"></path>
+	</svg>
+	<svg data-icon-off viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+		<path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+		<path d="m16 10 5 5M21 10l-5 5"></path>
+	</svg>
+</button>
+{
+	!hasAudio && (
+		<p class="audio-hint" data-audio-missing>
+			Agregá {wedding.music.filename}
+		</p>
+	)
+}
+<audio
+	data-audio
+	data-src={hasAudio ? wedding.music.src : ''}
+	src={hasAudio ? wedding.music.src : undefined}
+	loop
+	playsinline
+	preload="metadata"
+></audio>

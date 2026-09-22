@@ -1,0 +1,21 @@
+---
+import { wedding } from '../data/wedding';
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="historia" aria-labelledby="historia-title">
+	<Divider />
+	<h2 class="section-title" id="historia-title">Nuestra historia</h2>
+	<p class="lede">Tres momentos, la misma calma.</p>
+	<ol class="story-list">
+		{
+			wedding.story.map((item, index) => (
+				<li class="story-card">
+					<p class="kicker">0{index + 1}</p>
+					<h3>{item.title}</h3>
+					<p>{item.text}</p>
+				</li>
+			))
+		}
+	</ol>
+</section>

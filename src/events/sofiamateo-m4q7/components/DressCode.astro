@@ -1,0 +1,24 @@
+---
+import { wedding } from '../data/wedding';
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="dress-code" aria-labelledby="dress-title">
+	<Divider />
+	<h2 class="section-title" id="dress-title">Dress code</h2>
+	<div class="dress-card">
+		<p class="kicker">{wedding.dressCode.name}</p>
+		<p>{wedding.dressCode.text}</p>
+		<ul class="swatches">
+			{
+				wedding.dressCode.swatches.map((swatch) => (
+					<li class="swatch">
+						<i style={`background:${swatch.hex}`}></i>
+						{swatch.name}
+					</li>
+				))
+			}
+		</ul>
+		<p class="note">{wedding.dressCode.note}</p>
+	</div>
+</section>

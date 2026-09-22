@@ -3,7 +3,7 @@ import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, envField } from "astro/config";
 
-const publicPaths = ["/", "/uno", "/quince", "/casamiento", "/giuliano1-k8n2"];
+const publicPaths = ["/", "/uno", "/quince", "/giuliano1-k8n2", "/sofiamateo-m4q7"];
 
 /** @param {string} pathname */
 function isPublicMarketingPath(pathname) {
@@ -16,6 +16,7 @@ export default defineConfig({
   adapter: vercel(),
   redirects: {
     "/giuliano": "/giuliano1-k8n2",
+    "/casamiento": "/sofiamateo-m4q7",
   },
   integrations: [
     sitemap({

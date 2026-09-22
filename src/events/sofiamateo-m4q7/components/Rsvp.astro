@@ -1,0 +1,123 @@
+---
+import { wedding } from '../data/wedding';
+import Divider from './Divider.astro';
+import Monogram from './Monogram.astro';
+
+const closed = new Date(wedding.rsvp.closesIso).getTime() < Date.now();
+---
+
+<section class="section" id="confirmar" aria-labelledby="rsvp-title">
+	<Divider />
+	<h2 class="section-title" id="rsvp-title">Confirmar</h2>
+	<p class="lede">
+		Avisanos antes del {wedding.rsvp.closesLabel}. Si cambia algo, un WhatsApp alcanza.
+	</p>
+
+	{
+		closed ? (
+			<div class="gift-box thanks">
+				<Monogram class="monogram thanks-mono" />
+				<p class="thanks-script">Ya cerramos las confirmaciones</p>
+				<p class="thanks-note">Si necesitás marcar algo, escribinos.</p>
+			</div>
+		) : (
+			<div class="rsvp-card" data-rsvp-card>
+				<ol class="rsvp-progress" data-rsvp-progress aria-label="Pasos de la confirmación">
+					<li class="is-on" data-progress="1">
+						<span>1</span>
+						¿Venís?
+					</li>
+					<li data-progress="2">
+						<span>2</span>
+						Detalles
+					</li>
+					<li data-progress="3">
+						<span>3</span>
+						Listo
+					</li>
+				</ol>
+
+				<form class="form" data-rsvp-form novalidate>
+					<div class="rsvp-pane is-on" data-pane="1">
+						<label>
+							<span>Nombre y apellido</span>
+							<input type="text" name="nombre" autocomplete="name" required maxlength="80" />
+						</label>
+						<fieldset>
+							<legend class="legend">¿Venís?</legend>
+							<div class="choices">
+								<label class="choice">
+									<input type="radio" name="asiste" value="si" required />
+									Sí, voy
+								</label>
+								<label class="choice">
+									<input type="radio" name="asiste" value="no" />
+									No puedo
+								</label>
+							</div>
+						</fieldset>
+						<button class="btn btn-primary" type="button" data-rsvp-next>Continuar</button>
+					</div>
+
+					<div class="rsvp-pane" data-pane="2" hidden>
+						<div data-if-yes>
+							<label>
+								<span>¿Cuántos son?</span>
+								<input type="number" name="cantidad" min="1" max="8" value="1" />
+							</label>
+							<label>
+								<span>Menú</span>
+								<select name="menu">
+									{
+										wedding.menus.map((menu) => (
+											<option value={menu}>{menu}</option>
+										))
+									}
+								</select>
+							</label>
+							<label data-menus-extra class="is-hidden">
+								<span>Si vienen varios, anotá los menús</span>
+								<input type="text" name="menus" maxlength="120" placeholder="Ej. 2 carne, 1 sin TACC" />
+							</label>
+							<label>
+								<span>Restricción alimentaria (opcional)</span>
+								<input type="text" name="dieta" maxlength="120" />
+							</label>
+							<label>
+								<span>Canción que no puede faltar (opcional)</span>
+								<input type="text" name="cancion" maxlength="120" placeholder="Para el DJ" />
+							</label>
+						</div>
+						<p class="note is-hidden" data-if-no>Si querés dejarles un recado, con eso alcanza.</p>
+						<label>
+							<span>Recado (opcional)</span>
+							<textarea name="comentario" maxlength="280" rows="3"></textarea>
+						</label>
+						<div class="btn-row">
+							<button class="btn btn-ghost" type="button" data-rsvp-back>Atrás</button>
+							<button class="btn btn-primary" type="submit">Enviar</button>
+						</div>
+					</div>
+
+					<div class="hp" aria-hidden="true">
+						<label>
+							Empresa
+							<input type="text" name="company" tabindex="-1" autocomplete="off" />
+						</label>
+					</div>
+					<p class="form-status" data-rsvp-status role="status"></p>
+				</form>
+
+				<div class="thanks is-hidden" data-rsvp-thanks data-pane="3">
+					<Monogram class="monogram thanks-mono" />
+					<p class="thanks-script" data-thanks-script></p>
+					<p class="thanks-note" data-thanks-copy></p>
+					<div class="overlay-actions">
+						<a class="btn btn-primary" data-wa-link href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+						<a class="btn btn-ghost" data-mail-link href="#">Mail</a>
+					</div>
+				</div>
+			</div>
+		)
+	}
+</section>

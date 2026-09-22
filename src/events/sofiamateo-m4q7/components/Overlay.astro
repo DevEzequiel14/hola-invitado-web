@@ -1,0 +1,27 @@
+---
+import { wedding } from '../data/wedding';
+import Leaves from './Leaves.astro';
+import Monogram from './Monogram.astro';
+---
+
+<div class="overlay" data-overlay role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+	<div class="envelope" aria-hidden="true">
+		<div class="envelope-flap-wrap" data-envelope-flap>
+			<span class="envelope-lining"></span>
+			<span class="envelope-flap"></span>
+		</div>
+		<div class="envelope-pocket"></div>
+	</div>
+	<Leaves />
+	<div class="overlay-card">
+		<Monogram />
+		<p class="overlay-kicker">{wedding.kicker}</p>
+		<h1 class="script" id="overlay-title">{wedding.couple.partnerA} <span class="amp">&amp;</span> {wedding.couple.partnerB}</h1>
+		<div class="gold-line"></div>
+		<p class="overlay-copy">{wedding.phrase}</p>
+		<p class="overlay-welcome">Pasen.</p>
+		<div class="overlay-actions">
+			<button class="btn btn-primary" type="button" data-open-invite>Abrir la invitación</button>
+		</div>
+	</div>
+</div>

@@ -20,7 +20,7 @@ export const waMessages = {
   uno: "Hola, vi la muestra de cumple infantil (/uno) y quiero una invitación así.",
   quince: "Hola, vi la muestra de quince (/quince) y quiero una invitación así.",
   casamiento:
-    "Hola, vi la muestra de casamiento (/casamiento) y quiero una invitación así.",
+    "Hola, vi el casamiento de Sofía y Mateo (/sofiamateo-m4q7) y quiero una invitación así.",
   giuliano:
     "Hola, vi el añito de Giuliano (/giuliano1-k8n2) y quiero una invitación así, para un cumple infantil.",
 } as const;
