@@ -28,6 +28,7 @@ const { startIso, endIso } = Astro.props;
     const sEl = root.querySelector("[data-s]");
     const note = root.querySelector("[data-note]");
     const boxes = root.querySelector(".countdown");
+
     const pad = (n: number) => String(Math.max(0, n)).padStart(2, "0");
 
     const tick = () => {
@@ -42,11 +43,17 @@ const { startIso, endIso } = Astro.props;
         if (note) note.textContent = "¡Es hoy! Los estamos esperando con los brazos abiertos.";
         return;
       }
+
       const diff = start - now;
-      if (dEl) dEl.textContent = String(Math.floor(diff / 86400000));
-      if (hEl) hEl.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-      if (mEl) mEl.textContent = pad(Math.floor((diff % 3600000) / 60000));
-      if (sEl) sEl.textContent = pad(Math.floor((diff % 60000) / 1000));
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+
+      if (dEl) dEl.textContent = String(days);
+      if (hEl) hEl.textContent = pad(hours);
+      if (mEl) mEl.textContent = pad(mins);
+      if (sEl) sEl.textContent = pad(secs);
     };
 
     tick();

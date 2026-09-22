@@ -22,8 +22,8 @@ async function appendLocal(row: Rsvp) {
 }
 
 /**
- * Molde para el primer cliente pago.
- * Las demos y /giuliano no llaman este endpoint.
+ * Confirmaciones de eventos reales (slug en paid-events).
+ * Las demos no llaman este endpoint.
  */
 export const POST: APIRoute = async ({ request }) => {
   const form = await request.formData();

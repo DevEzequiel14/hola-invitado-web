@@ -1,5 +1,5 @@
 /** Rutas de la marca: sí van al sitemap y al menú de la landing. */
-export const PUBLIC_PATHS = ["/", "/uno", "/quince", "/casamiento", "/giuliano"] as const;
+export const PUBLIC_PATHS = ["/", "/uno", "/quince", "/casamiento", "/giuliano1-k8n2"] as const;
 
 export const RESERVED_SLUGS = ["uno", "quince", "casamiento", "giuliano"] as const;
 
@@ -21,8 +21,8 @@ export function isReservedSlug(slug: string) {
 }
 
 /**
- * Un cliente pago usa `/nombreedad-codigo`.
- * Nunca uno de los slugs reservados.
+ * Un evento usa `/nombreedad-codigo`.
+ * El código son 4 letras o números. Nunca un slug reservado de la marca.
  */
 export function assertClientSlug(slug: string) {
   const clean = slug.trim().toLowerCase();
@@ -32,9 +32,9 @@ export function assertClientSlug(slug: string) {
       `El slug "${clean}" está reservado para la marca. Un cliente nunca se llama uno, quince, casamiento ni giuliano.`,
     );
   }
-  if (!/^[a-z0-9]+-[a-z0-9]+$/.test(clean)) {
+  if (!/^[a-z0-9]+-[a-z0-9]{4}$/.test(clean)) {
     throw new Error(
-      `El slug "${clean}" no sigue el molde nombreedad-codigo (ej. jorge30-ok89).`,
+      `El slug "${clean}" no sigue el molde nombreedad-codigo (ej. giuliano1-k8n2).`,
     );
   }
   return clean;

@@ -11,10 +11,7 @@ export const whatsappNumber = "5493884849767";
  */
 export const instagram = "";
 
-/** Sin OK explícito de Selena/Martín no se publican fotos del nene. */
-export const giulianoFamilyPermission = false;
-
-export const realGiulianoUrl = "https://holainvitados.vercel.app/giuliano";
+export const realGiulianoUrl = "/giuliano1-k8n2";
 
 export const waMessages = {
   general: "Hola, quiero una invitación web para un evento.",
@@ -25,7 +22,7 @@ export const waMessages = {
   casamiento:
     "Hola, vi la muestra de casamiento (/casamiento) y quiero una invitación así.",
   giuliano:
-    "Hola, vi la muestra del añito (/giuliano) y quiero una invitación así, para un cumple infantil.",
+    "Hola, vi el añito de Giuliano (/giuliano1-k8n2) y quiero una invitación así, para un cumple infantil.",
 } as const;
 
 export const plans = {

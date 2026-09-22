@@ -3,7 +3,7 @@ import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, envField } from "astro/config";
 
-const publicPaths = ["/", "/uno", "/quince", "/casamiento", "/giuliano"];
+const publicPaths = ["/", "/uno", "/quince", "/casamiento", "/giuliano1-k8n2"];
 
 /** @param {string} pathname */
 function isPublicMarketingPath(pathname) {
@@ -14,6 +14,9 @@ function isPublicMarketingPath(pathname) {
 export default defineConfig({
   site: "https://holainvitados.com",
   adapter: vercel(),
+  redirects: {
+    "/giuliano": "/giuliano1-k8n2",
+  },
   integrations: [
     sitemap({
       filter: (page) => isPublicMarketingPath(new URL(page).pathname),

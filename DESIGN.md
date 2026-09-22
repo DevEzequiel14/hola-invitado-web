@@ -128,7 +128,7 @@ HolaInvitado’s brand world is a nightclub door: a thermal ticket held up again
 
 Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and slow: the dots drift, torn names slide in, a clock hand ticks. Prefer-reduced-motion kills all three.
 
-`/giuliano` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). It is not this system. Demo invitations (`/uno`, `/quince`, `/casamiento`) keep the night floor, dotted field, and ticket chassis, then steal one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
+`/giuliano1-k8n2` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). `/giuliano` redirects there. It is not this system. Demo invitations (`/uno`, `/quince`, `/casamiento`) keep the night floor, dotted field, and ticket chassis, then steal one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
 
 **Key Characteristics:**
 - Hexagonal night dots over muted blue / indigo / pink washes; CSS drift ~56s, no hue-rotate; `html` is solid club night
@@ -181,7 +181,7 @@ The palette is a nightclub door light: one black floor, one carbon ticket, warm 
 - **Label** (700, ~1.15rem, tracking 0.04em–0.08em, uppercase): Buttons, wordmark, stub headers, clock hour labels, tears. Tabular numerals on tears.
 
 ### Named Rules
-**The Condensed Stamp Rule.** If it is a headline, a button, a stub, or the mark, it is Saira Condensed, uppercase, tight leading. Karla never shouts. Party faces (Grandstander, Gloock, Source Serif 4) stay inside their demo skins; Fraunces and Nunito stay inside `/giuliano`.
+**The Condensed Stamp Rule.** If it is a headline, a button, a stub, or the mark, it is Saira Condensed, uppercase, tight leading. Karla never shouts. Party faces (Grandstander, Gloock, Source Serif 4) stay inside their demo skins; Fraunces and Nunito stay inside `/giuliano1-k8n2`.
 
 ## Layout
 

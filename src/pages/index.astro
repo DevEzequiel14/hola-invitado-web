@@ -1,6 +1,6 @@
 ---
 import { cardFeatures, faqs, plans, waMessages } from "../data/site";
-import { giuliano } from "../data/giuliano";
+import { event as giuliano } from "../events/giuliano1-k8n2/event";
 import { casamiento, quince, uno } from "../data/demos";
 import { whatsappUrl } from "../lib/whatsapp";
 import BrandLayout from "../layouts/BrandLayout.astro";
@@ -52,19 +52,19 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
       <h2 id="tarjetas-titulo">Así podrían ser.</h2>
       <p>Miralas y recorré la experiencia.</p>
       <div class="stub-line">
-        <a class="demo-stub giuliano" href="/giuliano">
+        <a class="demo-stub giuliano" target="_blank" href={`/${giuliano.slug}`}>
           <strong>{giuliano.headline}</strong>
           <p>{giuliano.firstName}</p>
         </a>
-        <a class="demo-stub uno" href="/uno">
+        <a class="demo-stub uno" target="_blank" href="/uno">
           <strong>{uno.headline}</strong>
           <p>{uno.honoree}</p>
         </a>
-        <a class="demo-stub quince" href="/quince">
+        <a class="demo-stub quince" target="_blank" href="/quince">
           <strong>{quince.headline}</strong>
           <p>{quince.honoree}</p>
         </a>
-        <a class="demo-stub casamiento" href="/casamiento">
+        <a class="demo-stub casamiento" target="_blank" href="/casamiento">
           <strong>{casamiento.headline}</strong>
           <p>{casamiento.honoree}</p>
         </a>

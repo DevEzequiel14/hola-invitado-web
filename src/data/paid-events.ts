@@ -1,18 +1,21 @@
+import { event as giuliano } from "../events/giuliano1-k8n2/event";
 import { isReservedSlug } from "../lib/slugs";
 
-/**
- * Eventos pagos en este mismo repo.
- * Hoy está vacío a propósito: el primer cliente se agrega acá
- * y se copia una demo a `/nombreedad-codigo`.
- */
 export type PaidEvent = {
   slug: string;
   honoree: string;
   rsvpClosesIso: string;
-  index: false;
+  index: boolean;
 };
 
-export const paidEvents: Record<string, PaidEvent> = {};
+export const paidEvents: Record<string, PaidEvent> = {
+  [giuliano.slug]: {
+    slug: giuliano.slug,
+    honoree: giuliano.firstName,
+    rsvpClosesIso: giuliano.rsvpClosesIso,
+    index: giuliano.indexable,
+  },
+};
 
 export function getPaidEvent(slug: string) {
   const clean = slug.trim().toLowerCase();

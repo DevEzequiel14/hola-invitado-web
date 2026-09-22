@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  shareTitle?: string;
+  shareDescription?: string;
+  shareImageAlt?: string;
+  siteName?: string;
+  themeColor?: string;
+  fonts?: string;
+  favicon?: string;
+  indexable?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = "/favicon.svg",
+  shareTitle = title,
+  shareDescription = description,
+  shareImageAlt = shareTitle,
+  siteName = "HolaInvitado",
+  themeColor = "#143326",
+  fonts,
+  favicon = "/favicon.svg",
+  indexable = false,
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
+const ogImage = new URL(image, Astro.site ?? Astro.url).href;
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {
+      indexable ? (
+        <link rel="canonical" href={canonical} />
+      ) : (
+        <meta name="robots" content="noindex, nofollow" />
+      )
+    }
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={shareTitle} />
+    <meta property="og:description" content={shareDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={shareImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={shareTitle} />
+    <meta name="twitter:description" content={shareDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={shareImageAlt} />
+    <meta name="theme-color" content={themeColor} />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {fonts ? <link href={fonts} rel="stylesheet" /> : null}
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>
