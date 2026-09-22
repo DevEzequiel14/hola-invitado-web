@@ -1,0 +1,30 @@
+---
+import { quince } from '../data/quince';
+
+interface Props {
+  audioAvailable: boolean;
+}
+
+const { audioAvailable } = Astro.props;
+---
+
+<button
+  class="audio-toggle"
+  type="button"
+  data-audio-toggle
+  data-muted="true"
+  disabled={!audioAvailable}
+  aria-label={audioAvailable ? 'Escuchar Bloom' : 'Agregá bloom.mp3'}
+  title={audioAvailable ? quince.music.credit : 'Agregá bloom.mp3'}
+>
+  <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 10v4h3l5 4V6L7 10H4z"></path>
+    <path d="M16 9.5a4 4 0 0 1 0 5"></path>
+    <path d="M18.2 7a7 7 0 0 1 0 10"></path>
+  </svg>
+  <svg class="icon-muted" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 10v4h3l5 4V6L7 10H4z"></path>
+    <path d="M17 10l4 4"></path>
+    <path d="M21 10l-4 4"></path>
+  </svg>
+</button>

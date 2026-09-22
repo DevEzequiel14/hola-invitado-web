@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import vestido from '../assets/01-vestido.jpg';
+import ramo from '../assets/02-ramo.jpg';
+import luces from '../assets/03-luces.jpg';
+import jardin from '../assets/04-jardin.jpg';
+import mesa from '../assets/05-mesa.jpg';
+import Divider from './decor/Divider.astro';
+import { quince } from '../data/quince';
+
+const files = [vestido, ramo, luces, jardin, mesa];
+const slides = quince.photos.gallery.map((item, index) => ({
+  ...item,
+  src: files[index],
+}));
+---
+
+<section class="section" id="fotos" aria-labelledby="fotos-title" style="padding-right:0;padding-left:0;">
+  <div style="padding-inline: var(--pad);">
+    <p class="eyebrow">{quince.copy.galleryEyebrow}</p>
+    <h2 class="section-title" id="fotos-title">{quince.copy.galleryTitle}</h2>
+  </div>
+  <div class="gallery-wrap" data-gallery>
+    <div class="gallery-track" data-gallery-track tabindex="0" aria-label="Carrusel de fotos">
+      {
+        slides.map((slide, index) => (
+          <figure class="gallery-slide">
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              widths={[360, 720]}
+              sizes="(max-width: 440px) 82vw, 360px"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              quality={78}
+            />
+          </figure>
+        ))
+      }
+    </div>
+    <div class="gallery-nav">
+      <div class="dots" data-gallery-dots>
+        {
+          slides.map((slide, index) => (
+            <button type="button" aria-label={`Ver foto ${index + 1}`} aria-current={index === 0 ? 'true' : 'false'}></button>
+          ))
+        }
+      </div>
+      <div class="gallery-arrows">
+        <button class="icon-btn" type="button" data-gallery-prev aria-label="Foto anterior">
+          ‹
+        </button>
+        <button class="icon-btn" type="button" data-gallery-next aria-label="Foto siguiente">
+          ›
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<Divider />

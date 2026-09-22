@@ -2,7 +2,7 @@
 
 Este repo es `holainvitados.com`: marca, demos y cada fiesta real.
 
-El añito de Giuliano vive en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo vive en `/sofiamateo-m4q7`. `/giuliano` y `/casamiento` redirigen ahí.
+El añito de Giuliano vive en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo vive en `/sofiamateo-m4q7`. Los 15 de Valentina viven en `/valentina15-n4w8`. `/giuliano`, `/casamiento` y `/quince` redirigen ahí.
 
 ## Qué no hacer
 
@@ -33,6 +33,6 @@ export const paidEvents: Record<string, PaidEvent> = {
 
 6. En el layout de esa página, `indexable={false}` (ya manda `noindex, nofollow`).
 7. En Vercel, cargá `RSVP_SHEET_WEBHOOK` y `RSVP_SHEET_SECRET`. El endpoint está en `src/pages/api/rsvp.ts` y escribe a Sheet con `src/lib/sheets.ts`.
-8. No agregues el slug a `PUBLIC_PATHS` ni al filtro del sitemap, salvo que sea un ejemplo público como Giuliano o Sofía y Mateo.
+8. No agregues el slug a `PUBLIC_PATHS` ni al filtro del sitemap, salvo que sea un ejemplo público como Giuliano, Sofía y Mateo o Valentina.
 
 Copiá el oficio de `src/events/giuliano1-k8n2/` (secciones, RSVP, countdown), no la piel.

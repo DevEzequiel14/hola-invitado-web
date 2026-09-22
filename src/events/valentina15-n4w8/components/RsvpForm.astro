@@ -1,0 +1,63 @@
+---
+import { quince } from '../data/quince';
+
+const quantities = Array.from({ length: 20 }, (_, i) => i + 1);
+---
+
+<section class="section" id="confirmar" aria-labelledby="rsvp-title">
+  <p class="eyebrow">{quince.copy.rsvpEyebrow}</p>
+  <h2 class="section-title" id="rsvp-title">{quince.copy.rsvpTitle}</h2>
+  <p class="lede">{quince.copy.rsvpBody}</p>
+
+  <form class="form" data-rsvp novalidate>
+    <div>
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" type="text" autocomplete="name" required maxlength="80" />
+    </div>
+
+    <fieldset>
+      <legend class="legend">¿Nos vemos ese día?</legend>
+      <div class="choices">
+        <label>
+          <input type="radio" name="asiste" value="true" required />
+          Sí
+        </label>
+        <label>
+          <input type="radio" name="asiste" value="false" />
+          No
+        </label>
+      </div>
+    </fieldset>
+
+    <div data-qty-wrap>
+      <label for="cantidad">¿Cuántos son?</label>
+      <select id="cantidad" name="cantidad">
+        {quantities.map((n) => <option value={n} selected={n === 1}>{n}</option>)}
+      </select>
+    </div>
+
+    <div>
+      <label for="comentario">Recado (opcional)</label>
+      <textarea id="comentario" name="comentario" maxlength="500" placeholder="Un deseo para Vale, una canción, una alergia…"></textarea>
+    </div>
+
+    <div class="hp" aria-hidden="true">
+      <label for="website">Website</label>
+      <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <p class="form-error" data-rsvp-error hidden></p>
+    <button class="btn btn-primary" type="submit" data-rsvp-submit>Enviar confirmación</button>
+    <p class="lede">{quince.copy.rsvpDeadline}</p>
+  </form>
+
+  <div class="thanks" data-rsvp-thanks hidden>
+    <h3 data-thanks-title></h3>
+    <p data-thanks-body></p>
+    <p class="lede" style="margin:.7rem 0 1rem;">{quince.copy.rsvpDeadline}</p>
+    <div class="rsvp-actions">
+      <a class="btn btn-primary" data-wa-link target="_blank" rel="noreferrer">{quince.copy.whatsappCta}</a>
+      <a class="btn btn-outline" data-mail-link>{quince.copy.emailCta}</a>
+    </div>
+  </div>
+</section>

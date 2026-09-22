@@ -8,7 +8,8 @@ Marca, demos y eventos reales viven en este repo. Cada evento es un paquete en `
 
 - `/` landing
 - `/uno` muestra infantil
-- `/quince` muestra de 15
+- `/valentina15-n4w8` 15 de Valentina (ejemplo)
+- `/quince` redirige a los 15
 - `/sofiamateo-m4q7` casamiento de Sofía y Mateo (ejemplo)
 - `/casamiento` redirige al casamiento
 - `/giuliano1-k8n2` añito de Giuliano (ejemplo real, con OK familiar)
@@ -35,4 +36,4 @@ El servidor de fondo del workspace: `astro dev --background`.
 
 ## Eventos
 
-Ver [docs/PRIMER-CLIENTE.md](docs/PRIMER-CLIENTE.md). Mismo repo, ruta `/nombreedad-codigo`. Giuliano y Sofía y Mateo son ejemplos públicos. Los clientes pagos siguientes van `noindex`, RSVP a Sheet.
+Ver [docs/PRIMER-CLIENTE.md](docs/PRIMER-CLIENTE.md). Mismo repo, ruta `/nombreedad-codigo`. Giuliano, Sofía y Mateo y Valentina son ejemplos públicos. Los clientes pagos siguientes van `noindex`, RSVP a Sheet.

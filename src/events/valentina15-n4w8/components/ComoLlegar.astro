@@ -1,0 +1,23 @@
+---
+import Divider from './decor/Divider.astro';
+import { quince, maps } from '../data/quince';
+---
+
+<section class="section" id="como-llegar" aria-labelledby="maps-title">
+  <p class="eyebrow">{quince.copy.mapsEyebrow}</p>
+  <h2 class="section-title" id="maps-title">{quince.copy.mapsTitle}</h2>
+  <p class="lede">{quince.copy.mapsBody}</p>
+  <p class="lede" style="margin-top:.55rem;">
+    <strong>{quince.venue}</strong><br />
+    {quince.address}
+  </p>
+  <div class="map-actions">
+    <a class="btn btn-primary" href={maps.google} target="_blank" rel="noreferrer">
+      Abrir en Google Maps
+    </a>
+    <a class="btn btn-outline" href={maps.waze} target="_blank" rel="noreferrer">
+      Abrir en Waze
+    </a>
+  </div>
+</section>
+<Divider />

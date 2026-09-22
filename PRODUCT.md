@@ -28,19 +28,19 @@ No es un constructor self-service ni un marketplace de fiestas. Es un encargo a 
 
 ## Operating Context
 
-- Marca, demos y eventos viven en `holainvitados.com` (este repo). El añito de Giuliano está en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo está en `/sofiamateo-m4q7`. `/giuliano` y `/casamiento` redirigen a esas rutas.
+- Marca, demos y eventos viven en `holainvitados.com` (este repo). El añito de Giuliano está en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo está en `/sofiamateo-m4q7`. Los 15 de Valentina están en `/valentina15-n4w8`. `/giuliano`, `/casamiento` y `/quince` redirigen a esas rutas.
 - Contacto de venta: WhatsApp `5493884849767`, con texto prearmado. No hay formulario web de leads.
 - Instagram en el pie: handle aún no pasado; no se muestra hasta tenerlo, no se inventa.
 - Precio: no se publica un número fijo en la landing. Los planes Esencial y Premium se consultan por WhatsApp para ajustar alcance y presupuesto.
-- Eventos reales: ruta `/nombreedad-codigo` (código de 4 letras o números). Giuliano y el casamiento de Sofía y Mateo son ejemplos públicos e indexables. Los clientes pagos siguientes van `noindex`, RSVP a Google Sheet.
+- Eventos reales: ruta `/nombreedad-codigo` (código de 4 letras o números). Giuliano, el casamiento de Sofía y Mateo y los 15 de Valentina son ejemplos públicos e indexables. Los clientes pagos siguientes van `noindex`, RSVP a Google Sheet.
 
 ## Capabilities and Constraints
 
 Confirmado:
 
-- Rutas públicas: `/`, `/uno`, `/quince`, `/giuliano1-k8n2`, `/sofiamateo-m4q7`. `/giuliano` y `/casamiento` redirigen a los ejemplos.
+- Rutas públicas: `/`, `/uno`, `/giuliano1-k8n2`, `/sofiamateo-m4q7`, `/valentina15-n4w8`. `/giuliano`, `/casamiento` y `/quince` redirigen a los ejemplos.
 - Slugs reservados: un cliente nunca se llama `uno`, `quince`, `casamiento` ni `giuliano`.
-- Demos (`/uno`, `/quince`): sin Sheet, con aviso de que no se guarda ninguna confirmación.
+- Demo (`/uno`): sin Sheet, con aviso de que no se guarda ninguna confirmación.
 - Landing celular primero, una sola página, sin CMS, sin blog, sin embed de Instagram (solo link).
 - Sin recorte geográfico de venta: el cliente puede estar en cualquier lugar.
 
@@ -59,7 +59,7 @@ Abierto / no inventar:
 ## Evidence on Hand
 
 - Evento real de Giuliano Donaire Escudero (primer añito, 13 de septiembre 2026, Los Alisos, Jujuy), en `/giuliano1-k8n2`, con OK de Selena y Martín para usarlo como ejemplo.
-- Tres demos propias (`/uno`, `/quince`) y dos ejemplos reales (`/giuliano1-k8n2`, `/sofiamateo-m4q7`).
+- Una demo propia (`/uno`) y tres ejemplos públicos (`/giuliano1-k8n2`, `/sofiamateo-m4q7`, `/valentina15-n4w8`).
 - Ausencias: Instagram, fotos libres de las demos inventadas.
 
 ## Product Principles

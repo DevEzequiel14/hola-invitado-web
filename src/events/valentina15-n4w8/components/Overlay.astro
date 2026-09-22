@@ -1,0 +1,52 @@
+---
+import Lights from './decor/Lights.astro';
+import Butterflies from './decor/Butterflies.astro';
+import { quince } from '../data/quince';
+
+interface Props {
+  audioAvailable: boolean;
+}
+
+const { audioAvailable } = Astro.props;
+---
+
+<div
+  id="entrada"
+  class="overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="entrada-title"
+  data-open="true"
+>
+  <div class="overlay-inner">
+    <span class="bokeh" style="width:90px;height:90px;top:8%;left:6%;"></span>
+    <span class="bokeh" style="width:54px;height:54px;top:14%;right:12%;animation-delay:.8s;"></span>
+    <span class="bokeh" style="width:36px;height:36px;top:28%;left:28%;animation-delay:1.4s;"></span>
+    <span class="bokeh" style="width:22px;height:22px;top:22%;left:58%;animation-delay:2s;"></span>
+    <span class="bokeh" style="width:70px;height:70px;bottom:28%;right:8%;animation-delay:1.1s;"></span>
+    <Lights />
+    <Butterflies />
+    <div class="overlay-copy">
+      <p class="eyebrow kicker">{quince.copy.overlayLead}</p>
+      <p id="entrada-title">{quince.honoree}</p>
+      <p class="display headline">{quince.headline}</p>
+      <p class="overlay-hint">{quince.copy.overlayHint} {quince.phrase}.</p>
+      <button class="btn btn-cream btn-shimmer" type="button" data-enter>
+        {quince.copy.overlayCta}
+      </button>
+      {
+        audioAvailable ? (
+          <p class="music-credit">{quince.music.credit}</p>
+        ) : (
+          <p class="music-credit">{quince.copy.overlayNoAudio}</p>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+{
+  audioAvailable && (
+    <audio id="bloom" loop playsinline preload="metadata" src={quince.music.src}></audio>
+  )
+}

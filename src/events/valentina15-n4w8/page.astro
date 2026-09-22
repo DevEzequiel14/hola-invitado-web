@@ -1,0 +1,80 @@
+---
+import { existsSync } from "node:fs";
+import path from "node:path";
+import EventLayout from "../../layouts/EventLayout.astro";
+import Overlay from "./components/Overlay.astro";
+import AudioToggle from "./components/AudioToggle.astro";
+import Hero from "./components/Hero.astro";
+import GranDia from "./components/GranDia.astro";
+import DressCode from "./components/DressCode.astro";
+import Gallery from "./components/Gallery.astro";
+import ComoLlegar from "./components/ComoLlegar.astro";
+import RsvpForm from "./components/RsvpForm.astro";
+import SiteFooter from "./components/SiteFooter.astro";
+import { quince } from "./data/quince";
+import { event, pageDescription, pageTitle, shareImageAlt } from "./event";
+import "./styles/global.css";
+
+const audioAvailable = existsSync(
+  path.join(process.cwd(), "public", "events", quince.slug, quince.music.filename),
+);
+---
+
+<EventLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={event.ogImage}
+  shareImageAlt={shareImageAlt}
+  siteName={event.siteName}
+  themeColor={event.themeColor}
+  fonts={event.fonts}
+  favicon={event.favicon}
+  indexable={event.indexable}
+  bodyClass="locked"
+  audioAvailable={audioAvailable}
+>
+  <script is:inline slot="head">
+    try {
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("has-motion");
+      }
+    } catch {}
+  </script>
+  <Overlay audioAvailable={audioAvailable} />
+  <AudioToggle audioAvailable={audioAvailable} />
+  <div class="shell">
+    <main id="contenido">
+      <Hero />
+      <GranDia />
+      <DressCode />
+      <Gallery />
+      <ComoLlegar />
+      <RsvpForm />
+    </main>
+    <SiteFooter />
+  </div>
+  <noscript>
+    <style>
+      .overlay {
+        display: none !important;
+      }
+      body.locked {
+        overflow: auto;
+      }
+      .hero .bulb,
+      .hero .butterfly,
+      .hero .bloom {
+        animation-play-state: running !important;
+      }
+      .audio-toggle {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
+</EventLayout>
+
+<script>
+  import { bootInvitation } from "./scripts/client";
+  bootInvitation();
+</script>

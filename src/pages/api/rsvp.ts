@@ -31,7 +31,7 @@ async function readIncoming(request: Request): Promise<Incoming> {
       nombre: String(body.nombre ?? "").trim(),
       asisteRaw: body.asiste,
       cantidad: Number(body.cantidad),
-      comentario: String(body.comentario ?? "").trim().slice(0, 280),
+      comentario: String(body.comentario ?? "").trim().slice(0, 500),
       menu: String(body.menu ?? "").trim().slice(0, 160),
       dieta: String(body.dieta ?? "").trim().slice(0, 120),
       cancion: String(body.cancion ?? "").trim().slice(0, 120),
@@ -45,7 +45,7 @@ async function readIncoming(request: Request): Promise<Incoming> {
     nombre: String(form.get("nombre") ?? "").trim(),
     asisteRaw: form.get("asiste"),
     cantidad: Number(form.get("cantidad")),
-    comentario: String(form.get("comentario") ?? "").trim().slice(0, 280),
+    comentario: String(form.get("comentario") ?? "").trim().slice(0, 500),
     menu: String(form.get("menu") ?? "").trim().slice(0, 160),
     dieta: String(form.get("dieta") ?? "").trim().slice(0, 120),
     cancion: String(form.get("cancion") ?? "").trim().slice(0, 120),
@@ -53,8 +53,8 @@ async function readIncoming(request: Request): Promise<Incoming> {
 }
 
 function parseAsiste(raw: unknown): "si" | "no" | "" {
-  if (raw === true || raw === "si") return "si";
-  if (raw === false || raw === "no") return "no";
+  if (raw === true || raw === "si" || raw === "true" || raw === "yes") return "si";
+  if (raw === false || raw === "no" || raw === "false") return "no";
   return "";
 }
 

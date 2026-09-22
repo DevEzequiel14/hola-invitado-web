@@ -1,5 +1,5 @@
 /** Rutas de la marca: sí van al sitemap y al menú de la landing. */
-export const PUBLIC_PATHS = ["/", "/uno", "/quince", "/giuliano1-k8n2", "/sofiamateo-m4q7"] as const;
+export const PUBLIC_PATHS = ["/", "/uno", "/giuliano1-k8n2", "/sofiamateo-m4q7", "/valentina15-n4w8"] as const;
 
 export const RESERVED_SLUGS = ["uno", "quince", "casamiento", "giuliano"] as const;
 

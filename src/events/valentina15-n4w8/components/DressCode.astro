@@ -1,0 +1,26 @@
+---
+import Divider from './decor/Divider.astro';
+import { quince } from '../data/quince';
+---
+
+<section class="section" id="dress-code" aria-labelledby="dress-title">
+  <p class="eyebrow">{quince.copy.dressEyebrow}</p>
+  <h2 class="section-title" id="dress-title">{quince.copy.dressTitle}</h2>
+  <p class="lede">{quince.dressCode}</p>
+  <ul class="swatches">
+    {
+      quince.palette.map((color) => (
+        <li>
+          <span class="swatch" style={`background:${color.hex}`} aria-hidden="true"></span>
+          <small>
+            {color.name}
+            <br />
+            {color.hex}
+          </small>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="note">{quince.dressNote}</p>
+</section>
+<Divider />

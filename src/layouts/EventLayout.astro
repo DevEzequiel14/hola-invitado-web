@@ -11,6 +11,8 @@ interface Props {
   fonts?: string;
   favicon?: string;
   indexable?: boolean;
+  bodyClass?: string;
+  audioAvailable?: boolean;
 }
 
 const {
@@ -25,6 +27,8 @@ const {
   fonts,
   favicon = "/favicon.svg",
   indexable = false,
+  bodyClass,
+  audioAvailable,
 } = Astro.props;
 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
@@ -70,7 +74,10 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).href;
     {fonts ? <link href={fonts} rel="stylesheet" /> : null}
     <slot name="head" />
   </head>
-  <body>
+  <body
+    class={bodyClass}
+    data-audio-available={audioAvailable === undefined ? undefined : audioAvailable ? "true" : "false"}
+  >
     <a class="skip" href="#contenido">Saltar al contenido</a>
     <slot />
   </body>

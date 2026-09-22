@@ -1,0 +1,27 @@
+---
+import Divider from './decor/Divider.astro';
+import { quince } from '../data/quince';
+---
+
+<section class="section" id="gran-dia" aria-labelledby="gran-dia-title">
+  <p class="eyebrow">{quince.copy.granDiaEyebrow}</p>
+  <h2 class="section-title" id="gran-dia-title">{quince.copy.granDiaTitle}</h2>
+  <p class="lede">{quince.copy.granDiaBody}</p>
+  <ul class="meta-list">
+    <li>
+      <span>Cuándo</span>
+      <strong>{quince.dateLabel}</strong>
+      {quince.timeLabel}
+    </li>
+    <li>
+      <span>Dónde</span>
+      <strong>{quince.venue}</strong>
+      {quince.address}
+    </li>
+    <li>
+      <span>Anfitriones</span>
+      <strong>{quince.hosts}</strong>
+    </li>
+  </ul>
+</section>
+<Divider />

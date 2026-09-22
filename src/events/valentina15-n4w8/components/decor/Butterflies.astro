@@ -1,0 +1,26 @@
+---
+const butterflies = [
+  { className: 'butterfly b1', style: 'top: 18%; left: 8%; width: 38px; animation-delay: 0s; animation-duration: 9s;' },
+  { className: 'butterfly b2', style: 'top: 28%; right: 10%; width: 28px; animation-delay: 1.4s; animation-duration: 7.5s;' },
+  { className: 'butterfly b3', style: 'top: 42%; left: 72%; width: 22px; animation-delay: 2.2s; animation-duration: 10s;' },
+  { className: 'butterfly b4', style: 'top: 12%; left: 48%; width: 18px; animation-delay: 3s; animation-duration: 11s;' },
+];
+---
+
+{
+  butterflies.map((item) => (
+    <svg class={item.className} style={item.style} viewBox="0 0 64 64" aria-hidden="true">
+      <g fill="none" stroke="#E8D9B8" stroke-width="1.2">
+        <g class="wing-l">
+          <path fill="rgba(201,137,144,.55)" d="M32 34 C 18 8, 2 18, 14 34 C 22 40, 28 38, 32 34Z"></path>
+          <path fill="rgba(232,217,184,.45)" d="M32 36 C 22 40, 16 52, 26 50 C 30 46, 32 40, 32 36Z"></path>
+        </g>
+        <g class="wing-r">
+          <path fill="rgba(143,163,130,.5)" d="M32 34 C 46 8, 62 18, 50 34 C 42 40, 36 38, 32 34Z"></path>
+          <path fill="rgba(232,217,184,.45)" d="M32 36 C 42 40, 48 52, 38 50 C 34 46, 32 40, 32 36Z"></path>
+        </g>
+        <path d="M32 18 V46"></path>
+      </g>
+    </svg>
+  ))
+}

@@ -2,7 +2,8 @@
 import { cardFeatures, faqs, plans, waMessages } from "../data/site";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
 import { event as casamiento } from "../events/sofiamateo-m4q7/event";
-import { quince, uno } from "../data/demos";
+import { event as quince } from "../events/valentina15-n4w8/event";
+import { uno } from "../data/demos";
 import { whatsappUrl } from "../lib/whatsapp";
 import BrandLayout from "../layouts/BrandLayout.astro";
 
@@ -61,9 +62,9 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
           <strong>{uno.headline}</strong>
           <p>{uno.honoree}</p>
         </a>
-        <a class="demo-stub quince" target="_blank" href="/quince">
+        <a class="demo-stub quince" target="_blank" href={`/${quince.slug}`}>
           <strong>{quince.headline}</strong>
-          <p>{quince.honoree}</p>
+          <p>{quince.firstName}</p>
         </a>
         <a class="demo-stub casamiento" target="_blank" href={`/${casamiento.slug}`}>
           <strong>{casamiento.headline}</strong>

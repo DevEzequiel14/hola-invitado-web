@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import portada from '../assets/portada.jpg';
+import Lights from './decor/Lights.astro';
+import Butterflies from './decor/Butterflies.astro';
+import Meadow from './decor/Meadow.astro';
+import { quince } from '../data/quince';
+---
+
+<section class="hero" aria-label="Portada">
+  <div class="hero-media">
+    <Image
+      class="hero-photo"
+      src={portada}
+      alt={quince.photos.cover.alt}
+      widths={[440, 880, 1200]}
+      sizes="(max-width: 440px) 100vw, 440px"
+      loading="eager"
+      fetchpriority="high"
+      quality={80}
+    />
+    <div class="hero-shade"></div>
+    <Lights />
+    <Butterflies />
+    <div class="hero-copy" data-hero-copy>
+      <p class="eyebrow kicker">{quince.kicker}</p>
+      <p class="hero-name">{quince.honoree}</p>
+      <h1 class="display hero-headline">{quince.headline}</h1>
+      <div class="badge-15" aria-hidden="true">15</div>
+      <p class="hero-phrase">{quince.phrase}</p>
+      <div
+        class="countdown"
+        data-countdown
+        data-mode="clock"
+        data-start={quince.startIso}
+        data-end={quince.endIso}
+        data-day={quince.eventDayStartIso}
+        aria-label="Cuenta regresiva para los 15 de Valentina"
+      >
+        <p class="countdown-message" data-countdown-msg></p>
+        <div class="countdown-grid">
+          <div class="countdown-cell">
+            <span class="countdown-value" data-dd>00</span>
+            <span class="countdown-label">días</span>
+          </div>
+          <div class="countdown-cell">
+            <span class="countdown-value" data-hh>00</span>
+            <span class="countdown-label">horas</span>
+          </div>
+          <div class="countdown-cell">
+            <span class="countdown-value" data-mm>00</span>
+            <span class="countdown-label">min</span>
+          </div>
+          <div class="countdown-cell is-seconds">
+            <span class="countdown-value" data-ss>00</span>
+            <span class="countdown-label">seg</span>
+          </div>
+        </div>
+        <p class="visually-hidden" aria-live="polite" data-countdown-live></p>
+      </div>
+      <a class="btn btn-cream" href="#confirmar">{quince.copy.heroCta}</a>
+    </div>
+    <Meadow />
+  </div>
+</section>

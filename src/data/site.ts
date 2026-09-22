@@ -18,7 +18,7 @@ export const waMessages = {
   esencial: "Hola, quiero consultar por una invitación Esencial de HolaInvitado.",
   premium: "Hola, quiero consultar por una invitación Premium de HolaInvitado.",
   uno: "Hola, vi la muestra de cumple infantil (/uno) y quiero una invitación así.",
-  quince: "Hola, vi la muestra de quince (/quince) y quiero una invitación así.",
+  quince: "Hola, vi los 15 de Valentina (/valentina15-n4w8) y quiero una invitación así.",
   casamiento:
     "Hola, vi el casamiento de Sofía y Mateo (/sofiamateo-m4q7) y quiero una invitación así.",
   giuliano:
