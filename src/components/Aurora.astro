@@ -1,21 +1,12 @@
 ---
 interface Props {
-  dotSize?: number;
-  spacing?: number;
   duration?: number;
 }
 
-const { dotSize = 7, spacing = 14, duration = 56 } = Astro.props;
-const hexSpacing = (spacing * 1.732).toFixed(2);
-const halfGap = (spacing / 2).toFixed(2);
-const halfHex = ((spacing * 1.732) / 2).toFixed(2);
+const { duration = 56 } = Astro.props;
 ---
 
-<div
-  class="aurora"
-  aria-hidden="true"
-  style={`--dot: ${dotSize}px; --gap: ${spacing}px; --hex: ${hexSpacing}px; --half-gap: ${halfGap}px; --half-hex: ${halfHex}px; --dur: ${duration}s;`}
-></div>
+<div class="aurora" aria-hidden="true" style={`--dur: ${duration}s;`}></div>
 
 <style>
   .aurora {
@@ -26,38 +17,26 @@ const halfHex = ((spacing * 1.732) / 2).toFixed(2);
     pointer-events: none;
     background-color: #1a1512;
     background-image:
-      radial-gradient(circle at 50% 50%, transparent 1.5px, #1a1512 0 var(--dot), transparent var(--dot)),
-      radial-gradient(circle at 50% 50%, transparent 1.5px, #1a1512 0 var(--dot), transparent var(--dot)),
-      radial-gradient(circle at 50% 50%, rgba(166, 61, 77, 0.34), transparent 58%),
-      radial-gradient(circle at 50% 50%, rgba(80, 58, 36, 0.26), transparent 62%),
-      radial-gradient(circle at 50% 50%, rgba(224, 192, 122, 0.2), transparent 64%),
-      radial-gradient(ellipse at 50% 50%, rgba(26, 21, 18, 0.42), transparent 70%);
-    background-size:
-      var(--gap) var(--hex),
-      var(--gap) var(--hex),
-      200% 200%,
-      200% 200%,
-      200% 200%,
-      200% var(--hex);
+      radial-gradient(ellipse at 22% 18%, rgba(166, 61, 77, 0.3), transparent 52%),
+      radial-gradient(ellipse at 78% 72%, rgba(80, 58, 36, 0.34), transparent 58%),
+      radial-gradient(ellipse at 50% 42%, rgba(224, 192, 122, 0.14), transparent 55%),
+      radial-gradient(ellipse at 50% 100%, rgba(26, 21, 18, 0.72), transparent 48%);
+    background-size: 140% 140%;
     background-position:
-      0 0,
-      var(--half-gap) var(--half-hex),
       18% 12%,
       72% 68%,
       48% 40%,
-      50% 0;
-    animation: dots-drift var(--dur) linear infinite;
+      50% 100%;
+    animation: night-drift var(--dur) ease-in-out infinite alternate;
   }
 
-  @keyframes dots-drift {
+  @keyframes night-drift {
     to {
       background-position:
-        0 0,
-        var(--half-gap) var(--half-hex),
-        62% 58%,
+        62% 38%,
         28% 22%,
-        70% 76%,
-        50% var(--hex);
+        70% 58%,
+        50% 100%;
     }
   }
 
