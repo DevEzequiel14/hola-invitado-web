@@ -260,8 +260,8 @@ Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small sc
 - **Do** set actions in Saira Condensed uppercase at 3px radius; keep WhatsApp as the fixed bottom-right circle.
 - **Do** leave empty price and Instagram as dashed gold gaps.
 - **Do** give each demo one stolen accent hue and its own display face, still sitting on night + ticket.
-- **Do** hand the hero ticket once (stub → headline → stamps → phone), walk that same phone into the Casamiento door, let Quince and Cumple enter as siblings, tear process steps on scroll, and press stamps to 0.98. Do not split one phone into three and do not stagger every band.
-- **Do** honor `prefers-reduced-motion` by skipping the hero handoff, the phone bridge, scroll tears, FAB delay, and aurora/clock loops. Color changes on stamps stay.
+- **Do** hand the hero ticket once (stub → headline → stamps → phone), walk that same phone into the Casamiento door, let Quince and Cumple enter as siblings, tear process steps on scroll, and press stamps to 0.98. Opening a phone morphs that device into the invitation’s first door. Do not split one phone into three and do not stagger every band.
+- **Do** honor `prefers-reduced-motion` by skipping the hero handoff, the phone bridge, the invite morph, scroll tears, FAB delay, and aurora/clock loops. Color changes on stamps stay.
 
 ### Don't:
 - **Don't** revive the old print-shop world (paper, process cyan/magenta, Petrona, Red Hat Text).

@@ -163,7 +163,56 @@ function playTears() {
   });
 }
 
+function pathOf(url: string) {
+  try {
+    return new URL(url, location.origin).pathname.replace(/\/$/, "") || "/";
+  } catch {
+    return "";
+  }
+}
+
+function markInviteShell(shell: HTMLElement | null) {
+  document.querySelectorAll<HTMLElement>(".phone-shell").forEach((el) => {
+    el.style.viewTransitionName = "";
+  });
+  if (shell) shell.style.viewTransitionName = "invite-open";
+  return shell;
+}
+
+function playInviteOpen() {
+  document.querySelectorAll<HTMLAnchorElement>("a.phone").forEach((link) => {
+    link.addEventListener("click", () => {
+      markInviteShell(link.querySelector<HTMLElement>(".phone-shell"));
+    });
+  });
+
+  window.addEventListener("pagereveal", (event) => {
+    const reveal = event as Event & {
+      viewTransition?: { finished: Promise<unknown> };
+      activation?: { from?: { url?: string } };
+    };
+    if (!reveal.viewTransition) return;
+
+    const fromPath = pathOf(reveal.activation?.from?.url ?? "");
+    if (!fromPath || fromPath === "/") return;
+
+    const matches = [...document.querySelectorAll<HTMLAnchorElement>("a.phone")].filter(
+      (link) => pathOf(link.href) === fromPath,
+    );
+    const link =
+      matches.find((item) => item.classList.contains("phone-bridge-to")) ??
+      matches.find((item) => item.classList.contains("phone-bridge-from")) ??
+      matches[0];
+    const shell = markInviteShell(link?.querySelector<HTMLElement>(".phone-shell") ?? null);
+    reveal.viewTransition.finished.finally(() => {
+      if (shell) shell.style.viewTransitionName = "";
+    });
+  });
+}
+
 export function playBrandMotion() {
+  playInviteOpen();
+
   if (!canMotion()) {
     markReady();
     return;
