@@ -1,15 +1,15 @@
 :root {
-  --night: #0c0a09;
+  --night: #1a1512;
   --ink: #f6f3ee;
-  --ink-soft: #d7cfc4;
-  --wine: #7a2e3a;
-  --wine-pressed: #5f242e;
-  --champagne: #c9a56a;
-  --champagne-pressed: #d4b483;
-  --amber: #c47a3a;
-  --olive: #3a3228;
-  --green: #6ba56f;
-  --ticket: #161310;
+  --ink-soft: #e4d9cc;
+  --wine: #a63d4d;
+  --wine-pressed: #7a2e3a;
+  --champagne: #e0c07a;
+  --champagne-pressed: #ebd19a;
+  --amber: #d48a48;
+  --olive: #4a4034;
+  --green: #86c28a;
+  --ticket: #2a221c;
   --blue: var(--wine);
   --pink: var(--wine);
   --orange: var(--amber);
@@ -292,65 +292,105 @@ textarea {
   background: var(--wine-pressed);
 }
 
-.hero-card {
+.phone {
   display: grid;
-  align-content: start;
+  justify-items: center;
+  gap: 0.7rem;
   text-decoration: none;
-  overflow: hidden;
-  border-radius: 0 0 var(--radius) var(--radius);
+  color: inherit;
+}
+
+.phone-hero {
+  padding: 1.15rem 1rem 1.25rem;
   background: var(--ticket);
   box-shadow: var(--shadow);
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
-.hero-card-face {
-  padding: 1.25rem 1.2rem 1.15rem;
-  background: var(--orange);
-  color: var(--night);
+.phone-shell {
+  position: relative;
+  width: min(12.6rem, 78%);
+  aspect-ratio: 390 / 804;
+  padding: 0.4rem;
+  border-radius: 1.4rem;
+  background: #120f0c;
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 1px rgba(224, 192, 122, 0.28);
 }
 
-.hero-card-face p {
-  margin: 0 0 0.3rem;
-  font-family: Grandstander, "Trebuchet MS", sans-serif;
-  font-weight: 700;
-  font-size: 1.05rem;
+.phone-hero .phone-shell {
+  width: min(13.4rem, 84%);
 }
 
-.hero-card-face strong {
-  display: block;
-  font-family: Grandstander, "Trebuchet MS", sans-serif;
-  font-weight: 800;
-  font-size: clamp(1.8rem, 6vw, 2.5rem);
-  line-height: 0.95;
+.phone-island {
+  position: absolute;
+  top: 0.58rem;
+  left: 50%;
+  z-index: 1;
+  width: 26%;
+  height: 0.48rem;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #0c0a09;
 }
 
-.hero-card-body {
+.phone-shell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 1.08rem;
+  background: #1a1512;
+}
+
+.phone-contain .phone-shell,
+.phone-contain .phone-shell img {
+  background: #143326;
+}
+
+.phone-contain .phone-shell img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.phone:hover .phone-shell,
+.phone:focus-visible .phone-shell {
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 1px rgba(224, 192, 122, 0.55);
+}
+
+.phone-meta {
   display: grid;
-  align-content: end;
-  padding: 1rem 1.2rem 1.2rem;
-}
-
-.hero-card-body p {
-  margin: 0;
-  color: var(--ink-soft);
-}
-
-.hero-card-body p + p {
-  margin-top: 0.15rem;
-}
-
-.hero-card-body span {
-  display: inline-block;
-  margin-top: 0.85rem;
+  justify-items: center;
+  gap: 0.12rem;
   font-family: var(--font-display);
-  font-size: 1.15rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--orange);
 }
 
-.hero-card:hover .hero-card-body span,
-.hero-card:focus-visible .hero-card-body span {
-  color: var(--gold);
+.phone-meta strong {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.phone-meta span {
+  color: var(--champagne);
+  font-size: 0.95rem;
+}
+
+.phone-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+  gap: 1.1rem 1.3rem;
+  margin-top: 2rem;
+}
+
+.phone-line .phone-shell {
+  width: 10.6rem;
 }
 
 .stub-head {
@@ -986,11 +1026,14 @@ textarea {
       radial-gradient(circle at 11px 12px, transparent 7px, var(--ticket) 7.5px) 0 0 / 22px 24px repeat-y;
   }
 
-  .hero-card {
+  .phone-hero {
     grid-area: stubs;
     border-radius: 0 0 var(--radius) 0;
-    align-content: stretch;
-    grid-template-rows: auto 1fr;
+    align-content: center;
+  }
+
+  .phone-line {
+    flex-wrap: nowrap;
   }
 
   .verso {

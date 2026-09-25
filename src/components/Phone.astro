@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string;
+  src: string;
+  alt: string;
+  label: string;
+  name: string;
+  featured?: boolean;
+  fit?: "cover" | "contain";
+}
+
+const { href, src, alt, label, name, featured = false, fit = "cover" } = Astro.props;
+---
+
+<a class:list={["phone", { "phone-hero": featured, "phone-contain": fit === "contain" }]} href={href} target={featured ? undefined : "_blank"}>
+  <span class="phone-shell">
+    <span class="phone-island" aria-hidden="true"></span>
+    <img src={src} alt={alt} width="390" height="804" />
+  </span>
+  <span class="phone-meta">
+    <strong>{label}</strong>
+    <span>{name}</span>
+  </span>
+</a>

@@ -2,17 +2,17 @@
 name: HolaInvitado
 description: Warm-night entrada ticket on a quiet dotted field.
 colors:
-  night: "#0C0A09"
-  ticket: "#161310"
+  night: "#1A1512"
+  ticket: "#2A221C"
   ink: "#F6F3EE"
-  ink-soft: "#D7CFC4"
-  wine: "#7A2E3A"
-  wine-pressed: "#5F242E"
-  champagne: "#C9A56A"
-  champagne-pressed: "#D4B483"
-  amber: "#C47A3A"
-  olive: "#3A3228"
-  green: "#6BA56F"
+  ink-soft: "#E4D9CC"
+  wine: "#A63D4D"
+  wine-pressed: "#7A2E3A"
+  champagne: "#E0C07A"
+  champagne-pressed: "#EBD19A"
+  amber: "#D48A48"
+  olive: "#4A4034"
+  green: "#86C28A"
   stamp-white: "#FFFFFF"
 typography:
   display:
@@ -49,6 +49,8 @@ rounded:
   stamp: "3px"
   sm: "8px"
   ticket: "14px"
+  phone: "1.4rem"
+  phone-screen: "1.08rem"
   pill: "999px"
 spacing:
   tight: "0.42rem"
@@ -130,7 +132,7 @@ Personality is loud at the stamp and quiet in the copy. Headlines are condensed,
 `/giuliano1-k8n2` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). `/sofiamateo-m4q7` is a one-off wedding skin (garden suite, Fraunces/Great Vibes/Outfit, sage and ivory). `/valentina15-n4w8` is a one-off quince skin (garden party, Cormorant Garamond/Nunito, sage and dusty rose). `/giuliano`, `/casamiento` and `/quince` redirect there. They are not this system. The remaining demo invitation (`/uno`) keeps the night floor, dotted field, and ticket chassis, then steals one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
 
 **Key Characteristics:**
-- Hexagonal night dots over muted wine / chocolate / champagne washes; CSS drift ~56s, no hue-rotate; `html` is solid warm night
+- Hexagonal night dots over muted wine / chocolate / champagne washes; CSS drift ~56s, no hue-rotate; `html` is solid warm night (#1A1512)
 - Carbon ticket stock with 14px corners, 22px perforated gutters, and one-name-per-tear stubs
 - Saira Condensed uppercase stamps against Karla body
 - Each accent hue is stolen once (chip, stub, demo, clock) — never used as a page fill
@@ -239,13 +241,13 @@ Brand `/` has no lead form. On demo tickets only: transparent fields, 12px corne
 Top bar: space-between, 1rem / 1.25rem (2.5rem sides from 880px). Wordmark is Saira Condensed 1.35rem uppercase; the second word is champagne. No hamburger, no secondary nav. Footer is open on the aurora; links are champagne 700. Sticky sample banner on demos: near-opaque night bar, champagne link.
 
 ### Ticket hero
-Signature. Headline + supporting line + stamps on ticket body; 22px perforated gutter; the stub column is a peek of a real invitation (Uno), not a guest list. That peek may steal Uno’s amber and Grandstander inside `.hero-card` only. Brand chrome around it stays Saira and Karla.
+Signature. Headline + supporting line + stamps on ticket body; 22px perforated gutter; the stub column is a phone showing a real invitation (Sofía y Mateo) as it opens on a celular. Brand chrome around it stays Saira and Karla.
 
 ### Clock
 Signature for the four steps. CSS grid 1fr / 6.4rem / 1fr. Champagne 2px circular face, wine hand, 12s linear rotation. Copy at 12, 3, 6, 9 — not a numbered list.
 
 ### Demo stubs
-Three overlapping torn passes — cumple, quince, casamiento — each stealing one hue (olive / wine / champagne). Ivory on olive and wine; night type on champagne. Rotations about -8deg / 2deg / 7deg. Hover/focus-visible: flatten to 0deg and lift 6px. The Uno peek stays in the hero stub, not in this lineup.
+Three phones — cumple, quince, casamiento — each showing a real first screen of that invitation. Graphite bezel, champagne hairline, island, captured mobile viewport. Hover/focus-visible does not invent a second elevation; the link is the phone.
 
 ### Plan ticket
 Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small screens). Price line is “Presupuesto por WhatsApp” to keep pricing consultative.
