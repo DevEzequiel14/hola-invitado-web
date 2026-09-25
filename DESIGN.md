@@ -245,7 +245,7 @@ Signature. Headline + supporting line + stamps on ticket body; 22px perforated g
 Signature for the four steps. CSS grid 1fr / 6.4rem / 1fr. Champagne 2px circular face, wine hand, 12s linear rotation. Copy at 12, 3, 6, 9 — not a numbered list.
 
 ### Demo stubs
-Overlapping torn passes, each stealing one hue (olive / amber / wine / champagne). Night type on amber and champagne; ivory on olive and wine. Rotations about -8deg / 2deg / 7deg. Hover/focus-visible: flatten to 0deg and lift 6px.
+Three overlapping torn passes — cumple, quince, casamiento — each stealing one hue (olive / wine / champagne). Ivory on olive and wine; night type on champagne. Rotations about -8deg / 2deg / 7deg. Hover/focus-visible: flatten to 0deg and lift 6px. The Uno peek stays in the hero stub, not in this lineup.
 
 ### Plan ticket
 Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small screens). Price line is “Presupuesto por WhatsApp” to keep pricing consultative.

@@ -1,5 +1,5 @@
 ---
-import { cardFeatures, faqs, plans, waMessages } from "../data/site";
+import { cardFeatures, faqs, plans, processSteps, waMessages } from "../data/site";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
 import { event as casamiento } from "../events/sofiamateo-m4q7/event";
 import { event as quince } from "../events/valentina15-n4w8/event";
@@ -28,11 +28,11 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
         </header>
         <div class="ticket-perf ticket-perf-x" aria-hidden="true"></div>
         <div class="ticket-body">
-          <h1>Invitación web para tu fiesta.</h1>
-          <p>Un link hecho para tu evento. Los invitados la recorren y confirman si van.</p>
+          <h1>Invitación digital para tu fiesta.</h1>
+          <p>Casamiento, quince o cumple. Un link: la recorren y confirman si van.</p>
           <div class="hero-actions">
             <a class="btn btn-blue" href={whatsappUrl(waMessages.general)}>Contactame</a>
-            <a class="btn btn-ghost" href="#tarjetas">Ver las tarjetas</a>
+            <a class="btn btn-ghost" href="#tarjetas">Ver las fiestas</a>
           </div>
         </div>
         <div class="ticket-perf ticket-perf-y" aria-hidden="true"></div>
@@ -51,25 +51,36 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
     </section>
 
     <section class="band band-open band-gap" id="tarjetas" aria-labelledby="tarjetas-titulo">
-      <h2 id="tarjetas-titulo">Así podrían ser.</h2>
-      <p>Miralas y recorré la experiencia.</p>
-      <div class="stub-line">
+      <h2 id="tarjetas-titulo">Tres fiestas para abrir.</h2>
+      <p>Son invitaciones reales. Entrá y recorrelas.</p>
+      <div class="stub-line stub-line-doors">
         <a class="demo-stub giuliano" target="_blank" href={`/${giuliano.slug}`}>
-          <strong>{giuliano.headline}</strong>
+          <strong>Cumple</strong>
           <p>{giuliano.firstName}</p>
         </a>
-        <a class="demo-stub uno" target="_blank" href="/uno">
-          <strong>{uno.headline}</strong>
-          <p>{uno.honoree}</p>
-        </a>
         <a class="demo-stub quince" target="_blank" href={`/${quince.slug}`}>
-          <strong>{quince.headline}</strong>
-          <p>{quince.firstName}</p>
+          <strong>Quince</strong>
+          <p>Valentina</p>
         </a>
         <a class="demo-stub casamiento" target="_blank" href={`/${casamiento.slug}`}>
-          <strong>{casamiento.headline}</strong>
-          <p>{casamiento.honoree}</p>
+          <strong>Casamiento</strong>
+          <p>Sofía y Mateo</p>
         </a>
+      </div>
+    </section>
+
+    <section class="band band-open" id="encargo" aria-labelledby="encargo-titulo">
+      <h2 id="encargo-titulo">Cómo es el encargo.</h2>
+      <p>Hablamos por WhatsApp. Con dos semanas alcanza para una Esencial.</p>
+      <div class="tears">
+        {
+          processSteps.map((step) => (
+            <p class="tear">
+              {step.name}
+              <span>{step.detail}</span>
+            </p>
+          ))
+        }
       </div>
     </section>
 
@@ -100,9 +111,11 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
 
     <section class="band band-open" id="planes" aria-labelledby="planes-titulo">
       <h2 id="planes-titulo">Dos formas.</h2>
+      <p>La diferencia es el alcance. El precio lo vemos por WhatsApp.</p>
       <article class="plan-ticket">
         <div class="plan">
           <h3>{plans.esencial.name}</h3>
+          <p>{plans.esencial.lead}</p>
           <ul>
             {plans.esencial.includes.map((item) => <li>{item}</li>)}
           </ul>
@@ -111,6 +124,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
         <div class="ticket-perf" aria-hidden="true"></div>
         <div class="plan">
           <h3>{plans.premium.name}</h3>
+          <p>{plans.premium.lead}</p>
           <ul>
             {plans.premium.includes.map((item) => <li>{item}</li>)}
           </ul>
