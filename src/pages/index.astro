@@ -5,6 +5,7 @@ import { event as casamiento } from "../events/sofiamateo-m4q7/event";
 import { event as quince } from "../events/valentina15-n4w8/event";
 import { whatsappUrl } from "../lib/whatsapp";
 import Phone from "../components/Phone.astro";
+import BrandMark from "../components/BrandMark.astro";
 import BrandLayout from "../layouts/BrandLayout.astro";
 
 const versoParts = cardFeatures.columns.flatMap((column, i) =>
@@ -17,7 +18,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
     <section class="hero">
       <article class="hero-ticket">
         <header class="hero-stub">
-          <a class="mark" href="/">Hola<span>Invitado</span></a>
+          <a class="mark" href="/"><BrandMark />Hola<span>Invitado</span></a>
         </header>
         <div class="ticket-perf ticket-perf-x" aria-hidden="true"></div>
         <div class="ticket-body">

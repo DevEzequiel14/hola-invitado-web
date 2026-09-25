@@ -2,6 +2,7 @@
 import { brand, instagram, waMessages } from "../data/site";
 import { whatsappUrl } from "../lib/whatsapp";
 import Aurora from "../components/Aurora.astro";
+import BrandMark from "../components/BrandMark.astro";
 import RootLayout from "./RootLayout.astro";
 import "../styles/brand.css";
 
@@ -40,7 +41,7 @@ const igHref = instagram
   <div class="brand-shell">
     <slot />
     <footer class="site-foot">
-      <p class="site-foot-mark">{brand}</p>
+      <p class="site-foot-mark"><BrandMark />{brand}</p>
       <div class="site-foot-links">
         <a href={whatsappUrl(waMessages.general)}>WhatsApp</a>
         {
