@@ -28,6 +28,14 @@ const igHref = instagram
     href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap"
     rel="stylesheet"
   />
+  <script is:inline slot="head">
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("brand-motion");
+      window.setTimeout(function () {
+        document.documentElement.classList.add("is-ready");
+      }, 2000);
+    }
+  </script>
   <Aurora />
   <div class="brand-shell">
     <slot />

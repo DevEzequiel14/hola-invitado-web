@@ -127,7 +127,7 @@ components:
 
 HolaInvitado’s brand world is a night door: a thermal ticket held up against a quiet warm night. Soft wine, chocolate, and champagne washes drift slowly — never a neon bloom, never a dotted notebook mesh — and every piece of UI is ticket stock punched, perforated, or torn so that field shows through. Density is mobile-first and quarry-like: centered slabs of carbon ticket, then air, then another slab. It is not a print shop, not a wedding suite, and not a jungle vitrine.
 
-Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and slow: the dots drift, torn names slide in, a clock hand ticks. Prefer-reduced-motion kills all three.
+Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and short: the hero ticket is handed over once (stub, headline, stamps, then the phone lights), process tears slide in when they enter the viewport, a clock hand ticks, and the night washes drift. Prefer-reduced-motion kills the spatial sequences and leaves color feedback.
 
 `/giuliano1-k8n2` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). `/sofiamateo-m4q7` is a one-off wedding skin (garden suite, Fraunces/Great Vibes/Outfit, sage and ivory). `/valentina15-n4w8` is a one-off quince skin (garden party, Cormorant Garamond/Nunito, sage and dusty rose). `/giuliano`, `/casamiento` and `/quince` redirect there. They are not this system. The remaining demo invitation (`/uno`) keeps the night floor and ticket chassis, then steals one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
 
@@ -136,7 +136,7 @@ Personality is loud at the stamp and quiet in the copy. Headlines are condensed,
 - Carbon ticket stock with 14px corners, 22px perforated gutters, and one-name-per-tear stubs
 - Saira Condensed uppercase stamps against Karla body
 - Each accent hue is stolen once (fab, stub, demo, clock) — never used as a page fill
-- Thermal action stamps at 3px radius; the WhatsApp FAB is the only circle
+- Thermal action stamps at 3px radius; they press to 0.98 on hover. The WhatsApp FAB is the only circle and arrives after the hero handoff
 - Centered bands with quarry gaps; `band-open` sections let the aurora read as the page
 
 ## Colors
@@ -221,11 +221,11 @@ Thermal stamps: condensed uppercase, 3px corners, min-height 3.1rem, padding 0.7
 - **Gold:** Champagne on warm night. Hover/focus-visible: champagne-pressed
 - **Pink:** Wine on stamp white (closing ticket). Class name kept.
 - **Ghost:** Transparent with the 1.5px ivory inset ring
-- **Hover / Focus:** Color shift only (no lift). Keyboard focus-visible on the page is a 3px champagne outline, offset 3px
+- **Hover / Focus:** Color shift plus a 0.98 stamp press (0.96 while active). No lift. Keyboard focus-visible on the page is a 3px champagne outline, offset 3px
 
 ### Chips
 - **Style:** WhatsApp FAB — confirm green on warm night, 3.5rem circle, fixed bottom-right with safe-area inset, 28px WhatsApp mark, accessible name “Escribime por WhatsApp”
-- **State:** Hover/focus-visible flips the fill to champagne. Hero and close keep Contactame stamps; the FAB is the shortcut, not the only action
+- **State:** Hover/focus-visible flips the fill to champagne. The FAB stays hidden until the hero ticket finishes arriving, then scales in once. Hero and close keep Contactame stamps; the FAB is the shortcut, not the only action
 
 ### Cards / Containers
 - **Corner Style:** 14px ticket clip
@@ -260,7 +260,8 @@ Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small sc
 - **Do** set actions in Saira Condensed uppercase at 3px radius; keep WhatsApp as the fixed bottom-right circle.
 - **Do** leave empty price and Instagram as dashed gold gaps.
 - **Do** give each demo one stolen accent hue and its own display face, still sitting on night + ticket.
-- **Do** honor `prefers-reduced-motion` by freezing aurora, tears, and the clock hand.
+- **Do** hand the hero ticket once (stub → headline → stamps → phone), tear process steps on scroll, and press stamps to 0.98. Do not stagger every band.
+- **Do** honor `prefers-reduced-motion` by skipping the hero handoff, scroll tears, FAB delay, and aurora/clock loops. Color changes on stamps stay.
 
 ### Don't:
 - **Don't** revive the old print-shop world (paper, process cyan/magenta, Petrona, Red Hat Text).

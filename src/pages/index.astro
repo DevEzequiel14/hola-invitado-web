@@ -21,9 +21,9 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
         </header>
         <div class="ticket-perf ticket-perf-x" aria-hidden="true"></div>
         <div class="ticket-body">
-          <h1>Invitación digital para tu fiesta.</h1>
-          <p>Casamiento, quince o cumple. Un link: la recorren y confirman si van.</p>
-          <div class="hero-actions">
+          <h1 data-hand="title">Invitación digital para tu fiesta.</h1>
+          <p data-hand="lead">Casamiento, quince o cumple. Un link: la recorren y confirman si van.</p>
+          <div class="hero-actions" data-hand="stamps">
             <a class="btn btn-blue" href={whatsappUrl(waMessages.general)}>Contactame</a>
             <a class="btn btn-ghost" href="#tarjetas">Ver las fiestas</a>
           </div>
@@ -155,4 +155,8 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
       </article>
     </section>
   </main>
+  <script>
+    import { playBrandMotion } from "../scripts/brand-motion";
+    playBrandMotion();
+  </script>
 </BrandLayout>

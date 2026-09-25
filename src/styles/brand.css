@@ -143,6 +143,16 @@ textarea {
   background: var(--champagne);
 }
 
+html.brand-motion:not(.is-ready) .hero-ticket > * {
+  opacity: 0;
+}
+
+html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.86);
+}
+
 .hero {
   display: grid;
   justify-items: center;
@@ -254,6 +264,7 @@ textarea {
   text-transform: uppercase;
   border: 0;
   cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease;
 }
 
 .btn-blue {
@@ -290,6 +301,24 @@ textarea {
 .btn-pink:hover,
 .btn-pink:focus-visible {
   background: var(--wine-pressed);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn {
+    transition:
+      background-color 0.16s ease,
+      color 0.16s ease,
+      transform 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    transform: scale(0.98);
+  }
+
+  .btn:active {
+    transform: scale(0.96);
+  }
 }
 
 .phone {
@@ -438,22 +467,6 @@ textarea {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-variant-numeric: tabular-nums;
-  animation: tear-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.tear:nth-child(1) { animation-delay: 0.08s; }
-.tear:nth-child(2) { animation-delay: 0.16s; }
-.tear:nth-child(3) { animation-delay: 0.24s; }
-.tear:nth-child(4) { animation-delay: 0.32s; }
-.tear:nth-child(5) { animation-delay: 0.4s; }
-
-@keyframes tear-in {
-  from {
-    transform: translateX(12px);
-  }
-  to {
-    transform: none;
-  }
 }
 
 .tear.is-wait {
@@ -1077,8 +1090,13 @@ textarea {
   }
 
   .aurora,
-  .tear,
   .clock-face span {
     animation: none;
+  }
+
+  .btn,
+  .wa-fab {
+    transition: background-color 0.12s ease, color 0.12s ease;
+    transform: none;
   }
 }
