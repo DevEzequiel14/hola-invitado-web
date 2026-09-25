@@ -11,9 +11,9 @@ Ver qué es una tarjeta de invitación online, recorrer muestras, y contactar po
 
 ## Direction contract
 
-THESIS: The invitation is a night-club entrada: one ticket, a real card peeking through the stub. It refuses the cream wedding template and the previous print-shop sheet.
+THESIS: The invitation is a night entrada: one ticket, a real card peeking through the stub. It refuses the cream wedding template, club neon, and the previous print-shop sheet.
 
-OWN-WORLD: Salón after dark. Hexagonal night dots on #0A0A0A with muted #2979FF / #3D5AFE / #FF80AB washes, slow drift, no rainbow bloom. Thermal-ticket chrome: perforations, stub rows, condensed display. Light ink on night.
+OWN-WORLD: Warm night door. Hexagonal night dots on #0C0A09 with muted #7A2E3A / #3A3228 / #C9A56A washes, slow drift, no neon bloom. Thermal-ticket chrome: perforations, stub rows, condensed display. Light ink on night.
 
 STORY: Visitor sees an entrada and a real invitation card, believes this is the product, taps Contactame or opens a sample.
 

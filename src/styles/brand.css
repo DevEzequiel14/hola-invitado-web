@@ -1,14 +1,20 @@
 :root {
-  --night: #0a0a0a;
+  --night: #0c0a09;
   --ink: #f6f3ee;
   --ink-soft: #d7cfc4;
-  --blue: #2979ff;
-  --pink: #ff80ab;
-  --orange: #ff6d00;
-  --gold: #ffd600;
-  --green: #00e676;
-  --indigo: #3d5afe;
-  --ticket: #101114;
+  --wine: #7a2e3a;
+  --wine-pressed: #5f242e;
+  --champagne: #c9a56a;
+  --champagne-pressed: #d4b483;
+  --amber: #c47a3a;
+  --olive: #3a3228;
+  --green: #6ba56f;
+  --ticket: #161310;
+  --blue: var(--wine);
+  --pink: var(--wine);
+  --orange: var(--amber);
+  --gold: var(--champagne);
+  --indigo: var(--olive);
   --font-display: "Saira Condensed", "Arial Narrow", sans-serif;
   --font-body: "Karla", "Segoe UI", system-ui, sans-serif;
   --shadow: 0 22px 40px rgba(0, 0, 0, 0.45);
@@ -24,9 +30,9 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-color: #2979ff #0a0a0a;
+  scrollbar-color: var(--wine) var(--night);
   color-scheme: dark;
-  background-color: #0a0a0a;
+  background-color: var(--night);
 }
 
 html,
@@ -113,7 +119,7 @@ textarea {
 }
 
 .mark span {
-  color: var(--pink);
+  color: var(--champagne);
 }
 
 .wa-chip {
@@ -257,7 +263,7 @@ textarea {
 
 .btn-blue:hover,
 .btn-blue:focus-visible {
-  background: #1565c0;
+  background: var(--wine-pressed);
 }
 
 .btn-gold {
@@ -267,7 +273,7 @@ textarea {
 
 .btn-gold:hover,
 .btn-gold:focus-visible {
-  background: #ffe566;
+  background: var(--champagne-pressed);
 }
 
 .btn-ghost {
@@ -277,8 +283,13 @@ textarea {
 }
 
 .btn-pink {
-  background: var(--pink);
-  color: var(--night);
+  background: var(--wine);
+  color: #fff;
+}
+
+.btn-pink:hover,
+.btn-pink:focus-visible {
+  background: var(--wine-pressed);
 }
 
 .hero-card {
@@ -560,7 +571,7 @@ textarea {
   bottom: 50%;
   width: 2px;
   height: 38%;
-  background: var(--pink);
+  background: var(--wine);
   transform-origin: bottom center;
   animation: tick 12s linear infinite;
 }
@@ -582,7 +593,7 @@ textarea {
   gap: 0.7rem;
   padding: 1.3rem 1.15rem 1.2rem 1.35rem;
   background:
-    radial-gradient(circle at 0 50%, transparent 6px, #143326 6.5px);
+    radial-gradient(circle at 0 50%, transparent 6px, var(--olive) 6.5px);
   box-shadow: var(--shadow);
   text-decoration: none;
 }
@@ -659,9 +670,9 @@ textarea {
 }
 
 .demo-stub.quince {
-  color: var(--night);
+  color: var(--ink);
   background:
-    radial-gradient(circle at 0 50%, transparent 6px, var(--pink) 6.5px);
+    radial-gradient(circle at 0 50%, transparent 6px, var(--wine) 6.5px);
   min-height: 14.5rem;
   width: 12.4rem;
   transform: rotate(2deg);
