@@ -127,7 +127,7 @@ components:
 
 HolaInvitado’s brand world is a night door: a thermal ticket held up against a quiet warm night. Soft wine, chocolate, and champagne washes drift slowly — never a neon bloom, never a dotted notebook mesh — and every piece of UI is ticket stock punched, perforated, or torn so that field shows through. Density is mobile-first and quarry-like: centered slabs of carbon ticket, then air, then another slab. It is not a print shop, not a wedding suite, and not a jungle vitrine.
 
-Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and short: the hero ticket is handed over once (stub, headline, stamps, then the phone lights), process tears slide in when they enter the viewport, a clock hand ticks, and the night washes drift. Prefer-reduced-motion kills the spatial sequences and leaves color feedback.
+Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and short: the hero ticket is handed over once (stub, headline, stamps, then the phone lights), that same phone travels back into the Casamiento door while Quince and Cumple enter as the other two doors, process tears slide in when they enter the viewport, a clock hand ticks, and the night washes drift. Prefer-reduced-motion kills the spatial sequences and leaves color feedback.
 
 `/giuliano1-k8n2` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). `/sofiamateo-m4q7` is a one-off wedding skin (garden suite, Fraunces/Great Vibes/Outfit, sage and ivory). `/valentina15-n4w8` is a one-off quince skin (garden party, Cormorant Garamond/Nunito, sage and dusty rose). `/giuliano`, `/casamiento` and `/quince` redirect there. They are not this system. The remaining demo invitation (`/uno`) keeps the night floor and ticket chassis, then steals one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
 
@@ -260,8 +260,8 @@ Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small sc
 - **Do** set actions in Saira Condensed uppercase at 3px radius; keep WhatsApp as the fixed bottom-right circle.
 - **Do** leave empty price and Instagram as dashed gold gaps.
 - **Do** give each demo one stolen accent hue and its own display face, still sitting on night + ticket.
-- **Do** hand the hero ticket once (stub → headline → stamps → phone), tear process steps on scroll, and press stamps to 0.98. Do not stagger every band.
-- **Do** honor `prefers-reduced-motion` by skipping the hero handoff, scroll tears, FAB delay, and aurora/clock loops. Color changes on stamps stay.
+- **Do** hand the hero ticket once (stub → headline → stamps → phone), walk that same phone into the Casamiento door, let Quince and Cumple enter as siblings, tear process steps on scroll, and press stamps to 0.98. Do not split one phone into three and do not stagger every band.
+- **Do** honor `prefers-reduced-motion` by skipping the hero handoff, the phone bridge, scroll tears, FAB delay, and aurora/clock loops. Color changes on stamps stay.
 
 ### Don't:
 - **Don't** revive the old print-shop world (paper, process cyan/magenta, Petrona, Red Hat Text).

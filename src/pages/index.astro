@@ -31,6 +31,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
         <div class="ticket-perf ticket-perf-y" aria-hidden="true"></div>
         <Phone
           featured
+          bridge="from"
           href={`/${casamiento.slug}`}
           src="/brand/phones/casamiento.webp"
           alt="La invitación de Sofía y Mateo abierta en un celular"
@@ -45,6 +46,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
       <p>Son invitaciones reales. Entrá y recorrelas.</p>
       <div class="phone-line">
         <Phone
+          bridge="to"
           href={`/${casamiento.slug}`}
           src="/brand/phones/casamiento.webp"
           alt="Invitación de casamiento de Sofía y Mateo en un celular"
@@ -52,6 +54,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
           name="Sofía y Mateo"
         />
         <Phone
+          bridge="in"
           href={`/${quince.slug}`}
           src="/brand/phones/quince.webp"
           alt="Invitación de quince de Valentina en un celular"
@@ -59,6 +62,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
           name="Valentina"
         />
         <Phone
+          bridge="in"
           fit="contain"
           href={`/${giuliano.slug}`}
           src="/brand/phones/giuliano.webp"

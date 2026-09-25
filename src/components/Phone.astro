@@ -7,12 +7,21 @@ interface Props {
   name: string;
   featured?: boolean;
   fit?: "cover" | "contain";
+  bridge?: "from" | "to" | "in";
 }
 
-const { href, src, alt, label, name, featured = false, fit = "cover" } = Astro.props;
+const { href, src, alt, label, name, featured = false, fit = "cover", bridge } = Astro.props;
 ---
 
-<a class:list={["phone", { "phone-hero": featured, "phone-contain": fit === "contain" }]} href={href} target={featured ? undefined : "_blank"}>
+<a
+  class:list={[
+    "phone",
+    { "phone-hero": featured, "phone-contain": fit === "contain" },
+    bridge ? `phone-bridge-${bridge}` : "",
+  ]}
+  href={href}
+  target={featured ? undefined : "_blank"}
+>
   <span class="phone-shell">
     <span class="phone-island" aria-hidden="true"></span>
     <img src={src} alt={alt} width="390" height="804" />

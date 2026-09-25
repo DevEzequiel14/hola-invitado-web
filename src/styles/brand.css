@@ -159,6 +159,7 @@ html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
   align-content: center;
   min-height: 100svh;
   padding: 1.25rem 1.25rem 2.8rem;
+  overflow: visible;
 }
 
 .hero-ticket {
@@ -166,6 +167,7 @@ html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
   display: grid;
   gap: 0;
   background: transparent;
+  overflow: visible;
 }
 
 .hero-stub {
@@ -334,6 +336,15 @@ html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
   background: var(--ticket);
   box-shadow: var(--shadow);
   border-radius: 0 0 var(--radius) var(--radius);
+  overflow: visible;
+}
+
+.phone-bridge-flyer {
+  position: fixed;
+  z-index: 40;
+  margin: 0;
+  max-width: none;
+  pointer-events: none;
 }
 
 .phone-shell {

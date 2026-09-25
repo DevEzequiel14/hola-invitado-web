@@ -15,7 +15,7 @@ THESIS: The invitation is a night entrada: one ticket, a real card peeking throu
 
 OWN-WORLD: Warm night door. Quiet night on #1A1512 with muted #A63D4D / #4A4034 / #E0C07A washes, slow drift, no hex mesh, no neon bloom. Thermal-ticket chrome: perforations, stub rows, condensed display. Light ink on night. WhatsApp is a fixed circle at the bottom right and arrives after the hero ticket is handed over.
 
-STORY: Visitor sees an entrada and a real invitation card, understands it is for casamiento, quince or cumple, taps Contactame or opens a sample.
+STORY: Visitor sees an entrada and a real invitation card, scrolls that same phone into the three event doors, understands it is for casamiento, quince or cumple, taps Contactame or opens a sample.
 
 FIRST VIEWPORT: Full-bleed quiet night field. One entrada owns the first screen and is handed over once: stub, headline, stamps, then Sofía and Mateo’s phone lighting up. WhatsApp sits fixed at the bottom right after that handoff. No geographic lock. No confirmation spreadsheet.
 
