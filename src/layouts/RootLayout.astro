@@ -1,5 +1,6 @@
 ---
 import { brand } from "../data/site";
+import "../styles/view-transition.css";
 
 interface Props {
   title: string;
@@ -14,7 +15,7 @@ const {
   description,
   image = "/favicon.svg",
   indexable = true,
-  themeColor = "#0A0A0A",
+  themeColor = "#1A1512",
 } = Astro.props;
 
 const canonical = Astro.site
@@ -49,6 +50,7 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).href;
     <meta name="twitter:image" content={ogImage} />
     <meta name="theme-color" content={themeColor} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <slot name="fonts" />

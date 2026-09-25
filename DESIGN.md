@@ -1,19 +1,18 @@
 ---
 name: HolaInvitado
-description: Nightclub entrada ticket on a quiet dotted night field.
+description: Warm-night entrada ticket on a quiet night field.
 colors:
-  night: "#0A0A0A"
-  ticket: "#101114"
+  night: "#1A1512"
+  ticket: "#2A221C"
   ink: "#F6F3EE"
-  ink-soft: "#D7CFC4"
-  blue: "#2979FF"
-  blue-pressed: "#1565C0"
-  pink: "#FF80AB"
-  orange: "#FF6D00"
-  gold: "#FFD600"
-  gold-pressed: "#FFE566"
-  green: "#00E676"
-  indigo: "#3D5AFE"
+  ink-soft: "#E4D9CC"
+  wine: "#A63D4D"
+  wine-pressed: "#7A2E3A"
+  champagne: "#E0C07A"
+  champagne-pressed: "#EBD19A"
+  amber: "#D48A48"
+  olive: "#4A4034"
+  green: "#86C28A"
   stamp-white: "#FFFFFF"
 typography:
   display:
@@ -50,6 +49,8 @@ rounded:
   stamp: "3px"
   sm: "8px"
   ticket: "14px"
+  phone: "1.4rem"
+  phone-screen: "1.08rem"
   pill: "999px"
 spacing:
   tight: "0.42rem"
@@ -61,30 +62,30 @@ spacing:
   aurora-gutter: "28px"
 components:
   button-blue:
-    backgroundColor: "{colors.blue}"
+    backgroundColor: "{colors.wine}"
     textColor: "{colors.stamp-white}"
     typography: "{typography.label}"
     rounded: "{rounded.stamp}"
     padding: "0.7rem 1.15rem"
     height: "3.1rem"
   button-blue-hover:
-    backgroundColor: "{colors.blue-pressed}"
+    backgroundColor: "{colors.wine-pressed}"
     textColor: "{colors.stamp-white}"
     rounded: "{rounded.stamp}"
   button-gold:
-    backgroundColor: "{colors.gold}"
+    backgroundColor: "{colors.champagne}"
     textColor: "{colors.night}"
     typography: "{typography.label}"
     rounded: "{rounded.stamp}"
     padding: "0.7rem 1.15rem"
     height: "3.1rem"
   button-gold-hover:
-    backgroundColor: "{colors.gold-pressed}"
+    backgroundColor: "{colors.champagne-pressed}"
     textColor: "{colors.night}"
     rounded: "{rounded.stamp}"
   button-pink:
-    backgroundColor: "{colors.pink}"
-    textColor: "{colors.night}"
+    backgroundColor: "{colors.wine}"
+    textColor: "{colors.stamp-white}"
     typography: "{typography.label}"
     rounded: "{rounded.stamp}"
     padding: "0.7rem 1.15rem"
@@ -100,10 +101,10 @@ components:
     backgroundColor: "{colors.green}"
     textColor: "{colors.night}"
     rounded: "{rounded.pill}"
-    padding: "0.35rem 0.95rem"
-    height: "2.6rem"
+    padding: "0"
+    height: "3.5rem"
   chip-whatsapp-hover:
-    backgroundColor: "{colors.gold}"
+    backgroundColor: "{colors.champagne}"
     textColor: "{colors.night}"
     rounded: "{rounded.pill}"
   ticket-stock:
@@ -122,49 +123,48 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Nightclub Entrada Ticket"**
+**Creative North Star: "The Warm Night Entrada Ticket"**
 
-HolaInvitado’s brand world is a nightclub door: a thermal ticket held up against a quiet hexagonal dot field. The floor is club night. Soft blue, indigo, and pink washes drift slowly behind the mesh — never a rainbow bloom — and every piece of UI is ticket stock punched, perforated, or torn so that field shows through. Density is mobile-first and quarry-like: centered slabs of carbon ticket, then air, then another slab. It is not a print shop, not a wedding suite, and not a jungle vitrine.
+HolaInvitado’s brand world is a night door: a thermal ticket held up against a quiet warm night. Soft wine, chocolate, and champagne washes drift slowly — never a neon bloom, never a dotted notebook mesh — and every piece of UI is ticket stock punched, perforated, or torn so that field shows through. Density is mobile-first and quarry-like: centered slabs of carbon ticket, then air, then another slab. It is not a print shop, not a wedding suite, and not a jungle vitrine.
 
-Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and slow: the dots drift, torn names slide in, a clock hand ticks. Prefer-reduced-motion kills all three.
+Personality is loud at the stamp and quiet in the copy. Headlines are condensed, uppercase, and short enough to fit a stub. Body copy is Karla, concrete, and never tries to compete with the field. Motion is physical and short: the hero ticket is handed over once (stub, headline, stamps, then the phone lights), that same phone travels back into the Casamiento door while Quince and Cumple enter as the other two doors, process tears slide in when they enter the viewport, a clock hand ticks, and the night washes drift. Prefer-reduced-motion kills the spatial sequences and leaves color feedback.
 
-`/giuliano1-k8n2` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). `/sofiamateo-m4q7` is a one-off wedding skin (garden suite, Fraunces/Great Vibes/Outfit, sage and ivory). `/valentina15-n4w8` is a one-off quince skin (garden party, Cormorant Garamond/Nunito, sage and dusty rose). `/giuliano`, `/casamiento` and `/quince` redirect there. They are not this system. The remaining demo invitation (`/uno`) keeps the night floor, dotted field, and ticket chassis, then steals one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
+`/giuliano1-k8n2` is a one-off event skin (jungle vitrine, Fraunces/Nunito, sand and leaf). `/sofiamateo-m4q7` is a one-off wedding skin (garden suite, Fraunces/Great Vibes/Outfit, sage and ivory). `/valentina15-n4w8` is a one-off quince skin (garden party, Cormorant Garamond/Nunito, sage and dusty rose). `/giuliano`, `/casamiento` and `/quince` redirect there. They are not this system. The remaining demo invitation (`/uno`) keeps the night floor and ticket chassis, then steals one accent hue and a party-specific display face. Brand surfaces never inherit those party faces.
 
 **Key Characteristics:**
-- Hexagonal night dots over muted blue / indigo / pink washes; CSS drift ~56s, no hue-rotate; `html` is solid club night
+- Quiet warm night with muted wine / chocolate / champagne washes; CSS drift ~56s, no hue-rotate, no hex mesh; `html` is solid warm night (#1A1512)
 - Carbon ticket stock with 14px corners, 22px perforated gutters, and one-name-per-tear stubs
 - Saira Condensed uppercase stamps against Karla body
-- Each accent hue is stolen once (chip, stub, demo, clock) — never used as a page fill
-- Thermal action stamps at 3px radius; the WhatsApp chip is the only pill
+- Each accent hue is stolen once (fab, stub, demo, clock) — never used as a page fill
+- Thermal action stamps at 3px radius; they press to 0.98 on hover. The WhatsApp FAB is the only circle and arrives after the hero handoff
 - Centered bands with quarry gaps; `band-open` sections let the aurora read as the page
 
 ## Colors
 
-The palette is a nightclub door light: one black floor, one carbon ticket, warm ivory type, and accent hues sampled from the dotted field.
+The palette is a warm night door: one near-black floor, one carbon ticket, warm ivory type, and accent hues sampled from wine, champagne, and amber.
 
 ### Primary
-- **Club Blue**: Entrance stamp and chrome. Primary actions, text selection, and the scrollbar thumb. Hover deepens to blue-pressed. It is the first aurora stop after night, not a corporate blue.
+- **Wine**: Entrance stamp and chrome. Primary actions, closing stamp, text selection, and the scrollbar thumb. Hover deepens to wine-pressed. It is the first aurora stop after night, not a neon red.
 
 ### Secondary
-- **Neon Pink**: The stolen hue for the wordmark’s second half, the clock hand, the closing stamp, and the quince demo stub. Use it as a puncture, not a wash.
+- **Champagne**: The stolen metal for the wordmark’s second half, focus rings, footer links, dashed price/Instagram gaps, the clock-face rim, gold stamps, and the casamiento stub. The caret is champagne.
 
 ### Tertiary
-- **Ticket Gold**: Focus rings, footer links, dashed price/Instagram gaps, the clock-face rim, gold stamps, and the casamiento stub. The caret is gold.
-- **Thermal Orange**: Second problem-line and the uno demo stub.
-- **Confirm Green**: WhatsApp chip only (and the aurora stop it came from). Hover on that chip flips to gold, not a darker green.
-- **Aurora Indigo**: Last stop of the radial field. Not a button, not a fill, not a border.
+- **Amber**: Second problem-line, the uno demo stub, and Uno’s stolen hue. Warmer than thermal orange; never electric.
+- **Confirm Green**: WhatsApp FAB only. Mate leaf, not laser green. Hover on that button flips to champagne, not a darker green.
+- **Olive**: Giuliano’s brand-stub fill on `/` only. Not a button, not a page fill.
 
 ### Neutral
-- **Club Night**: The floor. `html`/`body` sit on it; theme-color is this black.
+- **Warm Night**: The floor. `html`/`body` sit on it; theme-color is this black.
 - **Ticket Stock**: Every band, ticket, tear, and plan stub. Slightly lifted off night so perforations read.
 - **Ticket Ivory**: Primary type on ticket and night.
 - **Stub Kraft**: Soft body, waiting tears, footer meta.
-- **Stamp White**: Type on club-blue stamps only.
+- **Stamp White**: Type on wine stamps only.
 
 ### Named Rules
-**The Stolen Hue Rule.** The aurora always carries all seven stops. A surface may steal one hue (orange or pink or gold, a green chip, a blue stamp). Never fill a page with a single aurora color.
+**The Stolen Hue Rule.** The aurora carries wine, chocolate, and champagne washes. A surface may steal one hue (amber, wine, champagne, or olive; a green chip; a wine stamp). Never fill a page with a single aurora color.
 
-**The Night Floor Rule.** Brand pages sit on club night with ticket stock. Do not bring back print-shop paper, process cyan, process magenta, cream wedding, or Giuliano jungle fills onto `/` or other brand chrome.
+**The Night Floor Rule.** Brand pages sit on warm night with ticket stock. Do not bring back print-shop paper, process cyan, process magenta, club neon, cream wedding, or Giuliano jungle fills onto `/` or other brand chrome.
 
 ## Typography
 
@@ -207,25 +207,25 @@ Depth is a nightclub doorway: one heavy ticket shadow, then overlapping stubs, t
 
 Ticket stock uses gently clipped corners (14px). A full ticket is 14px all around; a hero that still has its stub attached rounds only the outer corners (top on small screens, left/right at 880px+). Perforations are 7–8px punched holes on a 22px or 24px pitch (28px pitch in the plan aurora gutter). Tears and plan stubs bite a 6px half-circle out of the left edge.
 
-Action stamps are almost square (3px) — thermal printer, not app chrome. The WhatsApp chip is the only pill (999px). Skip-link uses 8px. The clock face is a circle. Demo RSVP fields (invite skins only) use 12px inputs and full-width pills; that language does not migrate onto `/`.
+Action stamps are almost square (3px) — thermal printer, not app chrome. The WhatsApp FAB is the only circle (999px). Skip-link uses 8px. The clock face is a circle. Demo RSVP fields (invite skins only) use 12px inputs and full-width pills; that language does not migrate onto `/`.
 
 ### Named Rules
-**The Thermal Stamp Rule.** Brand actions are 3px condensed stamps. The green WhatsApp chip stays a small pill in the top bar. Do not pill the marketing buttons.
+**The Thermal Stamp Rule.** Brand actions are 3px condensed stamps. The green WhatsApp control is a fixed circle at the bottom right. Do not pill the marketing buttons.
 
 ## Components
 
 ### Buttons
 Thermal stamps: condensed uppercase, 3px corners, min-height 3.1rem, padding 0.7rem 1.15rem, tracking 0.06em, no border.
 - **Shape:** Almost-square thermal clip (3px)
-- **Blue:** Club blue on stamp white. Hover/focus-visible: blue-pressed
-- **Gold:** Ticket gold on club night. Hover/focus-visible: gold-pressed
-- **Pink:** Neon pink on club night (closing ticket)
+- **Blue:** Wine on stamp white. Hover/focus-visible: wine-pressed. Class name kept.
+- **Gold:** Champagne on warm night. Hover/focus-visible: champagne-pressed
+- **Pink:** Wine on stamp white (closing ticket). Class name kept.
 - **Ghost:** Transparent with the 1.5px ivory inset ring
-- **Hover / Focus:** Color shift only (no lift). Keyboard focus-visible on the page is a 3px gold outline, offset 3px
+- **Hover / Focus:** Color shift plus a 0.98 stamp press (0.96 while active). No lift. Keyboard focus-visible on the page is a 3px champagne outline, offset 3px
 
 ### Chips
-- **Style:** WhatsApp chip — confirm green on club night, 999px, min-height 2.6rem, Karla 700 at 0.92rem, optional 16px WhatsApp mark
-- **State:** Hover/focus-visible flips the fill to ticket gold. It is a compact top-bar control, never full-width
+- **Style:** WhatsApp FAB — confirm green on warm night, 3.5rem circle, fixed bottom-right with safe-area inset, 28px WhatsApp mark, accessible name “Escribime por WhatsApp”
+- **State:** Hover/focus-visible flips the fill to champagne. The FAB stays hidden until the hero ticket finishes arriving, then scales in once. Hero and close keep Contactame stamps; the FAB is the shortcut, not the only action
 
 ### Cards / Containers
 - **Corner Style:** 14px ticket clip
@@ -238,16 +238,16 @@ Thermal stamps: condensed uppercase, 3px corners, min-height 3.1rem, padding 0.7
 Brand `/` has no lead form. On demo tickets only: transparent fields, 12px corners, 1.5px ivory ring at 28% opacity, gold caret, min-height 2.9rem. RSVP submit is a full-width pill in the stolen hue — event skin, not a brand stamp.
 
 ### Navigation
-Top bar: space-between, 1rem / 1.25rem (2.5rem sides from 880px). Wordmark is Saira Condensed 1.35rem uppercase; the second word is neon pink. No hamburger, no secondary nav. Footer is open on the aurora; links are gold 700. Sticky sample banner on demos: near-opaque night bar, gold link.
+Top bar: space-between, 1rem / 1.25rem (2.5rem sides from 880px). Wordmark is Saira Condensed 1.35rem uppercase; the second word is champagne. No hamburger, no secondary nav. Footer is open on the aurora; links are champagne 700. Sticky sample banner on demos: near-opaque night bar, champagne link.
 
 ### Ticket hero
-Signature. Headline + supporting line + stamps on ticket body; 22px perforated gutter; the stub column is a peek of a real invitation (Uno), not a guest list. That peek may steal Uno’s orange and Grandstander inside `.hero-card` only. Brand chrome around it stays Saira and Karla.
+Signature. Headline + supporting line + stamps on ticket body; 22px perforated gutter; the stub column is a phone showing a real invitation (Sofía y Mateo) as it opens on a celular. Brand chrome around it stays Saira and Karla.
 
 ### Clock
-Signature for the four steps. CSS grid 1fr / 6.4rem / 1fr. Gold 2px circular face, neon-pink hand, 12s linear rotation. Copy at 12, 3, 6, 9 — not a numbered list.
+Signature for the four steps. CSS grid 1fr / 6.4rem / 1fr. Champagne 2px circular face, wine hand, 12s linear rotation. Copy at 12, 3, 6, 9 — not a numbered list.
 
 ### Demo stubs
-Overlapping torn passes, each stealing one hue (orange / pink / gold) with night type. Rotations about -8deg / 2deg / 7deg. Hover/focus-visible: flatten to 0deg and lift 6px.
+Three phones — cumple, quince, casamiento — each showing a real first screen of that invitation. Graphite bezel, champagne hairline, island, captured mobile viewport. Hover/focus-visible does not invent a second elevation; the link is the phone.
 
 ### Plan ticket
 Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small screens). Price line is “Presupuesto por WhatsApp” to keep pricing consultative.
@@ -255,17 +255,18 @@ Two punched stubs with a 28px aurora gutter at 880px+ (22px hole row on small sc
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the night dotted field (hex mesh, muted blue/indigo/pink, slow drift, no hue-rotate) unless `prefers-reduced-motion`.
+- **Do** keep the quiet night field (muted wine/chocolate/champagne, slow drift, no hex mesh, no hue-rotate) unless `prefers-reduced-motion`.
 - **Do** build brand UI as ticket stock: 14px clip, perforations, left-edge bites, one 22/40 drop.
-- **Do** set actions in Saira Condensed uppercase at 3px radius; keep the WhatsApp chip as the small green pill.
+- **Do** set actions in Saira Condensed uppercase at 3px radius; keep WhatsApp as the fixed bottom-right circle.
 - **Do** leave empty price and Instagram as dashed gold gaps.
-- **Do** give each demo one stolen accent hue and its own display face, still sitting on night + ticket + dotted field.
-- **Do** honor `prefers-reduced-motion` by freezing aurora, tears, and the clock hand.
+- **Do** give each demo one stolen accent hue and its own display face, still sitting on night + ticket.
+- **Do** hand the hero ticket once (stub → headline → stamps → phone), walk that same phone into the Casamiento door, let Quince and Cumple enter as siblings, tear process steps on scroll, and press stamps to 0.98. Opening a phone morphs that device into the invitation’s first door. Do not split one phone into three and do not stagger every band.
+- **Do** honor `prefers-reduced-motion` by skipping the hero handoff, the phone bridge, the invite morph, scroll tears, FAB delay, and aurora/clock loops. Color changes on stamps stay.
 
 ### Don't:
 - **Don't** revive the old print-shop world (paper, process cyan/magenta, Petrona, Red Hat Text).
 - **Don't** fold Giuliano jungle tokens (sand, cream, leaf, bark, Fraunces, Nunito) into brand pages.
-- **Don't** fill a section with a rainbow bloom, hue-rotate cycle, or a single neon wash.
-- **Don't** pill marketing buttons or use 3px stamps on the WhatsApp chip.
+- **Don't** fill a section with a rainbow bloom, hue-rotate cycle, club neon, or a single wash.
+- **Don't** pill marketing buttons or put a WhatsApp chip back in the ticket stub.
 - **Don't** add a second shadow system, hard offset shadows, or a kicker/eyebrow layer above headlines.
 - **Don't** invent prices, Instagram handles, or testimonials to fill gaps.

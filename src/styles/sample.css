@@ -10,7 +10,7 @@
   top: -3rem;
   z-index: 40;
   padding: 0.6rem 0.9rem;
-  background: #101114;
+  background: #2a221c;
   color: #f6f3ee;
   border-radius: 8px;
 }
@@ -21,7 +21,7 @@
 
 html {
   color-scheme: dark;
-  scrollbar-color: #2979ff #0a0a0a;
+  scrollbar-color: #a63d4d #1a1512;
 }
 
 html,
@@ -31,7 +31,7 @@ body {
 }
 
 body {
-  background: #0a0a0a;
+  background: #1a1512;
   color: #f6f3ee;
   font-family: Karla, system-ui, sans-serif;
 }
@@ -47,7 +47,7 @@ body {
   top: 0;
   z-index: 12;
   padding: 0.7rem 1rem;
-  background: rgba(10, 10, 10, 0.88);
+  background: rgba(26, 21, 18, 0.88);
   color: #f6f3ee;
   font-weight: 700;
   font-size: 0.92rem;
@@ -56,7 +56,7 @@ body {
 }
 
 .sample-banner a {
-  color: #ffd600;
+  color: #e0c07a;
   margin-left: 0.4em;
 }
 
@@ -83,7 +83,7 @@ body {
 .invite-ticket {
   max-width: 440px;
   margin: 1.25rem auto 2.5rem;
-  background: #101114;
+  background: #2a221c;
   color: #f6f3ee;
   border-radius: 14px;
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.45);

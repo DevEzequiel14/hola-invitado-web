@@ -1,10 +1,11 @@
 ---
+import BrandMark from "../components/BrandMark.astro";
 import BrandLayout from "../layouts/BrandLayout.astro";
 ---
 
 <BrandLayout title="No está — HolaInvitado" description="Esa página no existe.">
   <header class="topbar">
-    <a class="mark" href="/">Hola<span>Invitado</span></a>
+    <a class="mark" href="/"><BrandMark />Hola<span>Invitado</span></a>
   </header>
   <main id="contenido" class="band">
     <h2>Esa página no está.</h2>

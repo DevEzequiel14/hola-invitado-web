@@ -1,0 +1,32 @@
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+[data-invite-open] {
+  view-transition-name: invite-open;
+}
+
+::view-transition-group(invite-open) {
+  animation-duration: 0.62s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(invite-open),
+::view-transition-new(invite-open) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation-duration: 0.48s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.36s;
+}

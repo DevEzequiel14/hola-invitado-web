@@ -14,7 +14,7 @@ export const instagram = "";
 export const realGiulianoUrl = "/giuliano1-k8n2";
 
 export const waMessages = {
-  general: "Hola, quiero una invitación web para un evento.",
+  general: "Hola, quiero una invitación digital para un evento.",
   esencial: "Hola, quiero consultar por una invitación Esencial de HolaInvitado.",
   premium: "Hola, quiero consultar por una invitación Premium de HolaInvitado.",
   uno: "Hola, vi la muestra de cumple infantil (/uno) y quiero una invitación así.",
@@ -28,23 +28,30 @@ export const waMessages = {
 export const plans = {
   esencial: {
     name: "Esencial",
+    lead: "La tarjeta y la confirmación.",
     includes: [
       "Diseño a medida para celular",
       "Fotos, fecha y lugar",
-      "Confirmación",
+      "Confirmación: si van y con cuántos",
     ],
   },
   premium: {
     name: "Premium",
+    lead: "La misma tarjeta, con más de la fiesta.",
     includes: [
       "Todo lo del Esencial",
+      "Más secciones: mapa, regalos, dress code",
       "Clave en el link",
-      "Más secciones",
-      "Animación",
-      "Recaditos de los invitados",
+      "Animación y recaditos de los invitados",
     ],
   },
 } as const;
+
+export const processSteps = [
+  { name: "Me escribís", detail: "Por WhatsApp" },
+  { name: "Armo la tarjeta", detail: "A medida" },
+  { name: "Te mando el link", detail: "Listo" },
+] as const;
 
 export type FeatureItem = {
   name: string;
@@ -53,7 +60,7 @@ export type FeatureItem = {
 };
 
 export const cardFeatures = {
-  lead: "La confirmación va de base. Lo demás se suma si la fiesta lo pide.",
+  lead: "La confirmación va de base. Mapa, fotos, regalos y lo demás se suman si la fiesta lo pide.",
   columns: [
     [
       { name: "Agendar fecha" },
