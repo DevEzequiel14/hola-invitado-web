@@ -21,7 +21,7 @@ function setupAudio() {
 		mute.setAttribute('aria-pressed', String(muted));
 		mute.setAttribute(
 			'aria-label',
-			muted ? 'Escuchar Photograph de Ed Sheeran' : 'Silenciar Photograph de Ed Sheeran',
+			muted ? 'Activar sonido' : 'Silenciar',
 		);
 		sessionStorage.setItem(AUDIO_KEY, muted ? 'off' : 'on');
 	};
@@ -115,8 +115,10 @@ function setupGallery() {
 	const dots = document.querySelectorAll<HTMLButtonElement>('[data-dot]');
 	if (!track || !dots.length) return;
 	const slides = [...track.querySelectorAll('.slide')];
+	const wide = window.matchMedia('(min-width: 900px)');
 
 	const sync = () => {
+		if (wide.matches) return;
 		const index = slides.findIndex((slide) => {
 			const rect = slide.getBoundingClientRect();
 			const parent = track.getBoundingClientRect();
@@ -129,6 +131,7 @@ function setupGallery() {
 	track.addEventListener('scroll', () => sync(), { passive: true });
 	dots.forEach((dot, i) => {
 		dot.addEventListener('click', () => {
+			if (wide.matches) return;
 			slides[i]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 		});
 	});

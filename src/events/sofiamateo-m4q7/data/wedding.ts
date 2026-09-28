@@ -43,7 +43,6 @@ export const wedding = {
 		name: 'Quinta Los Olivos',
 		address: 'Ruta 1 km 12, Palpalá, Jujuy',
 		maps: `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`,
-		waze: `https://waze.com/ul?q=${mapsQuery}&navigate=yes`,
 	},
 	ceremony: {
 		title: 'Ceremonia',
@@ -77,9 +76,6 @@ export const wedding = {
 		],
 	},
 	music: {
-		title: 'Photograph',
-		artist: 'Ed Sheeran',
-		credit: 'Photograph — Ed Sheeran',
 		src: '/events/sofiamateo-m4q7/photograph.mp3',
 		filename: 'photograph.mp3',
 		storageKey: 'sofiamateo-m4q7-audio',

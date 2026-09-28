@@ -33,36 +33,46 @@ import "./styles/global.css";
     <MuteButton />
     <main id="contenido">
       <Hero />
-      <Historia />
-      <Timeline />
-      <Place
-        id="ceremonia"
-        title={wedding.ceremony.title}
-        kind={wedding.ceremony.kind}
-        time={wedding.ceremony.time}
-        place={wedding.ceremony.place}
-        address={wedding.venue.address}
-        detail={wedding.ceremony.detail}
-        maps={wedding.venue.maps}
-        waze={wedding.venue.waze}
-      />
-      <Place
-        id="recepcion"
-        title={wedding.reception.title}
-        time={wedding.reception.summary}
-        place={wedding.reception.place}
-        address={wedding.venue.address}
-        detail={wedding.reception.detail}
-        maps={wedding.venue.maps}
-        waze={wedding.venue.waze}
-      />
-      <DressCode />
+      <div class="sheet">
+        <div class="invite-column">
+          <Historia />
+          <Timeline />
+        </div>
+        <div class="places-row">
+          <Place
+            id="ceremonia"
+            title={wedding.ceremony.title}
+            kind={wedding.ceremony.kind}
+            time={wedding.ceremony.time}
+            place={wedding.ceremony.place}
+            address={wedding.venue.address}
+            detail={wedding.ceremony.detail}
+            maps={wedding.venue.maps}
+          />
+          <Place
+            id="recepcion"
+            title={wedding.reception.title}
+            time={wedding.reception.summary}
+            place={wedding.reception.place}
+            address={wedding.venue.address}
+            detail={wedding.reception.detail}
+            maps={wedding.venue.maps}
+          />
+        </div>
+        <div class="invite-column">
+          <DressCode />
+        </div>
+      </div>
       <Gallery />
-      <Gifts />
-      <Practical />
-      <Rsvp />
+      <div class="sheet">
+        <div class="invite-column">
+          <Gifts />
+          <Practical />
+          <Rsvp />
+        </div>
+        <Footer />
+      </div>
     </main>
-    <Footer />
   </div>
 </EventLayout>
 

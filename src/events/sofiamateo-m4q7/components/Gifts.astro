@@ -8,17 +8,23 @@ import Divider from './Divider.astro';
 	<h2 class="section-title" id="regalos-title">Regalos</h2>
 	<div class="gift-box">
 		<p class="lede tight">{wedding.gifts.intro}</p>
-		<p>Si igual quieren dejar un detalle, acá va nuestro alias y el CBU.</p>
-		<div class="copy-row">
-			<div class="copy-item">
-				<code data-copy-value>{wedding.gifts.alias}</code>
-				<button type="button" data-copy>Copiar alias</button>
+		<p>Si igual quieren dejar un detalle, los datos están acá.</p>
+		<details class="gift-details">
+			<summary class="btn btn-ghost">
+				<span data-gift-closed>Ver datos</span>
+				<span data-gift-open>Ocultar datos</span>
+			</summary>
+			<div class="copy-row">
+				<div class="copy-item">
+					<code data-copy-value>{wedding.gifts.alias}</code>
+					<button type="button" data-copy>Copiar alias</button>
+				</div>
+				<div class="copy-item">
+					<code data-copy-value>{wedding.gifts.cbu}</code>
+					<button type="button" data-copy>Copiar CBU</button>
+				</div>
 			</div>
-			<div class="copy-item">
-				<code data-copy-value>{wedding.gifts.cbu}</code>
-				<button type="button" data-copy>Copiar CBU</button>
-			</div>
-		</div>
-		<p class="holder">Titular: {wedding.gifts.holder}. {wedding.gifts.cbuHint}</p>
+			<p class="holder">Titular: {wedding.gifts.holder}. {wedding.gifts.cbuHint}</p>
+		</details>
 	</div>
 </section>

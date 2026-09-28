@@ -15,16 +15,16 @@ const photos = [eucalipto, mesa, camino, alianzas, salon];
 	<Divider />
 	<h2 class="section-title" id="fotos-title">Un rato juntos</h2>
 	<p class="lede">Fotos de muestra. Después van las de ustedes.</p>
-	<div class="gallery-track" data-gallery tabindex="0" aria-label="Carrusel de fotos">
+	<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
 		{
 			wedding.gallery.map((item, index) => (
 				<figure class="slide">
 					<Image
 						src={photos[index]}
 						alt={item.alt}
-						widths={[360, 720]}
-						sizes="360px"
-						quality={70}
+						widths={[700, 1080, 1400]}
+						sizes="(min-width: 900px) 36vw, 86vw"
+						quality={82}
 					/>
 				</figure>
 			))

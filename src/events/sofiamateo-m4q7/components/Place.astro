@@ -8,10 +8,9 @@ interface Props {
 	address: string;
 	detail: string;
 	maps: string;
-	waze: string;
 }
 
-const { id, title, kind, time, place, address, detail, maps, waze } = Astro.props;
+const { id, title, kind, time, place, address, detail, maps } = Astro.props;
 ---
 
 <section class="section" id={id} aria-labelledby={`${id}-title`}>
@@ -24,9 +23,6 @@ const { id, title, kind, time, place, address, detail, maps, waze } = Astro.prop
 			<span>{place}</span>
 			<span>{address}</span>
 		</div>
-		<div class="btn-row">
-			<a class="btn btn-primary" href={maps} target="_blank" rel="noreferrer">Maps</a>
-			<a class="btn btn-ghost" href={waze} target="_blank" rel="noreferrer">Waze</a>
-		</div>
+		<a class="btn btn-primary" href={maps} target="_blank" rel="noreferrer">Cómo llegar</a>
 	</div>
 </section>
