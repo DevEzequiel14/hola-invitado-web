@@ -15,11 +15,8 @@ const slides = quince.photos.gallery.map((item, index) => ({
 }));
 ---
 
-<section class="section" id="fotos" aria-labelledby="fotos-title" style="padding-right:0;padding-left:0;">
-  <div style="padding-inline: var(--pad);">
-    <p class="eyebrow">{quince.copy.galleryEyebrow}</p>
-    <h2 class="section-title" id="fotos-title">{quince.copy.galleryTitle}</h2>
-  </div>
+<section class="section section-gallery" id="fotos" aria-labelledby="fotos-title">
+  <h2 class="section-title" id="fotos-title">{quince.copy.galleryTitle}</h2>
   <div class="gallery-wrap" data-gallery>
     <div class="gallery-track" data-gallery-track tabindex="0" aria-label="Carrusel de fotos">
       {
@@ -28,10 +25,10 @@ const slides = quince.photos.gallery.map((item, index) => ({
             <Image
               src={slide.src}
               alt={slide.alt}
-              widths={[360, 720]}
-              sizes="(max-width: 440px) 82vw, 360px"
+              widths={[360, 720, 1080, 1400]}
+              sizes="(min-width: 900px) 36vw, 82vw"
               loading={index === 0 ? 'eager' : 'lazy'}
-              quality={78}
+              quality={80}
             />
           </figure>
         ))
@@ -40,17 +37,21 @@ const slides = quince.photos.gallery.map((item, index) => ({
     <div class="gallery-nav">
       <div class="dots" data-gallery-dots>
         {
-          slides.map((slide, index) => (
+          slides.map((_, index) => (
             <button type="button" aria-label={`Ver foto ${index + 1}`} aria-current={index === 0 ? 'true' : 'false'}></button>
           ))
         }
       </div>
       <div class="gallery-arrows">
         <button class="icon-btn" type="button" data-gallery-prev aria-label="Foto anterior">
-          ‹
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
         </button>
         <button class="icon-btn" type="button" data-gallery-next aria-label="Foto siguiente">
-          ›
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
         </button>
       </div>
     </div>

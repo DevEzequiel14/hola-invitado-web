@@ -1,6 +1,7 @@
 ---
 import Lights from './decor/Lights.astro';
 import Butterflies from './decor/Butterflies.astro';
+import Meadow from './decor/Meadow.astro';
 import { quince } from '../data/quince';
 
 interface Props {
@@ -16,7 +17,7 @@ const { audioAvailable } = Astro.props;
   role="dialog"
   aria-modal="true"
   aria-labelledby="entrada-title"
-  data-open="true"
+  data-overlay
 >
   <div class="overlay-inner" data-invite-open>
     <span class="bokeh" style="width:90px;height:90px;top:8%;left:6%;"></span>
@@ -24,23 +25,20 @@ const { audioAvailable } = Astro.props;
     <span class="bokeh" style="width:36px;height:36px;top:28%;left:28%;animation-delay:1.4s;"></span>
     <span class="bokeh" style="width:22px;height:22px;top:22%;left:58%;animation-delay:2s;"></span>
     <span class="bokeh" style="width:70px;height:70px;bottom:28%;right:8%;animation-delay:1.1s;"></span>
-    <Lights />
+    <div class="overlay-lights" data-overlay-lights>
+      <Lights />
+    </div>
     <Butterflies />
-    <div class="overlay-copy">
-      <p class="eyebrow kicker">{quince.copy.overlayLead}</p>
+    <div class="overlay-copy" data-overlay-copy>
       <p id="entrada-title">{quince.honoree}</p>
       <p class="display headline">{quince.headline}</p>
-      <p class="overlay-hint">{quince.copy.overlayHint} {quince.phrase}.</p>
+      <p class="overlay-hint">{quince.phrase}.</p>
       <button class="btn btn-cream btn-shimmer" type="button" data-enter>
         {quince.copy.overlayCta}
       </button>
-      {
-        audioAvailable ? (
-          <p class="music-credit">{quince.music.credit}</p>
-        ) : (
-          <p class="music-credit">{quince.copy.overlayNoAudio}</p>
-        )
-      }
+    </div>
+    <div class="overlay-meadow" data-overlay-meadow>
+      <Meadow />
     </div>
   </div>
 </div>

@@ -4,24 +4,16 @@ import { quince } from '../data/quince';
 ---
 
 <section class="section" id="gran-dia" aria-labelledby="gran-dia-title">
-  <p class="eyebrow">{quince.copy.granDiaEyebrow}</p>
   <h2 class="section-title" id="gran-dia-title">{quince.copy.granDiaTitle}</h2>
   <p class="lede">{quince.copy.granDiaBody}</p>
-  <ul class="meta-list">
-    <li>
-      <span>Cuándo</span>
-      <strong>{quince.dateLabel}</strong>
-      {quince.timeLabel}
-    </li>
-    <li>
-      <span>Dónde</span>
+  <div class="invite-plate">
+    <p class="invite-date">{quince.dateLabel}</p>
+    <p class="invite-time">{quince.timeLabel}</p>
+    <p class="invite-place">
       <strong>{quince.venue}</strong>
       {quince.address}
-    </li>
-    <li>
-      <span>Anfitriones</span>
-      <strong>{quince.hosts}</strong>
-    </li>
-  </ul>
+    </p>
+    <p class="invite-hosts">{quince.hosts}</p>
+  </div>
 </section>
 <Divider />

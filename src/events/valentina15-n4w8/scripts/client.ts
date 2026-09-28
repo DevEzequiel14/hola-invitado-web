@@ -1,4 +1,10 @@
-import { gsap } from 'gsap';
+import {
+  playOverlayIntro,
+  playOverlayExit,
+  playPageMotion,
+  playThanksMotion,
+  pulseCopied,
+} from './motion';
 import {
   quince,
   mailtoUrl,
@@ -24,9 +30,11 @@ function setDigit(el: Element | null, next: string): void {
   });
 }
 
-function initOverlayAndAudio(): void {
-  const overlay = document.querySelector<HTMLElement>('#entrada');
-  const enter = document.querySelector<HTMLButtonElement>('[data-enter]');
+function firstName(nombre: string) {
+  return nombre.split(' ')[0] || nombre;
+}
+
+function setupAudio() {
   const toggle = document.querySelector<HTMLButtonElement>('[data-audio-toggle]');
   const audio = document.querySelector<HTMLAudioElement>('#bloom');
   const available = document.body.dataset.audioAvailable === 'true' && Boolean(audio);
@@ -34,25 +42,8 @@ function initOverlayAndAudio(): void {
   const setMuted = (muted: boolean) => {
     if (!toggle) return;
     toggle.dataset.muted = muted ? 'true' : 'false';
-    toggle.setAttribute('aria-label', muted ? 'Escuchar Bloom' : 'Silenciar música');
+    toggle.setAttribute('aria-label', muted ? 'Escuchar música' : 'Silenciar música');
     if (available) sessionStorage.setItem(audioKey, muted ? 'off' : 'on');
-  };
-
-  const playIfAllowed = async () => {
-    if (!available || !audio) return;
-    const pref = sessionStorage.getItem(audioKey);
-    if (pref === 'off') {
-      audio.pause();
-      setMuted(true);
-      return;
-    }
-    try {
-      audio.currentTime = 0;
-      await audio.play();
-      setMuted(false);
-    } catch {
-      setMuted(true);
-    }
   };
 
   toggle?.addEventListener('click', async () => {
@@ -70,24 +61,49 @@ function initOverlayAndAudio(): void {
     setMuted(true);
   });
 
-  enter?.addEventListener('click', async () => {
-    overlay?.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('locked');
+  return {
+    playFromGesture: async () => {
+      if (!available || !audio) return;
+      const pref = sessionStorage.getItem(audioKey);
+      if (pref === 'off') {
+        audio.pause();
+        setMuted(true);
+        return;
+      }
+      try {
+        audio.currentTime = 0;
+        await audio.play();
+        setMuted(false);
+      } catch {
+        setMuted(true);
+      }
+    },
+  };
+}
+
+function setupOverlay(onOpen: () => void) {
+  const overlay = document.querySelector<HTMLElement>('[data-overlay]');
+  const enter = overlay?.querySelector<HTMLButtonElement>('[data-enter]');
+  if (!overlay || !enter) return;
+
+  const blockScroll = (event: Event) => {
+    event.preventDefault();
+  };
+  overlay.addEventListener('touchmove', blockScroll, { passive: false });
+  overlay.addEventListener('wheel', blockScroll, { passive: false });
+
+  enter.addEventListener('click', () => {
+    overlay.removeEventListener('touchmove', blockScroll);
+    overlay.removeEventListener('wheel', blockScroll);
+    window.scrollTo(0, 0);
     document.body.classList.add('is-alive');
-    const playing = playIfAllowed();
-    if (overlay && !prefersReduced) {
-      overlay.dataset.open = 'leaving';
-      await gsap.to(overlay, {
-        opacity: 0,
-        duration: 0.78,
-        ease: 'power2.inOut',
-      });
-    }
-    overlay?.setAttribute('data-open', 'false');
-    await playing;
+    onOpen();
+    playOverlayExit(overlay, () => {
+      playPageMotion();
+    });
   });
 
-  enter?.focus();
+  enter.focus();
 }
 
 function initCountdown(): void {
@@ -100,7 +116,6 @@ function initCountdown(): void {
   const dd = root.querySelector('[data-dd]');
   const hh = root.querySelector('[data-hh]');
   const mm = root.querySelector('[data-mm]');
-  const ss = root.querySelector('[data-ss]');
   const msg = root.querySelector('[data-countdown-msg]');
   const live = root.querySelector('[data-countdown-live]');
   let lastLive = '';
@@ -130,11 +145,9 @@ function initCountdown(): void {
     const days = Math.floor(diff / 86_400_000);
     const hours = Math.floor((diff % 86_400_000) / 3_600_000);
     const mins = Math.floor((diff % 3_600_000) / 60_000);
-    const secs = Math.floor((diff % 60_000) / 1000);
     setDigit(dd, pad(days));
     setDigit(hh, pad(hours));
     setDigit(mm, pad(mins));
-    setDigit(ss, pad(secs));
 
     const spoken = `Faltan ${days} días, ${hours} horas y ${mins} minutos.`;
     if (live && spoken !== lastLive) {
@@ -156,6 +169,7 @@ function initGallery(): void {
   const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-gallery-dots] button'));
   const prev = root.querySelector<HTMLButtonElement>('[data-gallery-prev]');
   const next = root.querySelector<HTMLButtonElement>('[data-gallery-next]');
+  const wide = window.matchMedia('(min-width: 900px)');
 
   const currentIndex = () => {
     const left = track.scrollLeft;
@@ -172,11 +186,20 @@ function initGallery(): void {
   };
 
   const go = (index: number) => {
+    if (wide.matches) return;
     const i = (index + slides.length) % slides.length;
-    slides[i]?.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+    slides[i]?.scrollIntoView({
+      behavior: prefersReduced ? 'auto' : 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
   };
 
   const sync = () => {
+    if (wide.matches) {
+      slides.forEach((slide) => slide.classList.add('is-active'));
+      return;
+    }
     const i = currentIndex();
     dots.forEach((dot, idx) => {
       dot.setAttribute('aria-current', idx === i ? 'true' : 'false');
@@ -190,23 +213,33 @@ function initGallery(): void {
   next?.addEventListener('click', () => go(currentIndex() + 1));
   dots.forEach((dot, idx) => dot.addEventListener('click', () => go(idx)));
   track.addEventListener('scroll', () => sync(), { passive: true });
+  wide.addEventListener('change', sync);
   sync();
 }
 
-function initReveals(): void {
-  if (prefersReduced) return;
-  const io = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
+function setupCopy() {
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const value = btn.parentElement?.querySelector('[data-copy-value]')?.textContent?.trim();
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch {
+        const input = document.createElement('textarea');
+        input.value = value;
+        document.body.append(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
       }
-    },
-    { threshold: 0.16, rootMargin: '0px 0px -10% 0px' },
-  );
-
-  document.querySelectorAll('.section, .divider, .site-footer').forEach((el) => io.observe(el));
+      const previous = btn.textContent;
+      btn.textContent = 'Copiado';
+      pulseCopied(btn);
+      window.setTimeout(() => {
+        btn.textContent = previous;
+      }, 1600);
+    });
+  });
 }
 
 function readField(fd: FormData, key: string): string {
@@ -223,12 +256,16 @@ function showThanks(root: HTMLElement, data: RsvpMemory): void {
   const mail = root.querySelector<HTMLAnchorElement>('[data-mail-link]');
   form?.setAttribute('hidden', '');
   if (thanks) thanks.hidden = false;
-  if (title) title.textContent = data.asiste ? 'Nos vemos en el jardín' : 'Gracias por avisarnos';
+  const name = firstName(data.nombre);
+  if (title) {
+    title.textContent = data.asiste ? `Te esperamos, ${name}` : `Te extrañamos, ${name}`;
+  }
   if (body) {
     body.textContent = data.asiste ? quince.copy.rsvpThanksYes : quince.copy.rsvpThanksNo;
   }
   if (wa) wa.href = whatsappUrl(data);
   if (mail) mail.href = mailtoUrl(data);
+  if (thanks) playThanksMotion(thanks);
 }
 
 function initRsvp(): void {
@@ -262,6 +299,7 @@ function initRsvp(): void {
       nombre: readField(fd, 'nombre'),
       asiste,
       cantidad: asiste ? Number(readField(fd, 'cantidad') || '1') : 0,
+      cancion: readField(fd, 'cancion'),
       comentario: readField(fd, 'comentario'),
       website: readField(fd, 'website'),
     };
@@ -282,6 +320,7 @@ function initRsvp(): void {
         asiste: payload.asiste,
         cantidad: payload.cantidad,
         comentario: payload.comentario.trim(),
+        cancion: payload.cancion.trim(),
       };
       sessionStorage.setItem(rsvpKey, JSON.stringify(memory));
       showThanks(section, memory);
@@ -289,9 +328,7 @@ function initRsvp(): void {
       if (error) {
         error.hidden = false;
         error.textContent =
-          err instanceof Error
-            ? err.message
-            : 'No se pudo guardar la confirmación.';
+          err instanceof Error ? err.message : 'No se pudo guardar la confirmación.';
       }
     } finally {
       if (submit) submit.disabled = false;
@@ -300,9 +337,13 @@ function initRsvp(): void {
 }
 
 export function bootInvitation() {
-  initOverlayAndAudio();
+  const audio = setupAudio();
+  playOverlayIntro();
+  setupOverlay(() => {
+    void audio.playFromGesture();
+  });
   initCountdown();
   initGallery();
-  initReveals();
+  setupCopy();
   initRsvp();
 }

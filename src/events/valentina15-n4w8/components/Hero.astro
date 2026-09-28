@@ -13,8 +13,8 @@ import { quince } from '../data/quince';
       class="hero-photo"
       src={portada}
       alt={quince.photos.cover.alt}
-      widths={[440, 880, 1200]}
-      sizes="(max-width: 440px) 100vw, 440px"
+      widths={[440, 880, 1200, 1800]}
+      sizes="(min-width: 900px) 100vw, (max-width: 440px) 100vw, 440px"
       loading="eager"
       fetchpriority="high"
       quality={80}
@@ -23,11 +23,10 @@ import { quince } from '../data/quince';
     <Lights />
     <Butterflies />
     <div class="hero-copy" data-hero-copy>
-      <p class="eyebrow kicker">{quince.kicker}</p>
       <p class="hero-name">{quince.honoree}</p>
       <h1 class="display hero-headline">{quince.headline}</h1>
-      <div class="badge-15" aria-hidden="true">15</div>
       <p class="hero-phrase">{quince.phrase}</p>
+      <p class="hero-date">{quince.dateLabel}</p>
       <div
         class="countdown"
         data-countdown
@@ -50,10 +49,6 @@ import { quince } from '../data/quince';
           <div class="countdown-cell">
             <span class="countdown-value" data-mm>00</span>
             <span class="countdown-label">min</span>
-          </div>
-          <div class="countdown-cell is-seconds">
-            <span class="countdown-value" data-ss>00</span>
-            <span class="countdown-label">seg</span>
           </div>
         </div>
         <p class="visually-hidden" aria-live="polite" data-countdown-live></p>

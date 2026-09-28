@@ -1,0 +1,19 @@
+---
+import Divider from './decor/Divider.astro';
+import { quince } from '../data/quince';
+---
+
+<section class="section" id="info" aria-labelledby="info-title">
+  <h2 class="section-title" id="info-title">{quince.copy.practicalTitle}</h2>
+  <dl class="practical">
+    {
+      quince.practical.map((item) => (
+        <>
+          <dt>{item.title}</dt>
+          <dd>{item.text}</dd>
+        </>
+      ))
+    }
+  </dl>
+</section>
+<Divider />

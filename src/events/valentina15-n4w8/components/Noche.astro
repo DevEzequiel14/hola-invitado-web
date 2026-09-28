@@ -1,0 +1,23 @@
+---
+import Divider from './decor/Divider.astro';
+import { quince } from '../data/quince';
+---
+
+<section class="section" id="noche" aria-labelledby="noche-title">
+  <h2 class="section-title" id="noche-title">{quince.copy.nightTitle}</h2>
+  <p class="lede">{quince.copy.nightLead}</p>
+  <ol class="night">
+    {
+      quince.night.map((item) => (
+        <li>
+          <time datetime={item.time}>{item.time}</time>
+          <div>
+            <p class="night-label">{item.label}</p>
+            <p>{item.detail}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+<Divider />

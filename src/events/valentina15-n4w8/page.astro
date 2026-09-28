@@ -5,10 +5,14 @@ import EventLayout from "../../layouts/EventLayout.astro";
 import Overlay from "./components/Overlay.astro";
 import AudioToggle from "./components/AudioToggle.astro";
 import Hero from "./components/Hero.astro";
+import Carta from "./components/Carta.astro";
 import GranDia from "./components/GranDia.astro";
+import Noche from "./components/Noche.astro";
 import DressCode from "./components/DressCode.astro";
 import Gallery from "./components/Gallery.astro";
 import ComoLlegar from "./components/ComoLlegar.astro";
+import Practical from "./components/Practical.astro";
+import Gifts from "./components/Gifts.astro";
 import RsvpForm from "./components/RsvpForm.astro";
 import SiteFooter from "./components/SiteFooter.astro";
 import { quince } from "./data/quince";
@@ -30,7 +34,6 @@ const audioAvailable = existsSync(
   fonts={event.fonts}
   favicon={event.favicon}
   indexable={event.indexable}
-  bodyClass="locked"
   audioAvailable={audioAvailable}
 >
   <script is:inline slot="head">
@@ -41,25 +44,34 @@ const audioAvailable = existsSync(
     } catch {}
   </script>
   <Overlay audioAvailable={audioAvailable} />
-  <AudioToggle audioAvailable={audioAvailable} />
+  {audioAvailable ? <AudioToggle audioAvailable /> : null}
   <div class="shell">
     <main id="contenido">
       <Hero />
-      <GranDia />
-      <DressCode />
+      <div class="sheet">
+        <div class="invite-column">
+          <Carta />
+          <GranDia />
+          <Noche />
+          <DressCode />
+        </div>
+      </div>
       <Gallery />
-      <ComoLlegar />
-      <RsvpForm />
+      <div class="sheet sheet-end">
+        <div class="invite-column">
+          <ComoLlegar />
+          <Practical />
+          <Gifts />
+          <RsvpForm />
+        </div>
+        <SiteFooter />
+      </div>
     </main>
-    <SiteFooter />
   </div>
   <noscript>
     <style>
       .overlay {
         display: none !important;
-      }
-      body.locked {
-        overflow: auto;
       }
       .hero .bulb,
       .hero .butterfly,

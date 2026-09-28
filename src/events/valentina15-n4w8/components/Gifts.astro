@@ -1,0 +1,28 @@
+---
+import Divider from './decor/Divider.astro';
+import { quince } from '../data/quince';
+---
+
+<section class="section" id="regalos" aria-labelledby="regalos-title">
+  <h2 class="section-title" id="regalos-title">{quince.copy.giftsTitle}</h2>
+  <p class="lede tight">{quince.gifts.intro}</p>
+  <p class="lede">Si igual quieren dejar un detalle, los datos están acá.</p>
+  <details class="gift-details">
+    <summary class="btn btn-outline">
+      <span data-gift-closed>Ver datos</span>
+      <span data-gift-open>Ocultar datos</span>
+    </summary>
+    <div class="copy-row">
+      <div class="copy-item">
+        <code data-copy-value>{quince.gifts.alias}</code>
+        <button type="button" data-copy>Copiar alias</button>
+      </div>
+      <div class="copy-item">
+        <code data-copy-value>{quince.gifts.cbu}</code>
+        <button type="button" data-copy>Copiar CBU</button>
+      </div>
+    </div>
+    <p class="holder">Titular: {quince.gifts.holder}. {quince.gifts.hint}</p>
+  </details>
+</section>
+<Divider />

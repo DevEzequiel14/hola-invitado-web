@@ -20,9 +20,60 @@ export const quince = {
   whatsapp: '5493884123456',
   email: 'laura.rios@example.com',
   closing: 'Con amor, Vale',
-  dressCode:
-    'Elegante garden party. Vestido midi o largo, paleta suave, nada de blanco (reservado para la quinceañera).',
-  dressNote: 'El blanco es de Vale.',
+  hashtag: '#Los15DeVale',
+  dressCode: {
+    name: 'Garden party',
+    text: 'Vestido midi o largo, paleta suave. El blanco es de Vale: déjenselo a ella.',
+    note: 'El jardín tiene pasto. Mejor un taco que perdona.',
+  },
+  letter: {
+    title: 'Vale te escribe',
+    body: 'Quiero que estés esa noche. Va a haber vals, mesa dulce y la playlist que armamos con mamá. El jardín se prende al anochecer y hay un lugar guardado para vos.',
+    sign: 'Con amor, Vale',
+  },
+  night: [
+    {
+      time: '21:00',
+      label: 'Recepción',
+      detail: 'Las luces se prenden y el jardín se llena.',
+    },
+    {
+      time: '22:00',
+      label: 'Vals',
+      detail: 'El primero, con papá. Después, el que quieran.',
+    },
+    {
+      time: '00:00',
+      label: 'Mesa dulce',
+      detail: 'Torta, velas y un rato para las fotos.',
+    },
+    {
+      time: '04:00',
+      label: 'Cierre',
+      detail: 'Si las piernas aguantan, las luces siguen.',
+    },
+  ],
+  gifts: {
+    intro: 'Que vengas ya es el regalo.',
+    alias: 'vale.rios.15',
+    cbu: '0000003100098765432101',
+    holder: 'Laura Ríos',
+    hint: 'Datos de ejemplo, no operar.',
+  },
+  practical: [
+    {
+      title: 'Estacionamiento',
+      text: 'Hay lugar sobre Av. 25 de Mayo, al costado del salón. Entran con calma.',
+    },
+    {
+      title: 'Si llueve',
+      text: 'El jardín se muda adentro. Misma hora, mismas luces, mismo salón.',
+    },
+    {
+      title: 'Los chicos',
+      text: 'Sí, con sus grandes. Si se duermen temprano, avisá en la confirmación.',
+    },
+  ],
   palette: [
     { name: 'Salvia', hex: '#9CAF88' },
     { name: 'Crema', hex: '#F4EFE6' },
@@ -31,11 +82,8 @@ export const quince = {
     { name: 'Bosque', hex: '#3D5C4A' },
   ],
   music: {
-    title: 'Bloom',
-    artist: 'The Paper Kites',
-    src: '/events/valentina15-n4w8/bloom.mp3',
-    filename: 'bloom.mp3',
-    credit: 'Bloom — The Paper Kites',
+    src: '/events/valentina15-n4w8/The%20Paper%20Kites%20-%20Bloom.mp3',
+    filename: 'The Paper Kites - Bloom.mp3',
     storageKey: 'valentina15-n4w8-audio',
   },
   rsvpStorageKey: 'valentina15-n4w8-rsvp',
@@ -74,28 +122,24 @@ export const quince = {
     ],
   },
   copy: {
-    overlayLead: 'Abrí la invitación',
     overlayCta: 'Entrar al jardín',
-    overlayHint: 'El jardín ya está prendido.',
-    overlayNoAudio: 'Agregá bloom.mp3 para escuchar la canción.',
     heroCta: 'Confirmar asistencia',
-    today: '¡Es hoy!',
+    today: 'Es hoy.',
     after: 'Las luces ya se apagaron. Gracias por haber estado.',
-    granDiaEyebrow: 'El gran día',
     granDiaTitle: 'Una noche de jardín',
     granDiaBody:
-      'Mamá Laura y papá Diego te esperan para celebrar los 15 de Vale. El salón se prende al anochecer: flores silvestres, luces colgantes y la gente que queremos.',
-    dressEyebrow: 'Cómo vestirnos',
-    dressTitle: 'Dress code e inspiración',
-    galleryEyebrow: 'Recuerdos',
+      'Mamá Laura y papá Diego te esperan. El salón se prende al anochecer: flores silvestres, luces colgantes y la gente que queremos.',
+    nightTitle: 'La noche',
+    nightLead: 'Un hilo de horas, con las luces prendidas.',
+    dressTitle: 'Cómo vestirnos',
     galleryTitle: 'Un adelanto del jardín',
-    mapsEyebrow: 'El lugar',
     mapsTitle: 'Cómo llegar',
-    mapsBody: 'Salón Los Jazmines, en Palpalá. Elegí el mapa que más uses.',
-    rsvpEyebrow: 'Tu lugar',
-    rsvpTitle: '¿Nos vemos ese día?',
-    rsvpBody:
-      'Confirmá antes del 7 de noviembre. Nos ayuda un montón para armar las mesas y el jardín.',
+    mapsBody: 'Salón Los Jazmines, en Palpalá.',
+    practicalTitle: 'Para que vengan cómodos',
+    giftsTitle: 'Regalos',
+    rsvpTitle: '¿Nos vemos esa noche?',
+    rsvpBody: 'Confirmá antes del 7 de noviembre. Nos ayuda para armar las mesas y el jardín.',
+    rsvpSong: 'Una canción para la pista (opcional)',
     rsvpThanksYes: 'Qué alegría. Te esperamos en el jardín, con las luces ya prendidas.',
     rsvpThanksNo: 'Gracias por avisarnos. Te vamos a extrañar esa noche.',
     rsvpDeadline: 'Cierra el 7 de noviembre de 2026.',
@@ -108,7 +152,6 @@ const mapsQuery = encodeURIComponent(quince.address);
 
 export const maps = {
   google: `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`,
-  waze: `https://waze.com/ul?q=${mapsQuery}&navigate=yes`,
 } as const;
 
 export type RsvpMemory = {
@@ -116,11 +159,14 @@ export type RsvpMemory = {
   asiste: boolean;
   cantidad: number;
   comentario: string;
+  cancion: string;
 };
 
 export function whatsappUrl(rsvp: RsvpMemory): string {
   const siNo = rsvp.asiste ? 'sí' : 'no';
   let text = `Hola Laura, soy ${rsvp.nombre}. Confirmo asistencia a los 15 de Valentina: ${siNo}. Somos ${rsvp.cantidad}.`;
+  const song = rsvp.cancion.trim();
+  if (song) text += ` Canción: ${song}.`;
   const comment = rsvp.comentario.trim();
   if (comment) text += ` ${comment}`;
   return `https://wa.me/${quince.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -130,6 +176,8 @@ export function mailtoUrl(rsvp: RsvpMemory): string {
   const siNo = rsvp.asiste ? 'sí' : 'no';
   const subject = `Confirmación 15 de Valentina — ${rsvp.nombre}`;
   let body = `Hola Laura, soy ${rsvp.nombre}. Confirmo asistencia a los 15 de Valentina: ${siNo}. Somos ${rsvp.cantidad}.`;
+  const song = rsvp.cancion.trim();
+  if (song) body += `\nCanción: ${song}.`;
   const comment = rsvp.comentario.trim();
   if (comment) body += `\n\n${comment}`;
   return `mailto:${quince.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

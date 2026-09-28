@@ -1,0 +1,13 @@
+---
+import Divider from './decor/Divider.astro';
+import { quince } from '../data/quince';
+---
+
+<section class="section" id="carta" aria-labelledby="carta-title">
+  <h2 class="section-title" id="carta-title">{quince.letter.title}</h2>
+  <blockquote class="letter">
+    <p>{quince.letter.body}</p>
+    <footer>{quince.letter.sign}</footer>
+  </blockquote>
+</section>
+<Divider />
