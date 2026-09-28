@@ -100,11 +100,10 @@ select {
 
 .hero-photo,
 .hero-overlay,
-.hero-stars,
-.hero-scene,
 .hero-copy-top,
 .hero-copy-bottom {
   grid-area: 1 / 1;
+  min-width: 0;
 }
 
 .hero-photo {
@@ -140,19 +139,6 @@ select {
   );
 }
 
-.hero-scene {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.hero-scene svg {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: auto;
-}
-
 .hero-copy {
   position: relative;
   z-index: 1;
@@ -167,20 +153,6 @@ select {
 .hero-copy-bottom {
   align-self: end;
   padding: 0 1.25rem 2.5rem;
-}
-
-.hero-stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 14%, #fff4d4 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 28% 8%, #fff4d4 50%, transparent 51%),
-    radial-gradient(1.2px 1.2px at 46% 16%, #fff4d4 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 67% 10%, #fff4d4 50%, transparent 51%),
-    radial-gradient(1.2px 1.2px at 82% 18%, #fff4d4 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 91% 7%, #fff4d4 50%, transparent 51%);
-  opacity: 0.55;
 }
 
 .kicker {
@@ -241,30 +213,8 @@ html[data-rsvp="no"] [data-going-only] {
 }
 
 .btn-gold {
-  position: relative;
-  overflow: hidden;
   background: var(--gold);
   color: var(--bark);
-}
-
-.btn-gold.is-shine::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 38%,
-    rgba(255, 255, 255, 0.5) 50%,
-    transparent 62%
-  );
-  transform: translateX(-120%);
-  animation: hero-shine 0.85s ease-out forwards;
-}
-
-@keyframes hero-shine {
-  to {
-    transform: translateX(120%);
-  }
 }
 
 .btn-gold:hover,
@@ -324,32 +274,6 @@ html[data-rsvp="no"] [data-going-only] {
 .mascot-peek picture,
 .mascot-peek img {
   width: 100%;
-}
-
-.section-gallery {
-  position: relative;
-  overflow: hidden;
-}
-
-.mascot-stand {
-  position: absolute;
-  right: -1.6rem;
-  top: 0.15rem;
-  z-index: 0;
-  width: 12.75rem;
-  opacity: 0.18;
-  transform: rotate(-8deg);
-}
-
-.mascot-stand picture,
-.mascot-stand img {
-  width: 100%;
-}
-
-.section-gallery .section-title,
-.section-gallery .gallery {
-  position: relative;
-  z-index: 1;
 }
 
 .section-title {
@@ -456,42 +380,6 @@ html[data-rsvp="no"] [data-going-only] {
   width: 100%;
   height: auto;
   display: block;
-}
-
-.countdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.45rem;
-}
-
-.time-box {
-  background: var(--jungle);
-  color: var(--cream);
-  border-radius: 1rem;
-  padding: 0.7rem 0.2rem 0.6rem;
-  text-align: center;
-}
-
-.time-box strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  color: var(--gold);
-  line-height: 1;
-}
-
-.time-box span {
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 800;
-}
-
-.countdown-note {
-  margin: 0.85rem 0 0;
-  text-align: center;
-  font-weight: 700;
-  color: var(--jungle);
 }
 
 .actions {
@@ -704,33 +592,24 @@ html[data-rsvp="no"] [data-going-only] {
   text-decoration: underline;
 }
 
-.hero--pending .hero-photo {
-  transform: scale(1.08);
-}
+@media (max-width: 700px) and (orientation: portrait) {
+  .hero,
+  .hero-photo {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
 
-.hero--pending .hero-overlay {
-  opacity: 0.42;
-}
+  .hero-photo {
+    aspect-ratio: auto;
+  }
 
-.hero--pending .hero-scene {
-  opacity: 0;
-  transform: translateY(12px);
-}
+  .hero-copy-top {
+    padding-top: max(1.35rem, env(safe-area-inset-top));
+  }
 
-.hero--pending .hero-copy-top > * {
-  opacity: 0;
-  transform: translateY(-1.1rem);
-}
-
-.hero--pending .hero-copy-bottom > * {
-  opacity: 0;
-  transform: translateY(1.35rem);
-}
-
-.gallery--pending .section-title,
-.gallery--pending .gallery-row figure {
-  opacity: 0;
-  transform: translateY(1.4rem);
+  .hero-copy-bottom {
+    padding-bottom: max(2.5rem, calc(1.25rem + env(safe-area-inset-bottom)));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -740,21 +619,5 @@ html[data-rsvp="no"] [data-going-only] {
 
   .form.is-sending .form-fields {
     transition: none;
-  }
-
-  .hero--pending .hero-photo,
-  .hero--pending .hero-overlay,
-  .hero--pending .hero-scene,
-  .hero--pending .hero-copy-top > *,
-  .hero--pending .hero-copy-bottom > *,
-  .gallery--pending .section-title,
-  .gallery--pending .gallery-row figure {
-    opacity: 1;
-    transform: none;
-  }
-
-  .btn-gold.is-shine::after {
-    animation: none;
-    display: none;
   }
 }

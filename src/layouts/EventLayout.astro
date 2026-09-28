@@ -15,6 +15,8 @@ interface Props {
   indexable?: boolean;
   bodyClass?: string;
   audioAvailable?: boolean;
+  /** La portada puede dibujar bajo la muesca. El texto usa safe-area. */
+  coverViewport?: boolean;
 }
 
 const {
@@ -31,7 +33,12 @@ const {
   indexable = false,
   bodyClass,
   audioAvailable,
+  coverViewport = false,
 } = Astro.props;
+
+const viewport = coverViewport
+  ? "width=device-width, initial-scale=1, viewport-fit=cover"
+  : "width=device-width, initial-scale=1";
 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 const ogImage = new URL(image, Astro.site ?? Astro.url).href;
@@ -41,7 +48,7 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).href;
 <html lang="es-AR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content={viewport} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />

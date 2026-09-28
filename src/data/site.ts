@@ -32,6 +32,7 @@ export const plans = {
     includes: [
       "Diseño a medida para celular",
       "Fotos, fecha y lugar",
+      "Cómo llegar",
       "Confirmación: si van y con cuántos",
     ],
   },
@@ -40,7 +41,7 @@ export const plans = {
     lead: "La misma tarjeta, con más de la fiesta.",
     includes: [
       "Todo lo del Esencial",
-      "Más secciones: mapa, regalos, dress code",
+      "Más secciones: regalos, dress code",
       "Clave en el link",
       "Animación y recaditos de los invitados",
     ],
@@ -60,7 +61,7 @@ export type FeatureItem = {
 };
 
 export const cardFeatures = {
-  lead: "La confirmación va de base. Mapa, fotos, regalos y lo demás se suman si la fiesta lo pide.",
+  lead: "La confirmación va de base, con fotos, fecha, lugar y cómo llegar. Regalos y lo demás se suman si la fiesta lo pide.",
   columns: [
     [
       { name: "Agendar fecha" },

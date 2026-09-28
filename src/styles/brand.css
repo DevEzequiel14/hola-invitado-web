@@ -393,16 +393,6 @@ html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
   background: #1a1512;
 }
 
-.phone-contain .phone-shell,
-.phone-contain .phone-shell img {
-  background: #143326;
-}
-
-.phone-contain .phone-shell img {
-  object-fit: contain;
-  object-position: center;
-}
-
 .phone:hover .phone-shell,
 .phone:focus-visible .phone-shell {
   box-shadow:

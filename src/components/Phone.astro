@@ -6,17 +6,16 @@ interface Props {
   label: string;
   name: string;
   featured?: boolean;
-  fit?: "cover" | "contain";
   bridge?: "from" | "to" | "in";
 }
 
-const { href, src, alt, label, name, featured = false, fit = "cover", bridge } = Astro.props;
+const { href, src, alt, label, name, featured = false, bridge } = Astro.props;
 ---
 
 <a
   class:list={[
     "phone",
-    { "phone-hero": featured, "phone-contain": fit === "contain" },
+    { "phone-hero": featured },
     bridge ? `phone-bridge-${bridge}` : "",
   ]}
   href={href}

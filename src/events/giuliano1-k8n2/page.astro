@@ -2,27 +2,18 @@
 import { Picture } from "astro:assets";
 import EventLayout from "../../layouts/EventLayout.astro";
 import foto1 from "./assets/1.jpeg";
-import foto2 from "./assets/2.jpeg";
 import foto4 from "./assets/4.jpeg";
 import foto5 from "./assets/5.jpeg";
-import foto6 from "./assets/6.jpeg";
 import portada from "./assets/portada.jpeg";
 import simbaPeek from "./assets/simba-peek.png";
-import simbaStand from "./assets/simba-stand.png";
-import Countdown from "./components/Countdown.astro";
 import Divider from "./components/Divider.astro";
-import GalleryReveal from "./components/GalleryReveal.astro";
-import HeroReveal from "./components/HeroReveal.astro";
 import RsvpForm from "./components/RsvpForm.astro";
-import SavannahScene from "./components/SavannahScene.astro";
 import { event, pageDescription, pageTitle, shareDescription, shareImageAlt, shareTitle } from "./event";
 import "./styles.css";
 
 const photos = [
   { src: foto4, alt: "Giuliano sonriendo en la montaña" },
   { src: foto1, alt: "Giuliano con guantes de boxeo" },
-  { src: foto2, alt: "Giuliano recién nacido" },
-  { src: foto6, alt: "Giuliano con casco de juguete" },
   { src: foto5, alt: "Giuliano en el cochecito" },
 ];
 
@@ -55,6 +46,7 @@ const storageKey = `${event.slug}-rsvp`;
   fonts={event.fonts}
   favicon={event.favicon}
   indexable={event.indexable}
+  coverViewport
 >
   <script is:inline slot="head" define:vars={{ storageKey }}>
     try {
@@ -65,7 +57,7 @@ const storageKey = `${event.slug}-rsvp`;
     } catch {}
   </script>
   <main class="page" id="contenido">
-    <header class="hero" data-hero data-invite-open>
+    <header class="hero" data-invite-open>
       <div class="hero-photo">
         <Picture
           src={portada}
@@ -79,10 +71,6 @@ const storageKey = `${event.slug}-rsvp`;
         />
       </div>
       <div class="hero-overlay"></div>
-      <div class="hero-stars" aria-hidden="true"></div>
-      <div class="hero-scene">
-        <SavannahScene />
-      </div>
       <div class="hero-copy hero-copy-top">
         <p class="kicker">{event.inviteLine}</p>
         <p class="headline">{event.headline}</p>
@@ -141,27 +129,14 @@ const storageKey = `${event.slug}-rsvp`;
           </div>
           <div>
             <b>{event.venue}</b>
+            <span>{event.address}</span>
           </div>
         </div>
         <p class="hosts">{event.hostsLine}</p>
       </div>
     </section>
 
-    <Divider />
-
-    <section class="section section-gallery" aria-labelledby="fotos" data-gallery>
-      <div class="mascot mascot-stand" aria-hidden="true">
-        <Picture
-          src={simbaStand}
-          alt=""
-          formats={["avif", "webp"]}
-          widths={[280, 440]}
-          sizes="220px"
-          quality={85}
-          loading="lazy"
-        />
-      </div>
-      <h2 class="section-title" id="fotos">{event.galleryTitle}</h2>
+    <section class="section section-gallery" aria-label="Fotos de Giuliano">
       <div class="gallery">
         {
           galleryRows.map((row) => (
@@ -182,11 +157,6 @@ const storageKey = `${event.slug}-rsvp`;
           ))
         }
       </div>
-    </section>
-
-    <section class="section" aria-labelledby="falta" data-going-only>
-      <h2 class="section-title" id="falta">{event.countdownTitle}</h2>
-      <Countdown startIso={event.startIso} endIso={event.endIso} />
     </section>
 
     <section class="section" aria-labelledby="llegar" data-invite-only>
@@ -219,7 +189,5 @@ const storageKey = `${event.slug}-rsvp`;
       <p>{event.closing}</p>
       <a class="brand" href="/" aria-label="Volver a HolaInvitado">HolaInvitado</a>
     </footer>
-    <HeroReveal />
-    <GalleryReveal />
   </main>
 </EventLayout>
