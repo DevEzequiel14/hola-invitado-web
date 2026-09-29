@@ -1,0 +1,155 @@
+---
+import { Picture } from "astro:assets";
+import EventLayout from "../../layouts/EventLayout.astro";
+import foto1 from "./assets/01.jpg";
+import portada from "./assets/portada.jpg";
+import Divider from "./components/Divider.astro";
+import RsvpForm from "./components/RsvpForm.astro";
+import { event, pageDescription, pageTitle, shareDescription, shareImageAlt, shareTitle } from "./event";
+import "./styles.css";
+
+const storageKey = `${event.slug}-rsvp`;
+---
+
+<EventLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={event.ogImage}
+  shareTitle={shareTitle}
+  shareDescription={shareDescription}
+  shareImageAlt={shareImageAlt}
+  siteName={event.siteName}
+  themeColor={event.themeColor}
+  fonts={event.fonts}
+  favicon={event.favicon}
+  indexable={event.indexable}
+  coverViewport
+>
+  <script is:inline slot="head" define:vars={{ storageKey }}>
+    try {
+      const prev = JSON.parse(sessionStorage.getItem(storageKey) || "null");
+      if (prev?.asiste === "si" || prev?.asiste === "no") {
+        document.documentElement.dataset.rsvp = prev.asiste;
+      }
+    } catch {}
+  </script>
+  <main class="page" id="contenido">
+    <header class="hero" data-invite-open>
+      <div class="hero-photo">
+        <Picture
+          src={portada}
+          alt="Federico, portada de sus 18"
+          formats={["avif", "webp"]}
+          widths={[480, 960]}
+          sizes="(max-width: 440px) 100vw, 440px"
+          quality={75}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-copy hero-copy-top">
+        <p class="kicker">{event.inviteLine}</p>
+        <p class="headline">{event.headline}</p>
+      </div>
+      <div class="hero-copy hero-copy-bottom">
+        <h1>{event.honoree}</h1>
+        <div class="hero-actions" data-invite-only>
+          <a class="btn btn-fluor" href="#confirmar">Confirmá</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="section section-when" aria-labelledby="cuando" data-going-only>
+      <h2 class="section-title" id="cuando">{event.whenTitle}</h2>
+      <p class="lead" data-invite-only>{event.whenLead}</p>
+      <div class="card facts">
+        <div class="fact">
+          <div class="fact-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+              <path d="M3 10h18M8 3v4M16 3v4"></path>
+            </svg>
+          </div>
+          <div>
+            <b>{event.dateLabel}</b>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v5l3 2"></path>
+            </svg>
+          </div>
+          <div>
+            <b>{event.timeLabel}</b>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"></path>
+              <circle cx="12" cy="9" r="2.5"></circle>
+            </svg>
+          </div>
+          <div>
+            <b>{event.venue}</b>
+            <span>{event.address}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-gallery" aria-label="Fotos de muestra">
+      <div class="gallery">
+        <div class="gallery-row is-single">
+          <figure>
+            <Picture
+              src={foto1}
+              alt="Federico sonriendo"
+              formats={["avif", "webp"]}
+              widths={[440, 880]}
+              sizes="(max-width: 440px) 100vw, 440px"
+              quality={70}
+            />
+          </figure>
+        </div>
+      </div>
+      <p class="sample-note">Foto de muestra.</p>
+    </section>
+
+    <section class="section" aria-labelledby="llegar" data-invite-only>
+      <h2 class="section-title" id="llegar">{event.mapsTitle}</h2>
+      <p class="lead">{event.mapsLead}</p>
+      <div class="actions">
+        <a class="btn btn-ghost" href={event.mapsUrl} target="_blank" rel="noreferrer">Cómo llegar</a>
+      </div>
+    </section>
+
+    <Divider />
+
+    <section class="section" id="confirmar" aria-labelledby="rsvp">
+      <h2 class="section-title" id="rsvp">{event.rsvpTitle}</h2>
+      <p class="lead">{event.rsvpIntro}</p>
+      <RsvpForm
+        slug={event.slug}
+        closesIso={event.rsvpClosesIso}
+        thanksYesTitle={event.thanksYesTitle}
+        thanksYes={event.thanksYes}
+        thanksNoTitle={event.thanksNoTitle}
+        thanksNo={event.thanksNo}
+        thanksDoneYes={event.thanksDoneYes}
+        thanksDoneNo={event.thanksDoneNo}
+        mapsUrl={event.mapsUrl}
+        contactNote={event.rsvpContactNote}
+        closedNote={event.rsvpClosedNote}
+      />
+    </section>
+
+    <footer class="footer">
+      <p>{event.closing}</p>
+      <a class="brand" href="/" aria-label="Volver a HolaInvitado">HolaInvitado</a>
+    </footer>
+  </main>
+</EventLayout>

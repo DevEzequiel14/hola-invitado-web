@@ -23,6 +23,8 @@ export const waMessages = {
     "Hola, vi el casamiento de Sofía y Mateo (/sofiamateo-m4q7) y quiero una invitación así.",
   giuliano:
     "Hola, vi el añito de Giuliano (/giuliano1-k8n2) y quiero una invitación así, para un cumple infantil.",
+  federico:
+    "Hola, vi los 18 de Federico (/federico18-n3x8) y quiero una invitación Esencial así.",
 } as const;
 
 export const plans = {

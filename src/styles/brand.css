@@ -1064,7 +1064,13 @@ html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
   }
 
   .phone-line {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    max-width: 52rem;
+    margin-inline: auto;
+  }
+
+  .phone-line .phone-shell {
+    width: 9.4rem;
   }
 
   .verso {
