@@ -2,14 +2,7 @@
 import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, envField } from "astro/config";
-
-const publicPaths = ["/", "/uno", "/giuliano1-k8n2", "/sofiamateo-m4q7", "/valentina15-n4w8"];
-
-/** @param {string} pathname */
-function isPublicMarketingPath(pathname) {
-  const path = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname || "/";
-  return publicPaths.includes(path);
-}
+import { isPublicMarketingPath } from "./src/lib/slugs.ts";
 
 export default defineConfig({
   site: "https://holainvitados.com",
@@ -34,6 +27,26 @@ export default defineConfig({
       RSVP_SHEET_SECRET: envField.string({
         context: "server",
         access: "secret",
+        optional: true,
+      }),
+      UPSTASH_REDIS_REST_URL: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      UPSTASH_REDIS_REST_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      TURNSTILE_SECRET_KEY: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      PUBLIC_TURNSTILE_SITE_KEY: envField.string({
+        context: "client",
+        access: "public",
         optional: true,
       }),
     },

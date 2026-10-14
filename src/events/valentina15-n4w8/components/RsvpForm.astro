@@ -1,4 +1,5 @@
 ---
+import TurnstileField from "../../../components/TurnstileField.astro";
 import { quince } from '../data/quince';
 
 const quantities = Array.from({ length: 20 }, (_, i) => i + 1);
@@ -53,6 +54,8 @@ const quantities = Array.from({ length: 20 }, (_, i) => i + 1);
       <label for="website">Website</label>
       <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
     </div>
+
+    <TurnstileField />
 
     <p class="form-error" data-rsvp-error hidden></p>
     <button class="btn btn-primary" type="submit" data-rsvp-submit>Enviar confirmación</button>

@@ -1,4 +1,5 @@
 ---
+import TurnstileField from "../../../components/TurnstileField.astro";
 import { wedding } from '../data/wedding';
 import Divider from './Divider.astro';
 import Monogram from './Monogram.astro';
@@ -105,6 +106,7 @@ const closed = new Date(wedding.rsvp.closesIso).getTime() < Date.now();
 							<input type="text" name="company" tabindex="-1" autocomplete="off" />
 						</label>
 					</div>
+					<TurnstileField />
 					<p class="form-status" data-rsvp-status role="status"></p>
 				</form>
 

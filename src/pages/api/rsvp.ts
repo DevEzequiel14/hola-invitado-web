@@ -2,8 +2,12 @@ import type { APIRoute } from "astro";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { getPaidEvent } from "../../data/paid-events";
+import { getClientIp } from "../../lib/client-ip";
+import { isSameSiteRequest } from "../../lib/origin";
+import { enforceRsvpRateLimits } from "../../lib/rate-limit";
 import { appendToSheet } from "../../lib/sheets";
 import type { Rsvp } from "../../lib/rsvp";
+import { verifyTurnstile } from "../../lib/turnstile";
 
 export const prerender = false;
 
@@ -19,6 +23,7 @@ type Incoming = {
   menu: string;
   dieta: string;
   cancion: string;
+  turnstileToken: string;
 };
 
 async function readIncoming(request: Request): Promise<Incoming> {
@@ -35,6 +40,9 @@ async function readIncoming(request: Request): Promise<Incoming> {
       menu: String(body.menu ?? "").trim().slice(0, 160),
       dieta: String(body.dieta ?? "").trim().slice(0, 120),
       cancion: String(body.cancion ?? "").trim().slice(0, 120),
+      turnstileToken: String(
+        body["cf-turnstile-response"] ?? body.turnstileToken ?? "",
+      ).trim(),
     };
   }
 
@@ -49,6 +57,7 @@ async function readIncoming(request: Request): Promise<Incoming> {
     menu: String(form.get("menu") ?? "").trim().slice(0, 160),
     dieta: String(form.get("dieta") ?? "").trim().slice(0, 120),
     cancion: String(form.get("cancion") ?? "").trim().slice(0, 120),
+    turnstileToken: String(form.get("cf-turnstile-response") ?? "").trim(),
   };
 }
 
@@ -72,9 +81,13 @@ async function appendLocal(row: Rsvp) {
 
 /**
  * Confirmaciones de eventos reales (slug en paid-events).
- * Las demos no llaman este endpoint.
+ * Las demos de marketing con MockRsvp no llaman este endpoint.
  */
 export const POST: APIRoute = async ({ request }) => {
+  if (!isSameSiteRequest(request)) {
+    return json({ ok: false, error: "No pudimos recibir la confirmación." }, 403);
+  }
+
   let incoming: Incoming;
   try {
     incoming = await readIncoming(request);
@@ -82,8 +95,29 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: "No pudimos leer el formulario." }, 400);
   }
 
+  const ip = getClientIp(request);
+  const limited = await enforceRsvpRateLimits(ip, incoming.slug || "unknown");
+  if (!limited.success) {
+    const retryAfter = Math.max(1, Math.ceil((limited.reset - Date.now()) / 1000));
+    return json(
+      { ok: false, error: "Demasiados intentos. Probá de nuevo en un rato." },
+      429,
+      {
+        "Retry-After": String(retryAfter),
+        "X-RateLimit-Limit": String(limited.limit),
+        "X-RateLimit-Remaining": String(limited.remaining),
+      },
+    );
+  }
+
+  // Bots tontos: respondemos ok sin tocar Sheet ni Turnstile.
   if (incoming.honeypot) {
     return json({ ok: true });
+  }
+
+  const turnstile = await verifyTurnstile(incoming.turnstileToken, ip);
+  if (turnstile.required && !turnstile.ok) {
+    return json({ ok: false, error: "Completá la verificación anti-bots." }, 400);
   }
 
   const event = getPaidEvent(incoming.slug);
@@ -145,9 +179,16 @@ export const POST: APIRoute = async ({ request }) => {
   return json({ ok: true });
 };
 
-function json(body: unknown, status = 200) {
+function json(
+  body: unknown,
+  status = 200,
+  extraHeaders?: Record<string, string>,
+) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      ...extraHeaders,
+    },
   });
 }

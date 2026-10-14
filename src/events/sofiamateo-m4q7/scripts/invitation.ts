@@ -333,6 +333,7 @@ function setupRsvp() {
 			cancion: String(data.get('cancion') ?? '').trim(),
 			comentario: String(data.get('comentario') ?? '').trim(),
 			company: String(data.get('company') ?? ''),
+			'cf-turnstile-response': String(data.get('cf-turnstile-response') ?? ''),
 		};
 
 		try {

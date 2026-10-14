@@ -1,0 +1,26 @@
+---
+/**
+ * Cloudflare Turnstile (opt-in).
+ * Solo se renderiza si PUBLIC_TURNSTILE_SITE_KEY está definida.
+ * Activá TURNSTILE_SECRET_KEY en el server para exigir el token en /api/rsvp.
+ */
+const siteKey = (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "").trim();
+---
+
+{
+  siteKey ? (
+    <>
+      <div class="turnstile-wrap" data-turnstile>
+        <div class="cf-turnstile" data-sitekey={siteKey} data-theme="light" data-size="flexible"></div>
+      </div>
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    </>
+  ) : null
+}
+
+<style>
+  .turnstile-wrap {
+    margin: 0.75rem 0 0.25rem;
+    min-height: 1px;
+  }
+</style>

@@ -302,6 +302,7 @@ function initRsvp(): void {
       cancion: readField(fd, 'cancion'),
       comentario: readField(fd, 'comentario'),
       website: readField(fd, 'website'),
+      'cf-turnstile-response': readField(fd, 'cf-turnstile-response'),
     };
 
     if (submit) submit.disabled = true;

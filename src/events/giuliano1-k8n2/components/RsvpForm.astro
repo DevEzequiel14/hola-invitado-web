@@ -1,4 +1,6 @@
 ---
+import TurnstileField from "../../../components/TurnstileField.astro";
+
 interface Props {
   slug: string;
   closesIso: string;
@@ -73,6 +75,7 @@ const storageKey = `${slug}-rsvp`;
 
     <input type="hidden" name="slug" value={slug} />
     <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" />
+    <TurnstileField />
 
     <button class="btn btn-leaf" type="submit">¡Cuenten conmigo!</button>
     <p class="status" data-status hidden aria-live="polite"></p>

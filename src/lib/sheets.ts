@@ -5,8 +5,13 @@ export async function appendToSheet(row: Rsvp) {
   const webhook = (getSecret("RSVP_SHEET_WEBHOOK") ?? "").trim();
   if (!webhook) return false;
 
+  const secret = (getSecret("RSVP_SHEET_SECRET") ?? "").trim();
+  if (!secret) {
+    throw new Error("Falta RSVP_SHEET_SECRET: el webhook no acepta writes sin secret");
+  }
+
   const payload = {
-    secret: getSecret("RSVP_SHEET_SECRET") ?? "",
+    secret,
     ...formatSheetRow(row),
   };
 
