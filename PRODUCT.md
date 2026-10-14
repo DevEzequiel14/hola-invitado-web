@@ -30,7 +30,7 @@ No es un constructor self-service ni un marketplace de fiestas. Es un encargo a 
 
 - Marca, demos y eventos viven en `holainvitados.com` (este repo). El añito de Giuliano está en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo está en `/sofiamateo-m4q7`. Los 15 de Valentina están en `/valentina15-n4w8`. Los 18 de Federico (muestra Esencial neón) están en `/federico18-n3x8`. `/giuliano`, `/casamiento` y `/quince` redirigen a esas rutas.
 - Contacto de venta: WhatsApp `5493884849767`, con texto prearmado. No hay formulario web de leads.
-- Instagram en el pie: handle aún no pasado; no se muestra hasta tenerlo, no se inventa.
+- Instagram en el pie: [holainvitado](https://www.instagram.com/holainvitado/). Solo link, sin embed.
 - Precio: no se publica un número fijo en la landing. Los planes Esencial y Premium se consultan por WhatsApp para ajustar alcance y presupuesto.
 - Eventos reales: ruta `/nombreedad-codigo` (código de 4 letras o números). Giuliano, el casamiento de Sofía y Mateo y los 15 de Valentina son ejemplos públicos e indexables. Los clientes pagos siguientes van `noindex`, RSVP a Google Sheet.
 
@@ -46,7 +46,6 @@ Confirmado:
 
 Abierto / no inventar:
 
-- Handle o URL de Instagram.
 - Fotos reales de las demos inventadas; mientras tanto, material ilustrativo etiquetado como muestra.
 
 ## Brand Commitments
@@ -60,12 +59,13 @@ Abierto / no inventar:
 
 - Evento real de Giuliano Donaire Escudero (primer añito, 13 de septiembre 2026, Los Alisos, Jujuy), en `/giuliano1-k8n2`, con OK de Selena y Martín para usarlo como ejemplo.
 - Una demo propia (`/uno`) y cuatro ejemplos públicos (`/giuliano1-k8n2`, `/sofiamateo-m4q7`, `/valentina15-n4w8`, `/federico18-n3x8`).
-- Ausencias: Instagram, fotos libres de las demos inventadas.
+- Instagram: https://www.instagram.com/holainvitado/
+- Ausencias: fotos libres de las demos inventadas.
 
 ## Product Principles
 
 1. Se vende la invitación. La confirmación y los extras son de la tarjeta, no el titular.
-2. Lo que no pasó el dueño (Instagram) queda como hueco, no como invento. Las fotos de Giuliano sí tienen OK familiar.
+2. Lo que no pasó el dueño queda como hueco, no como invento. Las fotos de Giuliano sí tienen OK familiar.
 3. Las fiestas no se listan entre sí: el link de un quince no muestra otras fiestas.
 4. Vender es hablar por WhatsApp; la web demuestra, no captura leads.
 5. El primer pago entra en este mismo repo, no en otro Vercel.

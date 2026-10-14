@@ -15,10 +15,6 @@ Marca, demos y eventos reales viven en este repo. Cada evento es un paquete en `
 - `/giuliano1-k8n2` añito de Giuliano (ejemplo real, con OK familiar)
 - `/giuliano` redirige al añito
 
-## Huecos a propósito
-
-- Instagram (`instagram` en `src/data/site.ts`)
-
 ## Desarrollo
 
 Node 22. En Windows, si `node -v` no es 22:

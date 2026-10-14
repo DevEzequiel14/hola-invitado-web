@@ -5,11 +5,8 @@ export const siteUrl = "https://holainvitados.com";
 /** WhatsApp de venta. No hay formulario web. */
 export const whatsappNumber = "5493884849767";
 
-/**
- * Handle o URL. Vacío a propósito: no se inventa.
- * Cuando exista, puede ser "holainvitado" o una URL completa.
- */
-export const instagram = "";
+/** Perfil de la marca. Puede ser un handle o una URL completa. */
+export const instagram = "https://www.instagram.com/holainvitado/";
 
 export const realGiulianoUrl = "/giuliano1-k8n2";
 
