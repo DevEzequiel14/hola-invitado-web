@@ -14,6 +14,8 @@ Marca, demos y eventos reales viven en este repo. Cada evento es un paquete en `
 - `/casamiento` redirige al casamiento
 - `/giuliano1-k8n2` añito de Giuliano (ejemplo real, con OK familiar)
 - `/giuliano` redirige al añito
+- `/eduardo50-b0ca` 50 de Eduardo (ejemplo Premium, Boca)
+- `/federico18-n3x8` 18 de Federico (ejemplo Esencial)
 
 ## Desarrollo
 

@@ -1,3 +1,4 @@
+import { event as eduardo } from "../events/eduardo50-b0ca/event";
 import { event as federico } from "../events/federico18-n3x8/event";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
 import { event as casamiento } from "../events/sofiamateo-m4q7/event";
@@ -47,6 +48,13 @@ export const paidEvents: Record<string, PaidEvent> = {
     honoree: federico.firstName,
     rsvpClosesIso: federico.rsvpClosesIso,
     index: federico.indexable,
+    showcase: true,
+  },
+  [eduardo.slug]: {
+    slug: eduardo.slug,
+    honoree: eduardo.honoree,
+    rsvpClosesIso: eduardo.rsvpClosesIso,
+    index: eduardo.indexable,
     showcase: true,
   },
 };

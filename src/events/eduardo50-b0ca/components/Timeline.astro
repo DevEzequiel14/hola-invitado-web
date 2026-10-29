@@ -1,0 +1,26 @@
+---
+import { party } from '../data/party';
+import Divider from './Divider.astro';
+import Icon from './Icon.astro';
+---
+
+<section class="section" id="dia" aria-labelledby="dia-title">
+	<Divider />
+	<h2 class="section-title" id="dia-title">La noche</h2>
+	<p class="lede">De la recepción al último baile.</p>
+	<ol class="timeline">
+		{
+			party.timeline.map((item) => (
+				<li class="timeline-item">
+					<div class="timeline-icon">
+						<Icon name={item.icon} />
+					</div>
+					<div>
+						<p class="timeline-time">{item.time}</p>
+						<p class="timeline-label">{item.label}</p>
+					</div>
+				</li>
+			))
+		}
+	</ol>
+</section>

@@ -1,0 +1,29 @@
+---
+interface Props {
+	class?: string;
+}
+
+const className = Astro.props.class ?? 'monogram';
+---
+
+<svg class={className} viewBox="0 0 120 120" aria-hidden="true">
+	<!-- Escudo inspirado en azul y amarillo (muestra, no marca oficial) -->
+	<path
+		d="M60 8 L98 26 L104 68 L78 108 L60 114 L42 108 L16 68 L22 26 Z"
+		fill="#F9B000"
+	></path>
+	<path
+		d="M60 16 L92 31 L97 66 L76 100 L60 105 L44 100 L23 66 L28 31 Z"
+		fill="#003087"
+	></path>
+	<path d="M30 34 L52 22 L96 72 L74 84 Z" fill="#F9B000"></path>
+	<text
+		x="60"
+		y="72"
+		text-anchor="middle"
+		font-family="'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif"
+		font-weight="800"
+		font-size="22"
+		fill="#F6EFDC"
+		letter-spacing="1">E·50</text>
+</svg>
