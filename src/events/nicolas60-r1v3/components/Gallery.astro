@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import escudo from '../assets/01-escudo.webp';
+import cancha from '../assets/02-cancha.webp';
+import rayas from '../assets/03-rayas.webp';
+import mesa from '../assets/04-mesa.webp';
+import tribuna from '../assets/05-tribuna.webp';
+import { party } from '../data/party';
+import Divider from './Divider.astro';
+
+const photos = [escudo, cancha, rayas, mesa, tribuna];
+---
+
+<section class="section" id="fotos" aria-labelledby="fotos-title">
+	<Divider />
+	<h2 class="section-title" id="fotos-title">Blanco y rojo</h2>
+	<p class="lede">Fotos de muestra: cancha, colores y la noche.</p>
+	<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
+		{
+			party.gallery.map((item, index) => (
+				<figure class="slide">
+					<Image
+						src={photos[index]}
+						alt={item.alt}
+						widths={[700, 1080, 1400]}
+						sizes="(min-width: 900px) 36vw, 86vw"
+						quality={82}
+					/>
+				</figure>
+			))
+		}
+	</div>
+	<div class="dots" data-dots>
+		{
+			party.gallery.map((item, index) => (
+				<button class:list={['dot', index === 0 && 'is-on']} type="button" aria-label={`Ver foto ${index + 1}: ${item.alt}`} data-dot={index}></button>
+			))
+		}
+	</div>
+</section>

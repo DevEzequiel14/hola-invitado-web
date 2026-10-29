@@ -3,6 +3,7 @@ import { cardFeatures, faqs, plans, processSteps, waMessages } from "../data/sit
 import { event as eduardo } from "../events/eduardo50-b0ca/event";
 import { event as federico } from "../events/federico18-n3x8/event";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
+import { event as nicolas } from "../events/nicolas60-r1v3/event";
 import { event as casamiento } from "../events/sofiamateo-m4q7/event";
 import { event as quince } from "../events/valentina15-n4w8/event";
 import { whatsappUrl } from "../lib/whatsapp";
@@ -45,7 +46,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
     </section>
 
     <section class="band band-open band-gap" id="tarjetas" aria-labelledby="tarjetas-titulo">
-      <h2 id="tarjetas-titulo">Cinco fiestas para abrir.</h2>
+      <h2 id="tarjetas-titulo">Seis fiestas para abrir.</h2>
       <p>Entrá y recorrelas. Hay Esencial y Premium.</p>
       <div class="phone-line">
         <Phone
@@ -87,6 +88,14 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
           alt="Invitación de los 50 de Eduardo en un celular"
           label="Cincuenta"
           name="Eduardo"
+        />
+        <Phone
+          bridge="in"
+          href={`/${nicolas.slug}`}
+          src="/brand/phones/nicolas.webp"
+          alt="Invitación de los 60 de Nicolás en un celular"
+          label="Sesenta"
+          name="Nicolás"
         />
       </div>
     </section>

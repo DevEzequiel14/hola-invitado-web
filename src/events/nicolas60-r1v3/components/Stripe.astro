@@ -1,0 +1,13 @@
+---
+interface Props {
+	class?: string;
+}
+
+const className = Astro.props.class ?? 'stripe';
+---
+
+<div class={className} aria-hidden="true">
+	<span class="stripe-band stripe-band-a"></span>
+	<span class="stripe-band stripe-band-b"></span>
+	<span class="stripe-band stripe-band-c"></span>
+</div>

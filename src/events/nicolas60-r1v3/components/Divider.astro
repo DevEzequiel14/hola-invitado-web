@@ -1,0 +1,15 @@
+---
+interface Props {
+	class?: string;
+}
+const className = Astro.props.class ?? 'divider';
+---
+
+<div class={className} aria-hidden="true">
+	<svg viewBox="0 0 220 40" fill="none">
+		<path d="M10 20H92" stroke="#F9B000" stroke-width="1"></path>
+		<path d="M128 20H210" stroke="#F9B000" stroke-width="1"></path>
+		<path d="M110 10 120 20 110 30 100 20Z" stroke="#E8C547" stroke-width="1.1" stroke-linejoin="round"></path>
+		<circle cx="110" cy="20" r="2.2" fill="#F9B000"></circle>
+	</svg>
+</div>
