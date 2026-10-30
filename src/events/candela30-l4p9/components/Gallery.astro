@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import print from '../assets/01-print.webp';
+import runway from '../assets/02-runway.webp';
+import gold from '../assets/03-gold.webp';
+import mesa from '../assets/04-mesa.webp';
+import night from '../assets/05-night.webp';
+import { party } from '../data/party';
+import Divider from './Divider.astro';
+
+const photos = [print, runway, gold, mesa, night];
+---
+
+<section class="section" id="fotos" aria-labelledby="fotos-title">
+	<Divider />
+	<h2 class="section-title" id="fotos-title">Print &amp; night</h2>
+	<p class="lede">Material ilustrativo: print, pasarela y la noche del quincho.</p>
+	<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
+		{
+			party.gallery.map((item, index) => (
+				<figure class="slide">
+					<Image
+						src={photos[index]}
+						alt={item.alt}
+						widths={[700, 1080, 1400]}
+						sizes="(min-width: 900px) 36vw, 86vw"
+						quality={82}
+					/>
+				</figure>
+			))
+		}
+	</div>
+	<div class="dots" data-dots>
+		{
+			party.gallery.map((item, index) => (
+				<button class:list={['dot', index === 0 && 'is-on']} type="button" aria-label={`Ver foto ${index + 1}: ${item.alt}`} data-dot={index}></button>
+			))
+		}
+	</div>
+</section>

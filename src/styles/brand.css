@@ -423,13 +423,17 @@ html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: end;
-  gap: 1.1rem 1.3rem;
+  align-items: flex-start;
+  gap: 1.25rem 1.15rem;
   margin-top: 2rem;
 }
 
-.phone-line .phone-shell {
+.phone-line .phone {
   width: 10.6rem;
+}
+
+.phone-line .phone-shell {
+  width: 100%;
 }
 
 .stub-head {
@@ -1065,12 +1069,17 @@ html.brand-motion:not(.is-ready):has(.hero) .wa-fab {
 
   .phone-line {
     flex-wrap: wrap;
-    max-width: 52rem;
+    max-width: 56rem;
     margin-inline: auto;
+    gap: 1.35rem 1.2rem;
+  }
+
+  .phone-line .phone {
+    width: 9.4rem;
   }
 
   .phone-line .phone-shell {
-    width: 9.4rem;
+    width: 100%;
   }
 
   .verso {

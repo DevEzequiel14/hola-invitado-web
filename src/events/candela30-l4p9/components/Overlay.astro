@@ -1,0 +1,37 @@
+---
+import { party } from '../data/party';
+import Monogram from './Monogram.astro';
+---
+
+<div class="overlay" data-overlay role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+	<div class="runway" aria-hidden="true">
+		<span class="runway-spot"></span>
+		<span class="runway-floor"></span>
+	</div>
+	<div class="curtains" aria-hidden="true">
+		<div class="curtain curtain-left" data-curtain-left>
+			<span class="curtain-fur" aria-hidden="true"></span>
+			<span class="curtain-fold"></span>
+			<span class="curtain-fold"></span>
+			<span class="curtain-fold"></span>
+		</div>
+		<span class="curtain-seam" data-curtain-seam></span>
+		<div class="curtain curtain-right" data-curtain-right>
+			<span class="curtain-fur" aria-hidden="true"></span>
+			<span class="curtain-fold"></span>
+			<span class="curtain-fold"></span>
+			<span class="curtain-fold"></span>
+		</div>
+	</div>
+	<div class="overlay-card" data-invite-open>
+		<Monogram />
+		<p class="kicker overlay-kicker">{party.kicker}</p>
+		<h1 class="script" id="overlay-title">{party.honoree.name}</h1>
+		<div class="gold-line"></div>
+		<p class="overlay-copy">{party.phrase}</p>
+		<p class="overlay-welcome">Pase VIP · {party.date.short}</p>
+		<div class="overlay-actions">
+			<button class="btn btn-primary" type="button" data-open-invite>Correr la cortina</button>
+		</div>
+	</div>
+</div>

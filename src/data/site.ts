@@ -26,6 +26,8 @@ export const waMessages = {
     "Hola, vi los 50 de Eduardo (/eduardo50-b0ca) y quiero una invitación Premium así.",
   nicolas:
     "Hola, vi los 60 de Nicolás (/nicolas60-r1v3) y quiero una invitación Premium así.",
+  candela:
+    "Hola, vi los 30 de Candela (/candela30-l4p9) y quiero una invitación Premium así.",
 } as const;
 
 export const plans = {

@@ -16,6 +16,7 @@ Marca, demos y eventos reales viven en este repo. Cada evento es un paquete en `
 - `/giuliano` redirige al añito
 - `/eduardo50-b0ca` 50 de Eduardo (ejemplo Premium, Boca)
 - `/nicolas60-r1v3` 60 de Nicolás (ejemplo Premium, River)
+- `/candela30-l4p9` 30 de Candela (ejemplo Premium, animal print)
 - `/federico18-n3x8` 18 de Federico (ejemplo Esencial)
 
 ## Desarrollo

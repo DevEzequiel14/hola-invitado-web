@@ -1,0 +1,12 @@
+---
+import { party } from '../data/party';
+import Divider from './Divider.astro';
+---
+
+<footer class="footer">
+	<Divider />
+	<p class="hosts">Los invitan<br /><strong>{party.invitedBy}</strong></p>
+	<p class="hashtag">{party.hashtag}</p>
+	<p class="closing">{party.closing}</p>
+	<p class="brand"><a href="/" aria-label="Volver a HolaInvitado">{party.brand}</a></p>
+</footer>

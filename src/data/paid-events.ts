@@ -1,3 +1,4 @@
+import { event as candela } from "../events/candela30-l4p9/event";
 import { event as eduardo } from "../events/eduardo50-b0ca/event";
 import { event as federico } from "../events/federico18-n3x8/event";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
@@ -63,6 +64,13 @@ export const paidEvents: Record<string, PaidEvent> = {
     honoree: nicolas.honoree,
     rsvpClosesIso: nicolas.rsvpClosesIso,
     index: nicolas.indexable,
+    showcase: true,
+  },
+  [candela.slug]: {
+    slug: candela.slug,
+    honoree: candela.honoree,
+    rsvpClosesIso: candela.rsvpClosesIso,
+    index: candela.indexable,
     showcase: true,
   },
 };

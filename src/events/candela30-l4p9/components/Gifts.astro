@@ -1,0 +1,26 @@
+---
+import { party } from '../data/party';
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="regalos" aria-labelledby="regalos-title">
+	<Divider />
+	<h2 class="section-title" id="regalos-title">Regalos</h2>
+	<div class="gift-box">
+		<p class="lede tight">{party.gifts.intro}</p>
+		<p>Si igual quieren dejarle un detalle a Candela, el alias está acá.</p>
+		<details class="gift-details">
+			<summary class="btn btn-ghost">
+				<span data-gift-closed>Ver datos</span>
+				<span data-gift-open>Ocultar datos</span>
+			</summary>
+			<div class="copy-row">
+				<div class="copy-item">
+					<code data-copy-value>{party.gifts.alias}</code>
+					<button type="button" data-copy>Copiar alias</button>
+				</div>
+			</div>
+			<p class="holder">Titular: {party.gifts.holder}. {party.gifts.cbuHint}</p>
+		</details>
+	</div>
+</section>

@@ -110,9 +110,15 @@ function playPhoneBridge() {
       boxShadow: p > 0.14 ? "none" : "",
     });
 
+    // Con 6+ demos, el stagger viejo (0.08) dejaba las últimas a media opacidad.
+    const n = Math.max(1, enters.length);
+    const firstAt = 0.46;
+    const lastAt = 0.78;
+    const step = n > 1 ? (lastAt - firstAt) / (n - 1) : 0;
+    const fade = 0.2;
     enters.forEach((el, i) => {
-      const local = gsap.utils.clamp(0, 1, (p - (0.5 + i * 0.08)) / 0.24);
-      gsap.set(el, { opacity: local, y: 28 * (1 - local) });
+      const local = gsap.utils.clamp(0, 1, (p - (firstAt + i * step)) / fade);
+      gsap.set(el, { opacity: local, y: 22 * (1 - local) });
     });
 
     const land = gsap.utils.clamp(0, 1, (p - 0.86) / 0.1);

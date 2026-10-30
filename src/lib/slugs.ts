@@ -8,6 +8,7 @@ export const PUBLIC_PATHS = [
   "/federico18-n3x8",
   "/eduardo50-b0ca",
   "/nicolas60-r1v3",
+  "/candela30-l4p9",
 ] as const;
 
 export const RESERVED_SLUGS = ["uno", "quince", "casamiento", "giuliano"] as const;

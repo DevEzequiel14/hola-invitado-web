@@ -1,5 +1,6 @@
 ---
 import { cardFeatures, faqs, plans, processSteps, waMessages } from "../data/site";
+import { event as candela } from "../events/candela30-l4p9/event";
 import { event as eduardo } from "../events/eduardo50-b0ca/event";
 import { event as federico } from "../events/federico18-n3x8/event";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
@@ -46,7 +47,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
     </section>
 
     <section class="band band-open band-gap" id="tarjetas" aria-labelledby="tarjetas-titulo">
-      <h2 id="tarjetas-titulo">Seis fiestas para abrir.</h2>
+      <h2 id="tarjetas-titulo">Siete fiestas para abrir.</h2>
       <p>Entrá y recorrelas. Hay Esencial y Premium.</p>
       <div class="phone-line">
         <Phone
@@ -96,6 +97,14 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
           alt="Invitación de los 60 de Nicolás en un celular"
           label="Sesenta"
           name="Nicolás"
+        />
+        <Phone
+          bridge="in"
+          href={`/${candela.slug}`}
+          src="/brand/phones/candela.webp"
+          alt="Invitación de los 30 de Candela en un celular"
+          label="Treinta"
+          name="Candela"
         />
       </div>
     </section>

@@ -2,7 +2,7 @@
 
 Este repo es `holainvitados.com`: marca, demos y cada fiesta real.
 
-El añito de Giuliano vive en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo vive en `/sofiamateo-m4q7`. Los 15 de Valentina viven en `/valentina15-n4w8`. Los 18 de Federico viven en `/federico18-n3x8`. Los 50 de Eduardo viven en `/eduardo50-b0ca`. Los 60 de Nicolás viven en `/nicolas60-r1v3`. `/giuliano`, `/casamiento` y `/quince` redirigen ahí.
+El añito de Giuliano vive en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo vive en `/sofiamateo-m4q7`. Los 15 de Valentina viven en `/valentina15-n4w8`. Los 18 de Federico viven en `/federico18-n3x8`. Los 50 de Eduardo viven en `/eduardo50-b0ca`. Los 60 de Nicolás viven en `/nicolas60-r1v3`. Los 30 de Candela viven en `/candela30-l4p9`. `/giuliano`, `/casamiento` y `/quince` redirigen ahí.
 
 ## Qué no hacer
 

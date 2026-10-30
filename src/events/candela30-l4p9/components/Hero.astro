@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import portada from '../assets/portada.webp';
+import { party } from '../data/party';
+---
+
+<header class="hero" id="inicio">
+	<Image
+		src={portada}
+		alt={party.heroAlt}
+		class="hero-photo"
+		widths={[512, 768, 1024]}
+		sizes="100vw"
+		quality={88}
+		format="webp"
+		priority
+	/>
+	<div class="hero-shade"></div>
+	<div class="hero-inner">
+		<p class="kicker hero-reveal">{party.kicker}</p>
+		<h1 class="script hero-reveal">{party.honoree.name}</h1>
+		<div class="hero-band hero-reveal" aria-hidden="true"></div>
+		<p class="hero-phrase hero-reveal">{party.phrase}</p>
+		<p class="hero-date hero-reveal">{party.date.label}</p>
+		<div
+			class="countdown hero-reveal"
+			data-countdown
+			data-target={party.date.iso}
+			aria-live="polite"
+		>
+			<p class="sr-only" data-countdown-live>Calculando el tiempo que falta.</p>
+			<div class="countdown-item">
+				<span class="countdown-value" data-days>00</span>
+				<span class="countdown-label">días</span>
+			</div>
+			<div class="countdown-item">
+				<span class="countdown-value" data-hours>00</span>
+				<span class="countdown-label">horas</span>
+			</div>
+			<div class="countdown-item">
+				<span class="countdown-value" data-minutes>00</span>
+				<span class="countdown-label">minutos</span>
+			</div>
+		</div>
+		<a class="btn btn-primary hero-reveal" href="#confirmar">Confirmar asistencia</a>
+	</div>
+</header>
