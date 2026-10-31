@@ -18,11 +18,10 @@ export function playOverlayIntro() {
 	}
 
 	const pieces = card.children;
-	gsap.set(pieces, { opacity: 0, y: 16 });
+	gsap.set(pieces, { opacity: 0, y: 18 });
 	gsap.set('.overlay .gold-line', { scaleX: 0, y: 0 });
 	gsap.set('.overlay .monogram', { scale: 0.88, y: 0 });
-	gsap.set('.gate-door-left', { rotateY: 0 });
-	gsap.set('.gate-door-right', { rotateY: 0 });
+	gsap.set('.gate-glow', { opacity: 0, scale: 0.86 });
 	overlay.classList.add('is-ready');
 
 	const tl = gsap.timeline({
@@ -33,13 +32,13 @@ export function playOverlayIntro() {
 	});
 	tl.fromTo(
 		'.gate-photo',
-		{ scale: 1.08, opacity: 0.2 },
-		{ scale: 1, opacity: 0.55, duration: 1.35, ease: 'power2.out' },
+		{ scale: 1.12, opacity: 0.18, filter: 'saturate(0.7) contrast(1.05) brightness(0.55)' },
+		{ scale: 1, opacity: 0.94, filter: 'saturate(1.08) contrast(1.06) brightness(1)', duration: 1.45, ease: 'power2.out' },
 		0,
 	)
-		.from('.gate-door-left', { xPercent: -8, opacity: 0.4, duration: 1.05 }, 0.05)
-		.from('.gate-door-right', { xPercent: 8, opacity: 0.4, duration: 1.05 }, 0.05)
-		.to('.overlay .monogram', { opacity: 1, scale: 1, y: 0, duration: 0.95 }, 0.28)
+		.fromTo('.gate-shade', { opacity: 1.15 }, { opacity: 1, duration: 1.2 }, 0)
+		.to('.gate-glow', { opacity: 0.85, scale: 1, duration: 1.1, ease: 'power2.out' }, 0.18)
+		.to('.overlay .monogram', { opacity: 1, scale: 1, y: 0, duration: 0.95 }, 0.32)
 		.to('.overlay-kicker', { opacity: 1, y: 0, duration: 0.5 }, '-=0.45')
 		.to('.overlay .script', { opacity: 1, y: 0, duration: 0.75 }, '-=0.32')
 		.to('.overlay .gold-line', { opacity: 1, scaleX: 1, duration: 0.7, ease: 'power2.inOut' }, '-=0.45')
@@ -177,28 +176,50 @@ export function playOverlayExit(overlay: HTMLElement, onReveal: () => void) {
 		return;
 	}
 
-	const left = overlay.querySelector<HTMLElement>('[data-gate-left]');
-	const right = overlay.querySelector<HTMLElement>('[data-gate-right]');
 	const card = overlay.querySelector<HTMLElement>('.overlay-card');
-	const arch = overlay.querySelector<HTMLElement>('.gate-arch');
+	const photo = overlay.querySelector<HTMLElement>('.gate-photo');
+	const shade = overlay.querySelector<HTMLElement>('[data-gate-shade]');
+	const glow = overlay.querySelector<HTMLElement>('[data-gate-glow]');
 	const tl = gsap.timeline({
 		onComplete: finish,
 	});
 
+	/* Entrar al Monumental: la tarjeta se retira, la fachada se acerca y se aclara */
 	if (card) {
-		tl.to(card, { y: -18, opacity: 0, duration: 0.55, ease: 'power2.in' }, 0);
+		tl.to(
+			card,
+			{
+				y: -36,
+				scale: 0.94,
+				opacity: 0,
+				filter: 'blur(6px)',
+				duration: 0.7,
+				ease: 'power2.in',
+			},
+			0,
+		);
 	}
-	if (arch) {
-		tl.to(arch, { opacity: 0, duration: 0.45, ease: 'power2.in' }, 0.05);
+	if (glow) {
+		tl.to(glow, { scale: 1.35, opacity: 0, duration: 0.75, ease: 'power2.in' }, 0.05);
 	}
-	if (left) {
-		tl.to(left, { rotateY: -78, duration: 1.15, ease: 'power2.inOut' }, 0.08);
+	if (shade) {
+		tl.to(shade, { opacity: 0, duration: 0.85, ease: 'power2.inOut' }, 0.12);
 	}
-	if (right) {
-		tl.to(right, { rotateY: 78, duration: 1.15, ease: 'power2.inOut' }, 0.08);
+	if (photo) {
+		tl.to(
+			photo,
+			{
+				scale: 1.12,
+				opacity: 1,
+				filter: 'saturate(1.12) contrast(1.08) brightness(1.08)',
+				duration: 1.15,
+				ease: 'power2.inOut',
+			},
+			0.08,
+		);
 	}
-	tl.to(overlay, { opacity: 0, duration: 0.85, ease: 'power2.inOut' }, 0.55);
-	tl.call(onReveal, undefined, 0.42);
+	tl.to(overlay, { opacity: 0, duration: 0.55, ease: 'power2.inOut' }, 0.72);
+	tl.call(onReveal, undefined, 0.48);
 }
 
 export function playPaneMotion(pane: HTMLElement) {

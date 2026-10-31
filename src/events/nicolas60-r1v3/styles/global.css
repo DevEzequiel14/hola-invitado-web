@@ -230,113 +230,41 @@ textarea {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	opacity: 0.55;
-	filter: saturate(0.92) contrast(1.05);
+	object-position: center 38%;
+	opacity: 0.94;
+	filter: saturate(1.08) contrast(1.06);
+	transform-origin: center 42%;
+	will-change: transform, opacity, filter;
 }
 
 .gate-shade {
 	position: absolute;
 	inset: 0;
 	background:
-		radial-gradient(ellipse 70% 55% at 50% 42%, transparent 0%, rgba(10, 6, 7, 0.55) 55%, rgba(10, 6, 7, 0.92) 100%),
-		linear-gradient(180deg, rgba(10, 6, 7, 0.35), rgba(10, 6, 7, 0.75));
+		radial-gradient(ellipse 70% 52% at 50% 38%, transparent 0%, rgba(10, 6, 7, 0.22) 58%, rgba(10, 6, 7, 0.9) 100%),
+		linear-gradient(180deg, rgba(10, 6, 7, 0.28) 0%, transparent 28%, transparent 62%, rgba(10, 6, 7, 0.72) 100%);
+	will-change: opacity;
 }
 
-.gate-doors {
+/* Halo suave River detrás de la tarjeta: marca el umbral, no una puerta */
+.gate-glow {
 	position: absolute;
 	left: 50%;
-	top: 12%;
-	bottom: 8%;
-	width: min(100%, var(--card));
-	transform: translateX(-50%);
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 0;
-	transform-style: preserve-3d;
-}
-
-.gate-door {
-	position: relative;
-	height: 100%;
-	transform-style: preserve-3d;
-	background:
-		linear-gradient(180deg, #2a2426 0%, #1a1416 55%, #120e10 100%);
-	border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
-	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
-	overflow: hidden;
-}
-
-.gate-door-left {
-	transform-origin: left center;
-	border-right: 0;
-	border-radius: 4px 0 0 4px;
-}
-
-.gate-door-right {
-	transform-origin: right center;
-	border-left: 0;
-	border-radius: 0 4px 4px 0;
-}
-
-.gate-panel {
-	position: absolute;
-	inset: 8% 12%;
-	border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
-	background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), transparent 45%);
-}
-
-.gate-sash {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 14%;
-	opacity: 0.92;
-}
-
-.gate-sash-a {
-	left: 22%;
-	background: var(--gold);
-}
-
-.gate-sash-b {
-	left: 42%;
-	background: var(--royal);
-}
-
-.gate-handle {
-	position: absolute;
-	top: 48%;
-	width: 10px;
-	height: 10px;
+	top: 46%;
+	width: min(92vw, 28rem);
+	height: min(72vh, 34rem);
+	transform: translate(-50%, -50%);
 	border-radius: 50%;
-	background: var(--gold-soft);
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--royal) 55%, transparent);
-}
-
-.gate-door-left .gate-handle {
-	right: 10%;
-}
-
-.gate-door-right .gate-handle {
-	left: 10%;
-}
-
-.gate-arch {
-	position: absolute;
-	left: 50%;
-	top: 8%;
-	width: min(100%, var(--card));
-	transform: translateX(-50%);
-	height: 4%;
-	z-index: 1;
-}
-
-.gate-arch-bar {
-	display: block;
-	height: 100%;
-	background: linear-gradient(90deg, transparent, var(--royal) 18%, var(--gold) 50%, var(--royal) 82%, transparent);
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse at center,
+		color-mix(in srgb, var(--royal) 28%, transparent) 0%,
+		color-mix(in srgb, var(--royal) 10%, transparent) 42%,
+		transparent 72%
+	);
+	filter: blur(2px);
 	opacity: 0.85;
-	border-radius: 2px;
+	will-change: opacity, transform;
 }
 
 .overlay-card {
@@ -344,6 +272,15 @@ textarea {
 	text-align: center;
 	position: relative;
 	z-index: 2;
+	padding: 1.4rem 1.2rem 1.5rem;
+	border-radius: 14px;
+	background: color-mix(in srgb, var(--night) 88%, transparent);
+	border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+	box-shadow:
+		0 22px 56px rgba(0, 0, 0, 0.55),
+		inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
+	backdrop-filter: blur(14px);
+	will-change: transform, opacity;
 }
 
 html:has([data-overlay]:not(.is-gone)) .mute,
@@ -547,7 +484,7 @@ html:has([data-overlay]:not(.is-gone)) .audio-hint {
 
 .hero-photo {
 	object-fit: cover;
-	object-position: center 40%;
+	object-position: center 45%;
 }
 
 .hero-shade {
@@ -1261,8 +1198,8 @@ textarea {
 }
 
 .thanks-mono {
-	width: 76px;
-	height: 76px;
+	width: 4.6rem;
+	height: auto;
 	margin: 0 auto 0.35rem;
 }
 
@@ -1336,9 +1273,17 @@ textarea {
 }
 
 .monogram {
-	width: 88px;
-	height: 88px;
+	display: block;
+	width: 5.5rem;
+	height: auto;
 	margin: 0 auto 0.7rem;
+}
+
+.monogram img {
+	width: 100%;
+	height: auto;
+	display: block;
+	filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.45));
 }
 
 .is-hidden {
@@ -1396,7 +1341,7 @@ textarea {
 	}
 
 	.hero-photo {
-		object-position: center 18%;
+		object-position: center 40%;
 	}
 
 	.hero-inner {
@@ -1523,9 +1468,8 @@ textarea {
 		transition: none !important;
 	}
 
-	.gate-door,
-	.gate-arch {
-		display: none;
+	.gate-glow {
+		opacity: 0.5;
 	}
 
 	.story-card:hover,

@@ -108,31 +108,31 @@ export const party = {
 		{
 			id: 'escudo',
 			src: '01-escudo.webp',
-			alt: 'Escudo estilizado en rojo y blanco, inspirado en la pasión millonaria',
+			alt: 'Escudo de River Plate sobre fondo negro',
 		},
 		{
 			id: 'cancha',
 			src: '02-cancha.webp',
-			alt: 'Fachada de estadio de noche con arcos y banderas rojas y blancas',
+			alt: 'Vista aérea del Monumental al atardecer, con humo rojo y blanco',
 		},
 		{
-			id: 'rayas',
+			id: 'camiseta',
 			src: '03-rayas.webp',
-			alt: 'Tela de camiseta a rayas blancas y rojas',
+			alt: 'Escudo bordado de River Plate sobre la camiseta',
 		},
 		{
-			id: 'mesa',
+			id: 'banda',
 			src: '04-mesa.webp',
-			alt: 'Mesa de fiesta con camino rojo y blanco y detalles elegantes',
+			alt: 'Escudo de River sobre tela blanca y roja, con el Monumental de fondo',
 		},
 		{
 			id: 'tribuna',
 			src: '05-tribuna.webp',
-			alt: 'Tribuna de estadio de noche, luces y atmósfera de partido',
+			alt: 'Tribuna del Monumental en fiesta, bengalas y banderas',
 		},
 	],
 	heroAlt:
-		'Entrada monumental de estadio de noche, arcos de piedra y banderas rojas y blancas',
+		'El Monumental de noche visto desde arriba, tribuna llena y humo blanco y rojo',
 	menus: ['Asado', 'Vegetariano', 'Sin TACC'] as const,
 	storage: {
 		audio: 'nicolas60-r1v3-audio',

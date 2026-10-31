@@ -16,24 +16,8 @@ import puerta from '../assets/puerta.webp';
 			quality={82}
 			format="webp"
 		/>
-		<div class="gate-shade"></div>
-		<div class="gate-doors">
-			<div class="gate-door gate-door-left" data-gate-left>
-				<span class="gate-panel"></span>
-				<span class="gate-sash gate-sash-a"></span>
-				<span class="gate-sash gate-sash-b"></span>
-				<span class="gate-handle"></span>
-			</div>
-			<div class="gate-door gate-door-right" data-gate-right>
-				<span class="gate-panel"></span>
-				<span class="gate-sash gate-sash-a"></span>
-				<span class="gate-sash gate-sash-b"></span>
-				<span class="gate-handle"></span>
-			</div>
-		</div>
-		<div class="gate-arch">
-			<span class="gate-arch-bar"></span>
-		</div>
+		<div class="gate-shade" data-gate-shade></div>
+		<div class="gate-glow" data-gate-glow></div>
 	</div>
 	<div class="overlay-card" data-invite-open>
 		<Monogram />
@@ -41,9 +25,9 @@ import puerta from '../assets/puerta.webp';
 		<h1 class="script" id="overlay-title">{party.honoree.name}</h1>
 		<div class="gold-line"></div>
 		<p class="overlay-copy">{party.phrase}</p>
-		<p class="overlay-welcome">Puerta de invitado · N.º 60</p>
+		<p class="overlay-welcome">Invitado · N.º 60</p>
 		<div class="overlay-actions">
-			<button class="btn btn-primary" type="button" data-open-invite>Abrir la puerta</button>
+			<button class="btn btn-primary" type="button" data-open-invite>Entrar a la invitación</button>
 		</div>
 	</div>
 </div>

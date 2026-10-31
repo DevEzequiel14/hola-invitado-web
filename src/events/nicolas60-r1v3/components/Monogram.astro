@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import crest from '../assets/crest.webp';
+
 interface Props {
 	class?: string;
 }
@@ -6,25 +9,13 @@ interface Props {
 const className = Astro.props.class ?? 'monogram';
 ---
 
-<svg class={className} viewBox="0 0 120 120" aria-hidden="true">
-	<!-- Escudo estilizado rojo y blanco (muestra, no marca oficial) -->
-	<path
-		d="M60 8 L98 26 L104 68 L78 108 L60 114 L42 108 L16 68 L22 26 Z"
-		fill="#F5F2ED"
-	></path>
-	<path
-		d="M60 16 L92 31 L97 66 L76 100 L60 105 L44 100 L23 66 L28 31 Z"
-		fill="#C8102E"
-	></path>
-	<path d="M34 28 L48 20 L86 78 L72 86 Z" fill="#F5F2ED"></path>
-	<path d="M52 24 L60 20 L68 24 L68 96 L52 96 Z" fill="#F5F2ED" opacity="0.92"></path>
-	<text
-		x="60"
-		y="72"
-		text-anchor="middle"
-		font-family="Teko, 'Arial Narrow', Impact, sans-serif"
-		font-weight="700"
-		font-size="26"
-		fill="#140A0C"
-		letter-spacing="1">N·60</text>
-</svg>
+<span class={className}>
+	<Image
+		src={crest}
+		alt=""
+		widths={[96, 144, 192]}
+		sizes="96px"
+		quality={90}
+		format="webp"
+	/>
+</span>
