@@ -4,6 +4,7 @@ import { event as candela } from "../events/candela30-l4p9/event";
 import { event as eduardo } from "../events/eduardo50-b0ca/event";
 import { event as federico } from "../events/federico18-n3x8/event";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
+import { event as matilda } from "../events/matildabb-m7w2/event";
 import { event as nicolas } from "../events/nicolas60-r1v3/event";
 import { event as pilar } from "../events/pilarbaut-h3k7/event";
 import { event as casamiento } from "../events/sofiamateo-m4q7/event";
@@ -48,7 +49,7 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
     </section>
 
     <section class="band band-open band-gap" id="tarjetas" aria-labelledby="tarjetas-titulo">
-      <h2 id="tarjetas-titulo">Siete fiestas para abrir.</h2>
+      <h2 id="tarjetas-titulo">Fiestas para abrir.</h2>
       <p>Entrá y recorrelas. Hay Esencial y Premium.</p>
       <div class="phone-line">
         <Phone
@@ -114,6 +115,14 @@ const versoParts = cardFeatures.columns.flatMap((column, i) =>
           alt="Invitación del bautismo de Pilar en un celular"
           label="Bautismo"
           name="Pilar"
+        />
+        <Phone
+          bridge="in"
+          href={`/${matilda.slug}`}
+          src="/brand/phones/matilda.webp"
+          alt="Invitación del baby shower de Matilda en un celular"
+          label="Baby shower"
+          name="Matilda"
         />
       </div>
     </section>

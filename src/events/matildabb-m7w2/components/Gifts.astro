@@ -1,0 +1,15 @@
+---
+import { shower } from '../data/shower';
+import Divider from './Divider.astro';
+import Icon from './Icon.astro';
+---
+
+<section class="section" id="regalos" aria-labelledby="regalos-title">
+	<Divider />
+	<h2 class="section-title" id="regalos-title">Mesa de regalos</h2>
+	<div class="gift-box">
+		<span class="gift-icon" aria-hidden="true"><Icon name="gift" /></span>
+		<p class="lede tight">{shower.gifts.intro}</p>
+		<p>{shower.gifts.detail}</p>
+	</div>
+</section>

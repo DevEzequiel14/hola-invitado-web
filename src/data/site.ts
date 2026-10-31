@@ -30,6 +30,8 @@ export const waMessages = {
     "Hola, vi los 30 de Candela (/candela30-l4p9) y quiero una invitación Premium así.",
   pilar:
     "Hola, vi el bautismo de Pilar (/pilarbaut-h3k7) y quiero una invitación Premium así.",
+  matilda:
+    "Hola, vi el baby shower de Matilda (/matildabb-m7w2) y quiero una invitación Premium así.",
 } as const;
 
 export const plans = {

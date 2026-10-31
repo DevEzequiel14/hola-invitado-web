@@ -10,6 +10,7 @@ export const PUBLIC_PATHS = [
   "/nicolas60-r1v3",
   "/candela30-l4p9",
   "/pilarbaut-h3k7",
+  "/matildabb-m7w2",
 ] as const;
 
 export const RESERVED_SLUGS = ["uno", "quince", "casamiento", "giuliano"] as const;

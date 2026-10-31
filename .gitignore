@@ -27,5 +27,16 @@ data/rsvps.json
 .idea/
 .vercel
 .impeccable/config.local.json
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/review/
+.impeccable/tmp/
+.impeccable/build/
+.impeccable/design.*.json
+
+# Image generation sidecars
+*.webp.json
+*.jpg.json
+*.png.json
 
 .vercel

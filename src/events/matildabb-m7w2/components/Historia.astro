@@ -1,0 +1,20 @@
+---
+import { shower } from '../data/shower';
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="historia" aria-labelledby="historia-title">
+	<Divider />
+	<h2 class="section-title" id="historia-title">Antes de que llegue</h2>
+	<p class="lede">Tres cosas para saber de esta tarde.</p>
+	<ul class="story-list">
+		{
+			shower.story.map((item) => (
+				<li class="story-card">
+					<h3>{item.title}</h3>
+					<p>{item.text}</p>
+				</li>
+			))
+		}
+	</ul>
+</section>

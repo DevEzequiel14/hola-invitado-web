@@ -1,0 +1,75 @@
+---
+import EventLayout from "../../layouts/EventLayout.astro";
+import Overlay from "./components/Overlay.astro";
+import MuteButton from "./components/MuteButton.astro";
+import Hero from "./components/Hero.astro";
+import Historia from "./components/Historia.astro";
+import Timeline from "./components/Timeline.astro";
+import Place from "./components/Place.astro";
+import DressCode from "./components/DressCode.astro";
+import Games from "./components/Games.astro";
+import Gallery from "./components/Gallery.astro";
+import Gifts from "./components/Gifts.astro";
+import Practical from "./components/Practical.astro";
+import Rsvp from "./components/Rsvp.astro";
+import Footer from "./components/Footer.astro";
+import { shower } from "./data/shower";
+import { event, pageDescription, pageTitle, shareImageAlt } from "./event";
+import "./styles/global.css";
+---
+
+<EventLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={event.ogImage}
+  shareImageAlt={shareImageAlt}
+  siteName={event.siteName}
+  themeColor={event.themeColor}
+  fonts={event.fonts}
+  favicon={event.favicon}
+  indexable={event.indexable}
+>
+  <div class="stage">
+    <Overlay />
+    <MuteButton />
+    <main id="contenido">
+      <Hero />
+      <div class="sheet">
+        <div class="invite-column">
+          <Historia />
+          <Timeline />
+        </div>
+        <div class="places-row">
+          <Place
+            id="lugar"
+            title={shower.event.title}
+            kind={shower.event.kind}
+            time={`${shower.event.time} hs`}
+            place={shower.venue.name}
+            address={shower.venue.address}
+            detail={shower.event.detail}
+            maps={shower.venue.maps}
+          />
+        </div>
+        <div class="invite-column">
+          <DressCode />
+          <Games />
+        </div>
+      </div>
+      <Gallery />
+      <div class="sheet">
+        <div class="invite-column">
+          <Gifts />
+          <Practical />
+          <Rsvp />
+        </div>
+        <Footer />
+      </div>
+    </main>
+  </div>
+</EventLayout>
+
+<script>
+  import { bootInvitation } from "./scripts/invitation";
+  bootInvitation();
+</script>

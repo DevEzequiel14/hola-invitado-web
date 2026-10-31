@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import { shower } from '../data/shower';
+import Divider from './Divider.astro';
+
+// Assets esperados en ../assets: 01-mariposas.webp … 06-quincho.webp (ver shower.gallery).
+// Se resuelven por nombre; los que todavía no existen simplemente no se muestran.
+const files = import.meta.glob<ImageMetadata>('../assets/0*.webp', {
+	eager: true,
+	import: 'default',
+});
+
+const slides = shower.gallery
+	.map((item) => ({ ...item, image: files[`../assets/${item.src}`] }))
+	.filter((item) => Boolean(item.image));
+---
+
+{
+	slides.length > 0 && (
+		<section class="section" id="fotos" aria-labelledby="fotos-title">
+			<Divider />
+			<h2 class="section-title" id="fotos-title">Mariposas y té</h2>
+			<p class="lede">Material ilustrativo: la mesa, los juegos y el quincho de la tarde.</p>
+			<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
+				{slides.map((item) => (
+					<figure class="slide">
+						<Image
+							src={item.image}
+							alt={item.alt}
+							widths={[700, 1080, 1400]}
+							sizes="(min-width: 900px) 36vw, 86vw"
+							quality={82}
+						/>
+					</figure>
+				))}
+			</div>
+			<div class="dots" data-dots>
+				{slides.map((item, index) => (
+					<button
+						class:list={['dot', index === 0 && 'is-on']}
+						type="button"
+						aria-label={`Ver foto ${index + 1}: ${item.alt}`}
+						data-dot={index}
+					/>
+				))}
+			</div>
+		</section>
+	)
+}

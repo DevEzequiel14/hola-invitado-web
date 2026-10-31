@@ -1,0 +1,24 @@
+---
+interface Props {
+	class?: string;
+}
+
+const className = Astro.props.class ?? '';
+---
+
+<svg class:list={['butterfly', className]} viewBox="0 0 64 48" aria-hidden="true" focusable="false">
+	<g class="wings-left">
+		<path class="wing-up" d="M31 22C27 10 17 2 8 5 2 8 3 19 11 25c7 4 15 2 20-3Z"></path>
+		<path class="wing-low" d="M31 26c-6 2-14 4-17 12-2 6 5 8 10 4 5-4 7-10 7-16Z"></path>
+		<circle class="wing-dot" cx="14" cy="14" r="2.2"></circle>
+		<circle class="wing-dot" cx="20" cy="38" r="1.5"></circle>
+	</g>
+	<g class="wings-right" transform="matrix(-1 0 0 1 64 0)">
+		<path class="wing-up" d="M31 22C27 10 17 2 8 5 2 8 3 19 11 25c7 4 15 2 20-3Z"></path>
+		<path class="wing-low" d="M31 26c-6 2-14 4-17 12-2 6 5 8 10 4 5-4 7-10 7-16Z"></path>
+		<circle class="wing-dot" cx="14" cy="14" r="2.2"></circle>
+		<circle class="wing-dot" cx="20" cy="38" r="1.5"></circle>
+	</g>
+	<ellipse class="bf-body" cx="32" cy="27" rx="1.5" ry="9"></ellipse>
+	<path class="bf-antenna" d="M32 19c-1-6-4-9-6-10M32 19c1-6 4-9 6-10"></path>
+</svg>

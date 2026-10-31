@@ -1,0 +1,24 @@
+---
+import { shower } from '../data/shower';
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="dress-code" aria-labelledby="dress-title">
+	<Divider />
+	<h2 class="section-title" id="dress-title">{shower.dressCode.title}</h2>
+	<div class="dress-card">
+		<p class="dress-name">{shower.dressCode.name}</p>
+		<p>{shower.dressCode.text}</p>
+		<ul class="swatches">
+			{
+				shower.dressCode.swatches.map((swatch) => (
+					<li class="swatch">
+						<i style={`background:${swatch.hex}`}></i>
+						{swatch.name}
+					</li>
+				))
+			}
+		</ul>
+		<p class="note">{shower.dressCode.note}</p>
+	</div>
+</section>

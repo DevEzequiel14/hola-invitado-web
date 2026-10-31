@@ -17,6 +17,8 @@ Marca, demos y eventos reales viven en este repo. Cada evento es un paquete en `
 - `/eduardo50-b0ca` 50 de Eduardo (ejemplo Premium, Boca)
 - `/nicolas60-r1v3` 60 de Nicolás (ejemplo Premium, River)
 - `/candela30-l4p9` 30 de Candela (ejemplo Premium, animal print)
+- `/pilarbaut-h3k7` bautismo de Pilar (ejemplo Premium, floral)
+- `/matildabb-m7w2` baby shower de Matilda (ejemplo Premium, mariposas)
 - `/federico18-n3x8` 18 de Federico (ejemplo Esencial)
 
 ## Desarrollo
