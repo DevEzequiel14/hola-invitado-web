@@ -201,7 +201,7 @@ textarea {
 	text-align: right;
 }
 
-/* ---------- Overlay: tapa del carnet ---------- */
+/* ---------- Overlay: carnet ---------- */
 
 .overlay {
 	position: fixed;
@@ -216,57 +216,6 @@ textarea {
 	overflow: hidden;
 	overscroll-behavior: none;
 	touch-action: none;
-}
-
-.envelope {
-	position: absolute;
-	inset: 0;
-	z-index: 0;
-	pointer-events: none;
-	perspective: 1200px;
-}
-
-.envelope-flap-wrap {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	width: min(100%, var(--card));
-	height: 30%;
-	margin: 0 auto;
-	transform-origin: 50% 0%;
-	transform-style: preserve-3d;
-}
-
-.envelope-lining,
-.envelope-flap {
-	position: absolute;
-	inset: 0;
-	clip-path: polygon(0 0, 100% 0, 50% 100%);
-}
-
-.envelope-lining {
-	background: linear-gradient(180deg, var(--gold-soft), var(--gold));
-	transform: scale(1.022);
-	transform-origin: 50% 0;
-	opacity: 0.85;
-}
-
-.envelope-flap {
-	background: linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 70%, #081a42 100%);
-}
-
-.envelope-pocket {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	height: 12%;
-	width: min(100%, var(--card));
-	margin: 0 auto;
-	pointer-events: none;
-	background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--royal) 55%, var(--night)));
-	border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
 }
 
 .overlay .stripe {
@@ -481,7 +430,8 @@ html:has([data-overlay]:not(.is-gone)) .audio-hint {
 
 .hero-photo {
 	object-fit: cover;
-	object-position: center 40%;
+	/* Humo / bengala abajo = zona de texto; hinchada arriba */
+	object-position: center 32%;
 }
 
 .hero-shade {
@@ -490,11 +440,11 @@ html:has([data-overlay]:not(.is-gone)) .audio-hint {
 	background:
 		linear-gradient(
 			180deg,
-			rgba(5, 13, 34, 0.35) 0%,
-			rgba(5, 13, 34, 0) 22%,
-			rgba(8, 22, 58, 0.55) 48%,
-			rgba(10, 31, 77, 0.95) 74%,
-			var(--navy) 100%
+			rgba(5, 13, 34, 0.42) 0%,
+			rgba(5, 13, 34, 0.1) 26%,
+			rgba(0, 48, 135, 0.28) 48%,
+			rgba(5, 13, 34, 0.72) 70%,
+			rgba(5, 13, 34, 0.96) 100%
 		);
 }
 
@@ -1273,9 +1223,23 @@ textarea {
 }
 
 .monogram {
-	width: 88px;
-	height: 88px;
-	margin: 0 auto 0.7rem;
+	display: block;
+	width: 7.5rem;
+	height: auto;
+	margin: 0 auto 0.85rem;
+}
+
+.monogram-img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 462 / 536;
+	object-fit: contain;
+	filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.5));
+}
+
+.thanks-mono.monogram,
+.monogram.thanks-mono {
+	width: 4.5rem;
 }
 
 .is-hidden {
@@ -1333,7 +1297,7 @@ textarea {
 	}
 
 	.hero-photo {
-		object-position: center 18%;
+		object-position: center 22%;
 	}
 
 	.hero-inner {
@@ -1458,11 +1422,6 @@ textarea {
 	.btn {
 		animation: none !important;
 		transition: none !important;
-	}
-
-	.envelope-flap-wrap,
-	.envelope-pocket {
-		display: none;
 	}
 
 	.story-card:hover,

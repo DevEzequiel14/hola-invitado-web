@@ -36,19 +36,6 @@ export function playOverlayIntro() {
 		.to('.overlay-copy', { opacity: 1, y: 0, duration: 0.55 }, '-=0.35')
 		.to('.overlay-welcome', { opacity: 1, y: 0, duration: 0.55 }, '-=0.35')
 		.to('.overlay-actions', { opacity: 1, y: 0, duration: 0.55 }, '-=0.28');
-
-	gsap.from('.envelope-flap-wrap', {
-		y: -36,
-		opacity: 0,
-		duration: 1.1,
-		ease: 'power3.out',
-	});
-	gsap.from('.envelope-pocket', {
-		y: 24,
-		opacity: 0,
-		duration: 1,
-		ease: 'power3.out',
-	});
 }
 
 export function playPageMotion() {
@@ -180,24 +167,16 @@ export function playOverlayExit(overlay: HTMLElement, onReveal: () => void) {
 		return;
 	}
 
-	const flap = overlay.querySelector<HTMLElement>('[data-envelope-flap]');
 	const card = overlay.querySelector<HTMLElement>('.overlay-card');
-	const pocket = overlay.querySelector<HTMLElement>('.envelope-pocket');
 	const tl = gsap.timeline({
 		onComplete: finish,
 	});
 
-	if (flap) {
-		tl.to(flap, { rotateX: -128, duration: 0.9, ease: 'power2.inOut' }, 0);
-	}
-	if (pocket) {
-		tl.to(pocket, { y: 40, opacity: 0, duration: 0.7, ease: 'power2.in' }, 0.05);
-	}
 	if (card) {
-		tl.to(card, { y: -26, opacity: 0, duration: 0.7, ease: 'power2.in' }, 0.12);
+		tl.to(card, { y: -26, opacity: 0, duration: 0.7, ease: 'power2.in' }, 0);
 	}
-	tl.to(overlay, { opacity: 0, duration: 1.15, ease: 'power2.inOut' }, 0.18);
-	tl.call(onReveal, undefined, 0.48);
+	tl.to(overlay, { opacity: 0, duration: 1.0, ease: 'power2.inOut' }, 0.08);
+	tl.call(onReveal, undefined, 0.35);
 }
 
 export function playPaneMotion(pane: HTMLElement) {

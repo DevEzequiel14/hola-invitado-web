@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="E 50">
-  <rect width="64" height="64" rx="14" fill="#0A1F4D"/>
-  <rect x="0" y="22" width="64" height="20" fill="#F9B000"/>
-  <text x="32" y="38" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-weight="800" font-size="17" fill="#0A1F4D">E·50</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Eduardo 50">
+  <rect width="64" height="64" rx="12" fill="#0A1F4D"/>
+  <path d="M32 8 L52 16 L55 38 L42 54 L32 58 L22 54 L9 38 L12 16 Z" fill="#F9B000"/>
+  <path d="M32 12 L48 19 L50.5 37 L41 50 L32 53.5 L23 50 L13.5 37 L16 19 Z" fill="#003087"/>
+  <rect x="16" y="28" width="32" height="10" fill="#F9B000"/>
+  <text x="32" y="37" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-weight="800" font-size="9" fill="#003087">CABJ</text>
 </svg>

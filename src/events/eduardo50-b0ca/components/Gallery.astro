@@ -1,20 +1,20 @@
 ---
 import { Image } from 'astro:assets';
 import escudo from '../assets/01-escudo.webp';
-import cancha from '../assets/02-cancha.webp';
-import rayas from '../assets/03-rayas.webp';
-import mesa from '../assets/04-mesa.webp';
-import tribuna from '../assets/05-tribuna.webp';
+import atardecer from '../assets/02-atardecer.webp';
+import fachada from '../assets/03-fachada.webp';
+import entrada from '../assets/04-entrada.webp';
+import escudoTribuna from '../assets/05-escudo-tribuna.webp';
 import { party } from '../data/party';
 import Divider from './Divider.astro';
 
-const photos = [escudo, cancha, rayas, mesa, tribuna];
+const photos = [escudo, atardecer, fachada, entrada, escudoTribuna];
 ---
 
 <section class="section" id="fotos" aria-labelledby="fotos-title">
 	<Divider />
 	<h2 class="section-title" id="fotos-title">Azul y oro</h2>
-	<p class="lede">Fotos de muestra: cancha, colores y la noche.</p>
+	<p class="lede">La Bombonera, el escudo y la noche xeneize.</p>
 	<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
 		{
 			party.gallery.map((item, index) => (
