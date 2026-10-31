@@ -1,0 +1,22 @@
+---
+interface Props {
+	class?: string;
+}
+
+const className = Astro.props.class ?? 'monogram';
+---
+
+<svg class={className} viewBox="0 0 120 120" aria-hidden="true">
+	<circle cx="60" cy="60" r="55" fill="#EEF7FC" stroke="#3D8FD1" stroke-width="2.4"></circle>
+	<circle cx="60" cy="60" r="47" fill="none" stroke="#FF6B9D" stroke-width="1.2" stroke-dasharray="3 5"></circle>
+	<!-- Corazón; centro visual ≈ (60, 56) -->
+	<path
+		d="M60 84c-14-11.5-26-21-26-33.5C34 40 42 34 51 34c5.2 0 8.8 2.6 9 6.8C60.2 36.6 63.8 34 69 34c9 0 17 6 17 16.5C86 63 74 72.5 60 84Z"
+		fill="#FF6B9D"
+	></path>
+	<!-- L dibujada; centrado óptico en el corazón -->
+	<path
+		d="M56 46h6v19H70.5v5.6H56z"
+		fill="#FFFFFF"
+	></path>
+</svg>

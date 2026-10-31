@@ -2,6 +2,7 @@ import { event as candela } from "../events/candela30-l4p9/event";
 import { event as eduardo } from "../events/eduardo50-b0ca/event";
 import { event as federico } from "../events/federico18-n3x8/event";
 import { event as giuliano } from "../events/giuliano1-k8n2/event";
+import { event as luna } from "../events/luna5-s7t2/event";
 import { event as matilda } from "../events/matildabb-m7w2/event";
 import { event as nicolas } from "../events/nicolas60-r1v3/event";
 import { event as pilar } from "../events/pilarbaut-h3k7/event";
@@ -87,6 +88,13 @@ export const paidEvents: Record<string, PaidEvent> = {
     honoree: matilda.firstName,
     rsvpClosesIso: matilda.rsvpClosesIso,
     index: matilda.indexable,
+    showcase: true,
+  },
+  [luna.slug]: {
+    slug: luna.slug,
+    honoree: luna.firstName,
+    rsvpClosesIso: luna.rsvpClosesIso,
+    index: luna.indexable,
     showcase: true,
   },
 };

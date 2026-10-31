@@ -19,6 +19,7 @@ Marca, demos y eventos reales viven en este repo. Cada evento es un paquete en `
 - `/candela30-l4p9` 30 de Candela (ejemplo Premium, animal print)
 - `/pilarbaut-h3k7` bautismo de Pilar (ejemplo Premium, floral)
 - `/matildabb-m7w2` baby shower de Matilda (ejemplo Premium, mariposas)
+- `/luna5-s7t2` cumple de Luna 5 (ejemplo Premium, Stitch tropical)
 - `/federico18-n3x8` 18 de Federico (ejemplo Esencial)
 
 ## Desarrollo

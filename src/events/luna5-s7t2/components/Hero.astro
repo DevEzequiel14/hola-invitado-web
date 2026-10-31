@@ -1,0 +1,20 @@
+---
+import { party } from '../data/party';
+---
+
+<header class="hero is-plain" id="inicio">
+	<div class="hero-shade"></div>
+	<div class="hero-wash" aria-hidden="true"></div>
+	<div class="hero-butterflies" aria-hidden="true">
+		<img class="hero-bf hb-1" src="/events/luna5-s7t2/st-1.png" alt="" width="120" height="120" />
+		<img class="hero-bf hb-2" src="/events/luna5-s7t2/st-2.png" alt="" width="120" height="120" />
+	</div>
+	<div class="hero-inner">
+		<h1 class="script hero-reveal">{party.honoree.firstName}</h1>
+		<p class="hero-secondary hero-reveal">{party.kicker}</p>
+		<div class="hero-band hero-reveal" aria-hidden="true"></div>
+		<p class="hero-phrase hero-reveal">{party.phrase}</p>
+		<p class="hero-date hero-reveal">{party.date.label}</p>
+		<a class="btn btn-primary hero-reveal" href="#confirmar">Confirmar asistencia</a>
+	</div>
+</header>

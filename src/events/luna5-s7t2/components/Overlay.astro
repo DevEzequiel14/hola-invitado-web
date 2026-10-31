@@ -1,0 +1,27 @@
+---
+import { party } from '../data/party';
+import Monogram from './Monogram.astro';
+---
+
+<div class="overlay" data-overlay role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+	<div class="overlay-sky" aria-hidden="true">
+		<span class="overlay-wash overlay-wash-tl"></span>
+		<span class="overlay-wash overlay-wash-br"></span>
+		<img class="overlay-bf bf-1" src="/events/luna5-s7t2/st-1.png" alt="" width="96" height="96" />
+		<img class="overlay-bf bf-2" src="/events/luna5-s7t2/st-2.png" alt="" width="88" height="88" />
+		<img class="overlay-bf bf-3" src="/events/luna5-s7t2/st-1.png" alt="" width="72" height="72" />
+		<img class="overlay-bf bf-4" src="/events/luna5-s7t2/st-2.png" alt="" width="80" height="80" />
+	</div>
+	<div class="overlay-card" data-invite-open>
+		<span class="overlay-lace" aria-hidden="true"></span>
+		<Monogram />
+		<h1 class="script" id="overlay-title">{party.honoree.firstName}</h1>
+		<p class="overlay-secondary">{party.kicker}</p>
+		<div class="gold-line" aria-hidden="true"></div>
+		<p class="overlay-copy">{party.phrase}</p>
+		<p class="overlay-welcome">{party.date.short}</p>
+		<div class="overlay-actions">
+			<button class="btn btn-primary" type="button" data-open-invite>Abrir la invitación</button>
+		</div>
+	</div>
+</div>

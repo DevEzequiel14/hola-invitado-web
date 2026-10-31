@@ -1,0 +1,20 @@
+---
+import { party } from '../data/party';
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="historia" aria-labelledby="historia-title">
+	<Divider />
+	<h2 class="section-title" id="historia-title">La fiesta de Luna</h2>
+	<p class="lede">Tres cosas para saber de este domingo.</p>
+	<ul class="story-list">
+		{
+			party.story.map((item) => (
+				<li class="story-card">
+					<h3>{item.title}</h3>
+					<p>{item.text}</p>
+				</li>
+			))
+		}
+	</ul>
+</section>

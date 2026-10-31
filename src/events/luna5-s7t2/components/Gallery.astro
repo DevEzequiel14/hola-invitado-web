@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import { party } from '../data/party';
+import Divider from './Divider.astro';
+
+// Assets en ../assets: 01–05 .webp (ver party.gallery).
+const files = import.meta.glob<ImageMetadata>('../assets/0*.webp', {
+	eager: true,
+	import: 'default',
+});
+
+const slides = party.gallery
+	.map((item) => ({ ...item, image: files[`../assets/${item.src}`] }))
+	.filter((item) => Boolean(item.image));
+---
+
+{
+	slides.length > 0 && (
+		<section class="section" id="fotos" aria-labelledby="fotos-title">
+			<Divider />
+			<h2 class="section-title" id="fotos-title">Stickers de la fiesta</h2>
+			<p class="lede">Material ilustrativo: el azul, el rosa y el personaje de Luna.</p>
+			<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
+				{slides.map((item) => (
+					<figure class="slide">
+						<Image
+							src={item.image}
+							alt={item.alt}
+							widths={[700, 1080, 1400]}
+							sizes="(min-width: 900px) 28vw, 72vw"
+							quality={82}
+						/>
+					</figure>
+				))}
+			</div>
+			<div class="dots" data-dots>
+				{slides.map((item, index) => (
+					<button
+						class:list={['dot', index === 0 && 'is-on']}
+						type="button"
+						aria-label={`Ver foto ${index + 1}: ${item.alt}`}
+						data-dot={index}
+					/>
+				))}
+			</div>
+		</section>
+	)
+}
