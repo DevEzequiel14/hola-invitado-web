@@ -1,0 +1,11 @@
+---
+import { baptism } from "../data/baptism";
+import Divider from './Divider.astro';
+---
+
+<footer class="footer">
+	<Divider />
+	<p class="hashtag">{baptism.hashtag}</p>
+	<p class="closing">{baptism.closing}</p>
+	<p class="brand"><a href="/" aria-label="Volver a HolaInvitado">{baptism.brand}</a></p>
+</footer>

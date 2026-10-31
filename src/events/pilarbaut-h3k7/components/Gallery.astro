@@ -1,0 +1,36 @@
+---
+import { baptism } from '../data/baptism';
+import Divider from './Divider.astro';
+
+const images = baptism.gallery.map((item) => ({
+	...item,
+	src: `/events/pilarbaut-h3k7/gallery/${item.src}`,
+}));
+---
+
+<section class="section" id="galeria" aria-labelledby="galeria-title">
+	<Divider />
+	<h2 class="section-title" id="galeria-title">El clima del día</h2>
+	<p class="lede">Material ilustrativo: flores, fe y la mesa del quincho.</p>
+	<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
+		{
+			images.map((item) => (
+				<figure class="slide">
+					<img src={item.src} alt={item.alt} loading="lazy" width="800" height="600" />
+				</figure>
+			))
+		}
+	</div>
+	<div class="dots" data-dots>
+		{
+			images.map((item, index) => (
+				<button
+					class:list={['dot', index === 0 && 'is-on']}
+					type="button"
+					aria-label={`Ver foto ${index + 1}: ${item.alt}`}
+					data-dot={index}
+				></button>
+			))
+		}
+	</div>
+</section>

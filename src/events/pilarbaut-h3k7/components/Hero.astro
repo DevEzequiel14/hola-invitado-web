@@ -1,0 +1,44 @@
+---
+import { baptism } from "../data/baptism";
+
+const heroSrc = `/events/pilarbaut-h3k7/gallery/01-flores.webp`;
+---
+
+<header class="hero" id="inicio">
+	<img
+		class="hero-photo"
+		src={heroSrc}
+		alt={baptism.heroAlt}
+		width="800"
+		height="1000"
+	/>
+	<div class="hero-shade"></div>
+	<div class="hero-inner">
+		<p class="kicker hero-reveal">{baptism.kicker}</p>
+		<p class="script hero-reveal">{baptism.honoree.firstName}</p>
+		<p class="hero-phrase hero-reveal">{baptism.phrase}</p>
+		<p class="hero-date hero-reveal">{baptism.date.label}</p>
+		<p class="hero-hosts hero-reveal">{baptism.hosts.inviteLine}</p>
+		<div
+			class="countdown hero-reveal"
+			data-countdown
+			data-target={baptism.date.iso}
+			aria-live="polite"
+		>
+			<p class="sr-only" data-countdown-live>Calculando el tiempo que falta.</p>
+			<div class="countdown-item">
+				<span class="countdown-value" data-days>00</span>
+				<span class="countdown-label">días</span>
+			</div>
+			<div class="countdown-item">
+				<span class="countdown-value" data-hours>00</span>
+				<span class="countdown-label">horas</span>
+			</div>
+			<div class="countdown-item">
+				<span class="countdown-value" data-minutes>00</span>
+				<span class="countdown-label">minutos</span>
+			</div>
+		</div>
+		<a class="btn btn-primary hero-reveal" href="#confirmar">Confirmar asistencia</a>
+	</div>
+</header>

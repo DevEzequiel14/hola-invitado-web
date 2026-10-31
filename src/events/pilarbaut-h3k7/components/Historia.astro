@@ -1,0 +1,21 @@
+---
+import { baptism } from "../data/baptism";
+import Divider from './Divider.astro';
+---
+
+<section class="section" id="historia" aria-labelledby="historia-title">
+	<Divider />
+	<h2 class="section-title" id="historia-title">Con bendición</h2>
+	<p class="lede">Familia, fe y la mesa que sigue.</p>
+	<ol class="story-list">
+		{
+			baptism.story.map((item, index) => (
+				<li class="story-card">
+					<p class="kicker">0{index + 1}</p>
+					<h3>{item.title}</h3>
+					<p>{item.text}</p>
+				</li>
+			))
+		}
+	</ol>
+</section>

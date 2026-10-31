@@ -1,0 +1,27 @@
+---
+interface Props {
+	class?: string;
+}
+
+const className = Astro.props.class ?? 'monogram';
+---
+
+<svg class={className} viewBox="0 0 120 120" aria-hidden="true">
+	<circle cx="60" cy="60" r="54" fill="none" stroke="#C9A227" stroke-width="1.2"></circle>
+	<circle cx="60" cy="60" r="48" fill="none" stroke="#D4AF37" stroke-width="0.6"></circle>
+	<path
+		d="M60 28 v44 M48 48 h24"
+		fill="none"
+		stroke="#C9A227"
+		stroke-width="2.2"
+		stroke-linecap="round"
+	></path>
+	<text
+		x="60"
+		y="92"
+		text-anchor="middle"
+		font-family="Great Vibes, cursive"
+		font-size="22"
+		fill="#5C4A2A"
+		letter-spacing="1">P</text>
+</svg>

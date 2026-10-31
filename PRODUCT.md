@@ -28,7 +28,7 @@ No es un constructor self-service ni un marketplace de fiestas. Es un encargo a 
 
 ## Operating Context
 
-- Marca, demos y eventos viven en `holainvitados.com` (este repo). El añito de Giuliano está en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo está en `/sofiamateo-m4q7`. Los 15 de Valentina están en `/valentina15-n4w8`. Los 18 de Federico (muestra Esencial neón) están en `/federico18-n3x8`. Los 50 de Eduardo (muestra Premium Boca) están en `/eduardo50-b0ca`. Los 60 de Nicolás (muestra Premium River) están en `/nicolas60-r1v3`. Los 30 de Candela (muestra Premium animal print) están en `/candela30-l4p9`. `/giuliano`, `/casamiento` y `/quince` redirigen a esas rutas.
+- Marca, demos y eventos viven en `holainvitados.com` (este repo). El añito de Giuliano está en `/giuliano1-k8n2`. El casamiento de Sofía y Mateo está en `/sofiamateo-m4q7`. Los 15 de Valentina están en `/valentina15-n4w8`. Los 18 de Federico (muestra Esencial neón) están en `/federico18-n3x8`. Los 50 de Eduardo (muestra Premium Boca) están en `/eduardo50-b0ca`. Los 60 de Nicolás (muestra Premium River) están en `/nicolas60-r1v3`. Los 30 de Candela (muestra Premium animal print) están en `/candela30-l4p9`. El bautismo de Pilar (muestra Premium floral/lacre) está en `/pilarbaut-h3k7`. `/giuliano`, `/casamiento` y `/quince` redirigen a esas rutas.
 - Contacto de venta: WhatsApp `5493884849767`, con texto prearmado. No hay formulario web de leads.
 - Instagram en el pie: [holainvitado](https://www.instagram.com/holainvitado/). Solo link, sin embed.
 - Precio: no se publica un número fijo en la landing. Los planes Esencial y Premium se consultan por WhatsApp para ajustar alcance y presupuesto.
@@ -38,7 +38,7 @@ No es un constructor self-service ni un marketplace de fiestas. Es un encargo a 
 
 Confirmado:
 
-- Rutas públicas: `/`, `/uno`, `/giuliano1-k8n2`, `/sofiamateo-m4q7`, `/valentina15-n4w8`, `/federico18-n3x8`, `/eduardo50-b0ca`, `/nicolas60-r1v3`, `/candela30-l4p9`. `/giuliano`, `/casamiento` y `/quince` redirigen a los ejemplos.
+- Rutas públicas: `/`, `/uno`, `/giuliano1-k8n2`, `/sofiamateo-m4q7`, `/valentina15-n4w8`, `/federico18-n3x8`, `/eduardo50-b0ca`, `/nicolas60-r1v3`, `/candela30-l4p9`, `/pilarbaut-h3k7`. `/giuliano`, `/casamiento` y `/quince` redirigen a los ejemplos.
 - Slugs reservados: un cliente nunca se llama `uno`, `quince`, `casamiento` ni `giuliano`.
 - Demo (`/uno`): sin Sheet, con aviso de que no se guarda ninguna confirmación.
 - Landing celular primero, una sola página, sin CMS, sin blog, sin embed de Instagram (solo link).
@@ -58,7 +58,7 @@ Abierto / no inventar:
 ## Evidence on Hand
 
 - Evento real de Giuliano Donaire Escudero (primer añito, 13 de septiembre 2026, Los Alisos, Jujuy), en `/giuliano1-k8n2`, con OK de Selena y Martín para usarlo como ejemplo.
-- Una demo propia (`/uno`) y siete ejemplos públicos (`/giuliano1-k8n2`, `/sofiamateo-m4q7`, `/valentina15-n4w8`, `/federico18-n3x8`, `/eduardo50-b0ca`, `/nicolas60-r1v3`, `/candela30-l4p9`).
+- Una demo propia (`/uno`) y ocho ejemplos públicos (`/giuliano1-k8n2`, `/sofiamateo-m4q7`, `/valentina15-n4w8`, `/federico18-n3x8`, `/eduardo50-b0ca`, `/nicolas60-r1v3`, `/candela30-l4p9`, `/pilarbaut-h3k7`).
 - Instagram: https://www.instagram.com/holainvitado/
 - Ausencias: fotos libres de las demos inventadas.
 

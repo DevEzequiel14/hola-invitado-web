@@ -1,0 +1,82 @@
+---
+import EventLayout from "../../layouts/EventLayout.astro";
+import Overlay from "./components/Overlay.astro";
+import MuteButton from "./components/MuteButton.astro";
+import Hero from "./components/Hero.astro";
+import Historia from "./components/Historia.astro";
+import Timeline from "./components/Timeline.astro";
+import Place from "./components/Place.astro";
+import DressCode from "./components/DressCode.astro";
+import Gallery from "./components/Gallery.astro";
+import Gifts from "./components/Gifts.astro";
+import Practical from "./components/Practical.astro";
+import Rsvp from "./components/Rsvp.astro";
+import Footer from "./components/Footer.astro";
+import { baptism } from "./data/baptism";
+import { event, pageDescription, pageTitle, shareImageAlt } from "./event";
+import "./styles/global.css";
+---
+
+<EventLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={event.ogImage}
+  shareImageAlt={shareImageAlt}
+  siteName={event.siteName}
+  themeColor={event.themeColor}
+  fonts={event.fonts}
+  favicon={event.favicon}
+  indexable={event.indexable}
+>
+  <div class="stage">
+    <Overlay />
+    <MuteButton />
+    <main id="contenido">
+      <Hero />
+      <div class="sheet">
+        <div class="invite-column">
+          <Historia />
+          <Timeline />
+        </div>
+		<div class="places-row">
+          <Place
+            id="ceremonia"
+            title={baptism.ceremony.title}
+            kind={baptism.ceremony.kind}
+            time={baptism.ceremony.time}
+            place={baptism.ceremony.place}
+            address={baptism.ceremony.address}
+            detail={baptism.ceremony.detail}
+            maps={baptism.ceremony.maps}
+          />
+          <Place
+            id="recepcion"
+            title={baptism.reception.title}
+            time={baptism.reception.summary}
+            place={baptism.reception.place}
+            address={baptism.reception.address}
+            detail={baptism.reception.detail}
+            maps={baptism.reception.maps}
+          />
+        </div>
+        <div class="invite-column">
+          <DressCode />
+        </div>
+      </div>
+      <div class="sheet">
+        <div class="invite-column">
+          <Gallery />
+          <Gifts />
+          <Practical />
+          <Rsvp />
+        </div>
+        <Footer />
+      </div>
+    </main>
+  </div>
+</EventLayout>
+
+<script>
+  import { bootInvitation } from "./scripts/invitation";
+  bootInvitation();
+</script>
