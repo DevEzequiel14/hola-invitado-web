@@ -8,7 +8,7 @@ function canMotion() {
 }
 
 export function playOverlayIntro() {
-	const card = document.querySelector('.overlay-card');
+	const card = document.querySelector<HTMLElement>('.overlay-card');
 	const overlay = document.querySelector('[data-overlay]');
 	if (!card || !overlay) return;
 
@@ -17,44 +17,49 @@ export function playOverlayIntro() {
 		return;
 	}
 
-	gsap.set('.curtain-left', { xPercent: 0 });
-	gsap.set('.curtain-right', { xPercent: 0 });
+	const curtains = overlay.querySelector<HTMLElement>('.curtains');
+	const seam = overlay.querySelector<HTMLElement>('.curtain-seam');
+	const floor = overlay.querySelector<HTMLElement>('.runway-floor');
+
+	/* Estado inicial antes de is-ready: escena negra → print enciende → card */
+	if (curtains) {
+		gsap.set(curtains, {
+			opacity: 0,
+			scale: 1.07,
+			filter: 'brightness(0.18) saturate(0.65)',
+		});
+	}
+	if (seam) gsap.set(seam, { opacity: 0 });
+	if (floor) gsap.set(floor, { opacity: 0 });
+	gsap.set('.runway-spot', { opacity: 0, scale: 0.72 });
+	gsap.set(card, { opacity: 0, y: 18, scale: 0.96 });
 	overlay.classList.add('is-ready');
 
 	const tl = gsap.timeline({
 		defaults: { ease: 'power3.out' },
 		onComplete: () => {
-			gsap.set(card.children, { clearProps: 'opacity,transform' });
+			if (curtains) gsap.set(curtains, { clearProps: 'opacity,transform,filter' });
+			if (seam) gsap.set(seam, { clearProps: 'opacity' });
+			if (floor) gsap.set(floor, { clearProps: 'opacity' });
+			gsap.set(card, { clearProps: 'opacity,transform' });
 		},
 	});
 
-	tl.fromTo(
-		'.curtain-left, .curtain-right',
-		{ filter: 'brightness(0.55)' },
-		{ filter: 'brightness(1)', duration: 1.1, clearProps: 'filter' },
+	tl.to(
+		curtains,
+		{
+			opacity: 1,
+			scale: 1,
+			filter: 'brightness(1) saturate(1)',
+			duration: 1.35,
+			ease: 'power2.out',
+		},
 		0,
 	)
-		.from(
-			'.overlay .monogram',
-			{ opacity: 0, scale: 0.86, duration: 0.95 },
-			0.18,
-		)
-		.from('.overlay-kicker', { opacity: 0, y: 16, duration: 0.5 }, '-=0.45')
-		.from('.overlay .script', { opacity: 0, y: 16, duration: 0.8 }, '-=0.3')
-		.from(
-			'.overlay .gold-line',
-			{ opacity: 0, scaleX: 0, duration: 0.7, ease: 'power2.inOut' },
-			'-=0.45',
-		)
-		.from('.overlay-copy', { opacity: 0, y: 14, duration: 0.55 }, '-=0.35')
-		.from('.overlay-welcome', { opacity: 0, y: 14, duration: 0.55 }, '-=0.35')
-		.from('.overlay-actions', { opacity: 0, y: 14, duration: 0.55 }, '-=0.28');
-
-	gsap.fromTo(
-		'.runway-spot',
-		{ opacity: 0.2, scale: 0.85 },
-		{ opacity: 1, scale: 1, duration: 1.4, ease: 'power2.out' },
-	);
+		.to('.runway-spot', { opacity: 0.9, scale: 1, duration: 1.45, ease: 'power2.out' }, 0.15)
+		.to(floor, { opacity: 1, duration: 1.1 }, 0.2)
+		.to(seam, { opacity: 0.85, duration: 0.9, ease: 'power2.inOut' }, 0.45)
+		.to(card, { opacity: 1, y: 0, scale: 1, duration: 0.75 }, 0.7);
 }
 
 export function playPageMotion() {
@@ -193,10 +198,60 @@ export function playOverlayExit(overlay: HTMLElement, onReveal: () => void) {
 		onReveal();
 	};
 
-	// Cortinas parten al centro y salen hacia afuera; la invitación aparece en el medio.
+	const card = overlay.querySelector<HTMLElement>('.overlay-card');
+	const left = overlay.querySelector<HTMLElement>('.curtain-left');
+	const right = overlay.querySelector<HTMLElement>('.curtain-right');
+	const seam = overlay.querySelector<HTMLElement>('.curtain-seam');
+	const spot = overlay.querySelector<HTMLElement>('.runway-spot');
+
+	/* Sin pelear con CSS: GSAP mueve las mitades (el transform inline del intro
+	   bloqueaba el translateX del stylesheet). */
 	overlay.classList.add('is-opening');
-	window.setTimeout(revealOnce, 380);
-	window.setTimeout(finish, 1500);
+	gsap.set(overlay, { backgroundColor: 'transparent' });
+
+	const tl = gsap.timeline({
+		onComplete: finish,
+	});
+
+	if (card) {
+		tl.to(
+			card,
+			{ opacity: 0, scale: 0.92, y: -8, duration: 0.35, ease: 'power2.in' },
+			0,
+		);
+	}
+	if (seam) {
+		tl.to(seam, { opacity: 0, duration: 0.25, ease: 'power1.out' }, 0.05);
+	}
+	if (spot) {
+		tl.to(
+			spot,
+			{ opacity: 0.25, scale: 1.2, duration: 1.1, ease: 'power2.out' },
+			0.1,
+		);
+	}
+	if (left) {
+		tl.to(
+			left,
+			{ xPercent: -105, duration: 1.35, ease: 'power3.inOut' },
+			0.12,
+		);
+	}
+	if (right) {
+		tl.to(
+			right,
+			{ xPercent: 105, duration: 1.35, ease: 'power3.inOut' },
+			0.12,
+		);
+	}
+
+	tl.to(
+		overlay,
+		{ opacity: 0, duration: 0.35, ease: 'power1.out' },
+		1.05,
+	);
+
+	window.setTimeout(revealOnce, 420);
 }
 
 export function playPaneMotion(pane: HTMLElement) {

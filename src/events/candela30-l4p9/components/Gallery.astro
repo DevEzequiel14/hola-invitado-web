@@ -1,20 +1,20 @@
 ---
 import { Image } from 'astro:assets';
-import print from '../assets/01-print.webp';
-import runway from '../assets/02-runway.webp';
-import gold from '../assets/03-gold.webp';
-import mesa from '../assets/04-mesa.webp';
-import night from '../assets/05-night.webp';
+import swirl from '../assets/01-swirl.webp';
+import rolls from '../assets/02-rolls.webp';
+import flat from '../assets/03-flat.webp';
+import wave from '../assets/04-wave.webp';
+import satin from '../assets/05-satin.webp';
 import { party } from '../data/party';
 import Divider from './Divider.astro';
 
-const photos = [print, runway, gold, mesa, night];
+const photos = [swirl, rolls, flat, wave, satin];
 ---
 
 <section class="section" id="fotos" aria-labelledby="fotos-title">
 	<Divider />
-	<h2 class="section-title" id="fotos-title">Print &amp; night</h2>
-	<p class="lede">Material ilustrativo: print, pasarela y la noche del quincho.</p>
+	<h2 class="section-title" id="fotos-title">El print</h2>
+	<p class="lede">Tela real: satén, terciopelo y el patrón de cerca.</p>
 	<div class="gallery-track" data-gallery tabindex="0" aria-label="Fotos">
 		{
 			party.gallery.map((item, index) => (

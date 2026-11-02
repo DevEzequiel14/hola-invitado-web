@@ -28,6 +28,14 @@ import "./styles/global.css";
   favicon={event.favicon}
   indexable={event.indexable}
 >
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/events/candela30-l4p9/leopard-print.webp"
+      type="image/webp"
+    />
+  </Fragment>
   <div class="stage">
     <Overlay />
     <MuteButton />

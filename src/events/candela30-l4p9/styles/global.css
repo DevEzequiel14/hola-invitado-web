@@ -214,8 +214,8 @@ textarea {
 	z-index: 50;
 	display: grid;
 	place-items: center;
-	/* Transparente: al partir la cortina se ve la invitación detrás */
-	background: transparent;
+	/* Negro de escena hasta que abre; al partir se vuelve transparente */
+	background: var(--night);
 	padding: 1.5rem;
 	overflow: hidden;
 	overscroll-behavior: none;
@@ -267,12 +267,35 @@ textarea {
 	overflow: hidden;
 	height: 100%;
 	background-color: var(--print-base);
-	/* Una sola foto partida al medio: izq = mitad izquierda, der = mitad derecha */
-	background-image: var(--print-image);
-	background-size: 200% 100%;
-	background-repeat: no-repeat;
 	will-change: transform;
-	transition: transform 1.35s cubic-bezier(0.7, 0, 0.25, 1);
+}
+
+/*
+  Una sola foto a cover (sin deformar) partida al medio:
+  cada .curtain-face mide el ancho completo del escenario y se ancla
+  a izq/der, así el print no se estira en pantallas altas.
+*/
+.curtain-face {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 200%;
+	z-index: 0;
+	pointer-events: none;
+	background-color: var(--print-base);
+	background-image: var(--print-image);
+	/* cover sobre el escenario completo (ancho 200%): llena sin deformar */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.curtain-left .curtain-face {
+	left: 0;
+}
+
+.curtain-right .curtain-face {
+	right: 0;
 }
 
 .curtain-seam {
@@ -308,7 +331,7 @@ textarea {
 .curtain-fur {
 	position: absolute;
 	inset: 0;
-	z-index: 0;
+	z-index: 1;
 	pointer-events: none;
 }
 
@@ -344,53 +367,24 @@ textarea {
 }
 
 .curtain-left {
-	background-position: left center;
 	box-shadow:
 		inset -22px 0 36px rgba(0, 0, 0, 0.4),
 		8px 0 28px rgba(0, 0, 0, 0.35);
 }
 
 .curtain-right {
-	background-position: right center;
 	box-shadow:
 		inset 22px 0 36px rgba(0, 0, 0, 0.4),
 		-8px 0 28px rgba(0, 0, 0, 0.35);
 }
 
-/* Parte al centro → cada mitad sale hacia afuera */
-.overlay.is-opening .curtain-left {
-	transform: translateX(-105%);
-}
-
-.overlay.is-opening .curtain-right {
-	transform: translateX(105%);
-}
-
-.overlay.is-opening .curtain-seam {
-	opacity: 0;
-}
-
-.overlay.is-opening .overlay-card {
-	opacity: 0;
-	transform: scale(0.92);
-	transition:
-		opacity 0.4s ease,
-		transform 0.45s cubic-bezier(0.7, 0, 0.3, 1);
+/* La apertura la maneja GSAP (mitades + card). Acá solo estado de interacción. */
+.overlay.is-opening {
+	background: transparent;
 	pointer-events: none;
 }
 
-.overlay.is-opening .runway-spot {
-	opacity: 0.35;
-	transform: scale(1.15);
-	transition:
-		opacity 0.9s ease,
-		transform 0.9s ease;
-}
-
-.overlay.is-opening {
-	/* El overlay se va cuando las cortinas ya corrieron */
-	transition: opacity 0.4s ease 1.05s;
-	opacity: 0;
+.overlay.is-opening .overlay-card {
 	pointer-events: none;
 }
 
@@ -411,12 +405,12 @@ textarea {
 	opacity: 0.7;
 }
 
-.curtain-left .curtain-fold:nth-child(2) { left: 12%; }
-.curtain-left .curtain-fold:nth-child(3) { left: 38%; }
-.curtain-left .curtain-fold:nth-child(4) { left: 68%; }
-.curtain-right .curtain-fold:nth-child(2) { left: 18%; }
-.curtain-right .curtain-fold:nth-child(3) { left: 46%; }
-.curtain-right .curtain-fold:nth-child(4) { left: 74%; }
+.curtain-left .curtain-fold:nth-child(3) { left: 12%; }
+.curtain-left .curtain-fold:nth-child(4) { left: 38%; }
+.curtain-left .curtain-fold:nth-child(5) { left: 68%; }
+.curtain-right .curtain-fold:nth-child(3) { left: 18%; }
+.curtain-right .curtain-fold:nth-child(4) { left: 46%; }
+.curtain-right .curtain-fold:nth-child(5) { left: 74%; }
 
 .overlay-card {
 	width: min(100%, 22rem);
@@ -431,6 +425,7 @@ textarea {
 		0 24px 60px rgba(0, 0, 0, 0.65),
 		inset 0 0 0 1px color-mix(in srgb, var(--leopard) 22%, transparent);
 	backdrop-filter: blur(10px);
+	will-change: transform, opacity;
 }
 
 html:has([data-overlay]:not(.is-gone)) .mute,
@@ -439,7 +434,25 @@ html:has([data-overlay]:not(.is-gone)) .audio-hint {
 	pointer-events: none;
 }
 
-/* El contenido del VIP card queda visible; el intro solo suma motion. */
+/* Intro: escena en penumbra hasta que GSAP enciende la pasarela. */
+@media (prefers-reduced-motion: no-preference) {
+	[data-overlay]:not(.is-ready):not(.is-gone) .curtains {
+		opacity: 0;
+		transform: scale(1.06);
+		filter: brightness(0.2) saturate(0.7);
+	}
+
+	[data-overlay]:not(.is-ready):not(.is-gone) .curtain-seam,
+	[data-overlay]:not(.is-ready):not(.is-gone) .runway-spot,
+	[data-overlay]:not(.is-ready):not(.is-gone) .runway-floor {
+		opacity: 0;
+	}
+
+	[data-overlay]:not(.is-ready):not(.is-gone) .overlay-card {
+		opacity: 0;
+		transform: translateY(18px) scale(0.96);
+	}
+}
 
 .overlay.is-gone {
 	opacity: 0;
@@ -647,11 +660,11 @@ html:has([data-overlay]:not(.is-gone)) .audio-hint {
 	background:
 		linear-gradient(
 			180deg,
-			rgba(5, 13, 34, 0.35) 0%,
-			rgba(5, 13, 34, 0) 22%,
-			rgba(8, 22, 58, 0.55) 48%,
-			rgba(10, 31, 77, 0.95) 74%,
-			var(--navy) 100%
+			rgba(5, 5, 5, 0.28) 0%,
+			rgba(5, 5, 5, 0.08) 28%,
+			rgba(10, 8, 6, 0.55) 52%,
+			rgba(8, 6, 4, 0.92) 78%,
+			var(--night) 100%
 		);
 }
 
